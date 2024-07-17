@@ -31,11 +31,12 @@ namespace UnityTalk.Models
 
         public int GrpId { get; set; }
 
+        [StringLength(maximumLength: 45, MinimumLength = 2, ErrorMessage = ": Group Name Must Be Max 45 & Min 2")]
         [Required(ErrorMessage = "Enter the Group Name")]
         [Display(Name = "Group Name")]
         public string GrpName { get; set; }
 
-        [StringLength(maximumLength: 500, MinimumLength = 5, ErrorMessage = ":Description Length Must Be Max 500 & Min 5")]
+        [StringLength(maximumLength: 500, MinimumLength = 5, ErrorMessage = ": Description Must Be Max 500 & Min 5")]
         [Display(Name = "Group Description")]
         public string GrpDescp { get; set; }
         public int GrpAdminId { get; set; }

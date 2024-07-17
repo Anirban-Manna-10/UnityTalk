@@ -72,7 +72,7 @@
                 <form action="@Url.Action("createGrp","Dashboard")" method="post" class="CreateForm">
                     @Html.AntiForgeryToken()
                     <div class="grpNameContainer contInput">
-                        <p class="inputHeader">Group Name</p>
+                        <p class="inputHeader">Group Name @Html.ValidationMessageFor(model => model.GrpName, "", new { @class = "text-danger" , style = "font-size: 12px; font-weight:normal;"})</p>
                         <div class="groupName form">
                             @Html.EditorFor(model => model.GrpName, new { htmlAttributes = new { @class = "input", autocomplete = "off", placeholder = "Type group name", required = "required" } })
 
