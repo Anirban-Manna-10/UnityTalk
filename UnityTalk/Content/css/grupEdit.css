@@ -1,0 +1,391 @@
+﻿
+.GrpCustomizeCont {
+    width: 100%;
+    font-family: background-color: var(--body-clr);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-family: "Poppins", sans-serif;
+}
+
+.GrpCustomizeTable {
+    width: 100%;
+    max-width: 1000px;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-radius: 10px;
+    flex-flow: column nowrap;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 5px;
+    background-color: var(--cardclr);
+    margin-top: 10px;
+}
+
+.groupBannerImg {
+    position: relative;
+    height: 23vw;
+    min-height: 180px;
+    width: 100%;
+    background-image: url(cycle.jpg);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 16px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.GroupNavSettings {
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: var(--cardclr);
+    width: 100px;
+}
+
+.GroupNavSettingSign {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 3%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -15px;
+    font-size:14px;
+    color: var(--text-color);
+}
+
+.GroupCustomizeText {
+    transform: translateY(-50%);
+    position: absolute;
+    width: 100%;
+    opacity: 3;
+    color: var(--text-color);
+    font-size: 12px;
+    font-weight: 600;
+    transition-duration: .3s;
+    margin-left: 12px;
+}
+
+
+.GroupNavSettings .GroupNavSettingSign {
+    width: 60%;
+    transition-duration: .3s;
+    padding-left: 10px;
+}
+
+.GroupNavSettings .GroupCustomizeText {
+    opacity: 1;
+    transition-duration: .3s;
+}
+
+.GroupNavSettings:active {
+    transform: translate(2px,2px);
+}
+
+@media only screen and (max-width:600px) {
+
+    .GroupNavSettings {
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition-duration: .3s;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+        background-color: var(--cardclr);
+    }
+
+    .GroupNavSettingSign {
+        width: 100%;
+        transition-duration: .3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 4px;
+        font-size: 17px;
+        color: var(--text-color);
+    }
+
+    .GroupCustomizeText {
+        position: absolute;
+        right: 0%;
+        width: 0%;
+        opacity: 0;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition-duration: .3s;
+    }
+
+    .GroupNavSettings:active {
+        transform: translate(2px,2px);
+    }
+}
+
+.GroupNameDescpDiv {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+    width: 100%;
+}
+
+.GroupCodeMode {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    flex-flow: row nowrap;
+}
+
+.GroupCodeInfo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-flow: row nowrap;
+}
+
+.GroupCodeText p {
+    word-wrap: nowrap;
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-color)
+}
+
+.GroupCodeTextInfo {
+    width: 90px;
+    background-color: #a3a4a5;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+    .GroupCodeTextInfo p {
+        margin: 0;
+    }
+
+.GroupModeDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #dae1ec;
+    gap: 10px;
+    padding: clamp(8px,1vw,10px);
+    border-radius: 10px;
+}
+
+.GroupModeDivIcon {
+    font-size: 14px;
+}
+
+.GroupModeDivText p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.GroupNameCustomize {
+    width: 100%;
+    background-color: transparent;
+}
+
+.GroupNameCustomizeText {
+    width: 100%;
+    border: solid 1px #adadad;
+    background: none;
+    border-radius: 10px;
+    padding: 18px 48px 18px 18px;
+    font-size: 16px;
+    background-color: white;
+    transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+    .GroupNameCustomizeText:focus, GroupNameCustomizeText:valid {
+        outline: none;
+        border: 1.5px solid #3282eb;
+    }
+
+
+.GroupNameText {
+    padding: 10px;
+    font-size: clamp(16px,4vw,18px);
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+    .GroupNameText p {
+        margin: 0;
+    }
+
+.GroupDescpCustomizeText {
+    width: 100%;
+    height: 80px;
+    border: solid 1.5px #9e9e9e;
+    border-radius: 10px;
+    background: none;
+    padding: 10px;
+    font-size: 16px;
+    color: #121111;
+    background-color: white;
+    transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+    outline: none;
+    resize: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+    .GroupDescpCustomizeText:focus, GroupDescpCustomizeText:valid {
+        outline: none;
+        border: 1.5px solid #3183ef;
+    }
+
+.GroupInfoSaveCancel {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-flow: row nowrap;
+}
+
+.GroupInfoSaveBtn {
+    width: 80px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(26, 152, 237);
+    transition: all 0.3s ease-in-out;
+}
+
+    .GroupInfoSaveBtn p {
+        font-size: clamp(14px,3vw,16px);
+        font-weight: 600;
+        color: white;
+        margin: 0;
+    }
+
+    .GroupInfoSaveBtn:active {
+        transform: scale(0.9);
+    }
+
+.GroupInfoCancelBtn {
+    width: 80px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(236, 45, 11);
+    transition: all 0.3s ease-in-out;
+}
+
+    .GroupInfoCancelBtn p {
+        font-size: clamp(14px,3vw,16px);
+        font-weight: 600;
+        color: white;
+        margin: 0;
+    }
+
+    .GroupInfoCancelBtn:active {
+        transform: scale(0.9);
+    }
+
+footer {
+    display: none;
+}
+
+.dropdown-content {
+    position: absolute;
+    background-color: var(--cardclr);
+    display: flex;
+    transform-origin: top;
+    transition: all 0.3s ease-in-out;
+    height: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-flow: column nowrap;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    overflow-y: scroll;
+    right: 16px;
+    top: 93%;
+}
+
+    .dropdown-content::-webkit-scrollbar {
+        width: 3px;
+        background-color: #d0e6ee;
+    }
+
+    .dropdown-content::-webkit-scrollbar-thumb {
+        background-color: #09bff1;
+    }
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.BannerImgThemeDiv {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.BannerImgDiv {
+    width: 250px;
+    height: 100px;
+}
+
+    .BannerImgDiv img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
+
+.BannerImgThemeDiv:hover {
+    background-color: #f1f1f1;
+}
+
+@media only screen and (max-width:600px) {
+    .dropdown-content {
+        max-height: 250px;
+        right: 8%;
+    }
+}
+
+@media only screen and (max-width:490px) {
+    .BannerImgDiv {
+        width: 200px;
+        height: 80px;
+    }
+
+    .home {
+        padding: 0;
+    }
+}

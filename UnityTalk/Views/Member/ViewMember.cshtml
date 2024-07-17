@@ -1,0 +1,83 @@
+﻿@model IEnumerable<UnityTalk.Models.GroupMemberTable>
+
+@{
+    ViewBag.Title = "ViewMember";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <img src="~/Content/assets/Images/logo.png" height="45px" style="margin-left:20px;" />
+        <div class="container">
+
+            @Html.ActionLink("UnityTalk", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+
+
+
+
+    <h2>ViewMember</h2>
+    <p>
+        @Html.ActionLink("Back", "Dashboard", "Admin")
+    </p>
+
+
+    @using (Html.BeginForm("Search_Member", "Member", FormMethod.Get))
+    {
+        @Html.TextBox("search")
+        <input type="submit" value="Search Member" />
+
+    }
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupTable.GrpName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserTable.UserName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupTable.GrpName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserTable.UserName)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+</body>
+</html>

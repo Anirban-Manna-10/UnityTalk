@@ -1,0 +1,78 @@
+﻿@model IEnumerable<UnityTalk.Models.FeedBackTable>
+
+@{
+    ViewBag.Title = "feedBack";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/css/feedBackAdmin.css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <img src="~/Content/assets/Images/logo.png" width="45px" style="margin-left:20px;" />
+        <div class="container">
+
+            @Html.ActionLink("UnityTalk", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+    <section class="section-medium section-arrow--bottom-center section-arrow-primary-color bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-white text-center">
+                    <h2 class="section-title "> What Others Say About Us</h2>
+                    <p class="section-sub-title">
+                        Admins, seize insights, shape excellence! Feedback fuels our journey towards unparalleled user satisfaction and continuous enhancement.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <p>
+        @Html.ActionLink("Back", "Dashboard", "Admin")
+    </p>
+    <section class="section-primary t-bordered">
+        <div class="container">
+            <div class="row testimonial-three testimonial-three--col-three">
+
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4 testimonial-three-col">
+                        <div class="testimonial-inner">
+                            <div class="testimonial-image" itemprop="image">
+                                <img width="180" height="180" src="@Url.Content(item.UserTable.UserImgPath)">
+                            </div>
+                            <div class="testimonial-content">
+                                <p>
+                                    @Html.DisplayFor(model => item.cont)
+                                </p>
+                            </div>
+                            <div class="testimonial-meta">
+                                <strong class="testimonial-name" itemprop="name">@Html.DisplayFor(model => item.UserTable.Name)</strong>
+                                <span class="testimonial-job-title" itemprop="jobTitle">CEO</span> – <a class="testimonial-link" href="#" style="text-decoration:none;cursor:default">@Html.DisplayFor(model => item.Date)</a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </section>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+</body>
+</html>

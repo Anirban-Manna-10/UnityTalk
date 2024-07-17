@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityTalk", "UnityTalk\UnityTalk.csproj", "{F20215A7-D6FA-4404-8CA1-F8EE02925ED9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewModel", "NewModel", "{DAE59065-FB61-4532-9009-FD3EE968F92E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F20215A7-D6FA-4404-8CA1-F8EE02925ED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F20215A7-D6FA-4404-8CA1-F8EE02925ED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F20215A7-D6FA-4404-8CA1-F8EE02925ED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F20215A7-D6FA-4404-8CA1-F8EE02925ED9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D89A7E3E-4983-4A6D-A9D2-1B7B7EB7DCBD}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,854 @@
+﻿.userBanner {
+    height: 175px;
+    width: 100%;
+    border-radius: 16px;
+    padding: 10px 15px;
+    background-color: var(--bannerclr);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+    margin-top: 15px;
+    overflow:hidden;
+}
+
+    .userBanner .Usergreeting {
+        flex: 3;
+        word-wrap: unset;
+    }
+
+        .sidebar.close ~ .home .userBanner .Usergreeting .greeting {
+            font-family: "Open Sans", sans-serif;
+            font-size: clamp(24px, 3.5vw, 35px);
+            line-height: 1.2;
+            font-weight: 650;
+            margin-bottom: 5px;
+        }
+
+.sidebar ~ .home .userBanner .Usergreeting .greeting {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(22px, 3.2vw, 35px);
+    line-height: 1.2;
+    font-weight: 650;
+}
+.userBanner .Usergreeting .greetingMsg {
+                font-family: "Poppins", sans-serif;
+                font-size: clamp(14px, 2vw, 16px);
+                font-weight: 400;
+                line-height: 1.2;
+            }
+.greeting span {
+    white-space: nowrap;
+}
+
+.cta {
+    position: relative;
+    margin: auto;
+    padding: 7px 18px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 10px 0;
+    text-wrap: nowrap;
+}
+
+    .cta:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        border-radius: 50px;
+        background: #2A86FF;
+        width: 40px;
+        height: 40px;
+        transition: all 0.3s ease;
+        text-wrap: nowrap;
+    }
+
+    .cta span {
+        position: relative;
+        font-family: "Open Sans", sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+    }
+
+    .cta svg {
+        position: relative;
+        top: 0;
+        margin-left: 10px;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke: rgb(7, 7, 43);
+        stroke-width: 1.5;
+        transform: translateX(-5px);
+        transition: all 0.3s ease;
+    }
+
+    .cta:hover:before {
+        width: 100%;
+        background: #2A86FF;
+    }
+
+    .cta:hover svg {
+        transform: translateX(0);
+    }
+
+    .cta:active {
+        transform: scale(0.95);
+    }
+
+.userBanner .bannerImg {
+    flex: 1;
+    height: 100%;
+}
+
+    .userBanner .bannerImg img {
+        height: 175px;
+        margin-top: -10px;
+    }
+
+    @media only screen and (max-width : 650px){
+        .userBanner .Usergreeting .greeting {
+            font-size: clamp(21px, 4vw, 35px);
+        }
+    }
+
+
+/*************************************
+           All groups box
+**************************************/
+
+.main {
+    width: 100%;
+    padding: 36px 24px;
+    font-family: var(--poppins);
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
+}
+
+.box-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 24px;
+    padding: 0;
+    margin-top: 30px;
+}
+
+    .box-info .grpcard {
+        padding: 20px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        grid-gap: 24px;
+        cursor: pointer;
+        text-wrap: nowrap;
+        background-color: var(--cardclr);
+        color: var(--text-color);
+        box-shadow: var(--box-shadow);
+    }
+
+        .box-info .grpcard .bx {
+            width: 80px;
+            min-width:80px;
+            height: 80px;
+            border-radius: 10px;
+            font-size: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box-info .grpcard:nth-child(1) .bx {
+            background-color: rgb(194, 194, 237);
+            color: rgb(85, 85, 152);
+            border-radius: 40px;
+        }
+
+        .box-info .grpcard:nth-child(2) .bx {
+            background: rgb(246, 213, 213);
+            color: rgb(217, 81, 81);
+            border-radius: 40px;
+        }
+
+        .box-info .grpcard:nth-child(3) .bx {
+            background: rgba(249, 232, 158, 0.988);
+            color: rgb(249, 184, 7);
+            border-radius: 40px;
+        }
+
+        .box-info .grpcard:nth-child(4) .bx {
+            background: rgb(200, 216, 245);
+            color: rgb(44, 58, 136);
+            border-radius: 40px;
+        }
+
+        .box-info .grpcard .txt h3 {
+            font-family: "Open Sans", sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+@media only screen and (max-width: 650px) {
+    .box-info .grpcard .txt h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--text-color);
+        margin-top: 10px;
+    }
+
+    .box-info .grpcard {
+        padding: 20px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        grid-gap: 20px;
+        cursor: pointer;
+        max-height: 99px;
+    }
+
+        .box-info .grpcard .bx {
+            width: 60px;
+            min-width:60px;
+            height: 60px;
+            border-radius: 20px;
+            font-size: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    .box-info {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 1fr));
+        grid-gap: 24px;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 552px) {
+    .box-info .grpcard {
+        padding: 10px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        grid-gap: 10px;
+        cursor: pointer;
+        flex-direction: column;
+        text-wrap: nowrap;
+        max-height: 120px;
+    }
+
+        .box-info .grpcard .txt h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-top: 3px;
+        }
+
+        .box-info .grpcard .bx {
+            width: 50px;
+            max-width: 50px;
+            min-width: 50px;
+            height: 50px;
+            border-radius: 30px;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2px;
+        }
+}
+
+/*************************************
+            public class Code
+**************************************/
+.class-book {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+    flex: 1 0 790px;
+}
+
+.public-class {
+    flex-grow: 1;
+    overflow-x: auto;
+    width: 100%;
+    padding: 0px;
+}
+
+.public {
+    margin-bottom: 3rem;
+}
+
+.grpcard-content {
+    padding: 17px 0px 17px 0px;
+    overflow: hidden;
+}
+
+.card-slider {
+    width: 100%;
+}
+
+.Grupcard {
+    border-radius: 20px;
+    border: 1px rgba(0, 0, 0, 0.114) solid;
+    z-index: 1;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    min-width: 239px;
+    box-shadow: var(--box-shadow);
+    margin: 0px 0px 25px 0px;
+}
+
+    .Grupcard:last-child {
+        height: 256.82px;
+        padding: 0;
+        border-radius: 20px;
+    }
+
+.seeImg.Public {
+    border-radius: 10px;
+}
+
+    .seeImg.Public::after {
+        background-color: var(--cardclr);
+        border-radius: 10px;
+        height: 100%;
+        width: 100%;
+        content: '';
+        position: absolute;
+        opacity: var(--opacity);
+        filter: var(--filter);
+    }
+
+.Grupcard .grpImg {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .Grupcard .grpImg .grpImgCont {
+        height: 100%;
+        width: 100%;
+        object-fit:cover;
+        border-radius: 10px;
+    }
+
+    .Grupcard .grpCont .adminImg {
+        height: 35px;
+        width: 35px;
+        position: absolute;
+        top: -16px;
+        right: 18px;
+        border-radius: 50%;
+        overflow: hidden;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        z-index:2;
+    }
+
+        .Grupcard .grpCont .adminImg .adminImgCont {
+            height: 100%;
+            width:100%;
+            object-fit:cover;
+        }
+
+.grpCont {
+    padding: 15px 15px 15px 15px;
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    top: -12px;
+    margin-bottom: -12px;
+    border-radius: 10px;
+    background-color: var(--cardclr);
+}
+
+    .grpCont .grpName {
+        padding: 0;
+        margin: 0;
+        font-size: 19px;
+        font-weight: 500;
+        color: var(--text-color);
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+
+    .grpCont .grpAdminName {
+        padding: 0;
+        margin: 0;
+        font-size: 14PX;
+        position: relative;
+        line-height: 1.5;
+        opacity: 0.8;
+        font-weight: 400;
+        color: var(--text-color);
+    }
+
+    .grpCont .grpDesp {
+        padding: 0;
+        height: 33.6px;
+        margin-top: 10px;
+        margin-bottom: 10PX;
+        font-size: 14px;
+        font-size: 0.75rem;
+        font-weight: 400;
+        line-height: 1.4;
+        width: 100%;
+        font-family: "Open Sans", sans-serif;
+        overflow: hidden;
+        max-height: 3.6rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        transition: all 0.5s ease;
+        color: var(--text-color);
+    }
+
+    .grpCont .Grpjoinbutton {
+        padding: 5px 20px 5px 20px;
+        align-self: center;
+        height: 36px;
+        border-radius: 7px;
+        background-color: var(--btn);
+        color: rgb(251, 250, 248);
+        font-weight: 400;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        word-wrap:normal;
+    }
+
+    .swiper-pagination.bullet {
+        color: #10bdf7;
+    }
+
+.swiper-pagination.bullet-active {
+    background-color: #275EFE;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    padding: 1.2rem;
+}
+
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+        background-color: #3786e763;
+        border-radius: 20px;
+    }
+
+.swiper-button-prev {
+    left: -1px !important;
+}
+
+.swiper-button-next {
+    right: -1px !important;
+}
+
+@media only screen and (max-width: 1235px) {
+    .class-book {
+        flex: none;
+    }
+}
+
+@media only screen and (max-width: 472px) {
+    .swiper-button-prev,
+    .swiper-button-next {
+        display: none;
+    }
+}
+
+/*************************************
+            Ebook Code
+**************************************/
+
+.featured {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-bottom: 15px;
+}
+
+.featured-section {
+    flex-grow: 1;
+    overflow-x: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.heading {
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 0;
+}
+
+    .heading span {
+        font-size: 30px;
+        padding: 0rem .5rem 0rem .5rem;
+        color: var(--text-color);
+        font-family: "Open Sans", sans-serif;
+    }
+
+
+.ebookcard {
+    width: 250px;
+    position: relative;
+    text-align: center;
+    background-color: var(--cardclr);
+    padding: 0.7rem 1rem 0.9rem 1rem;
+    margin: 20px 0 25px 0;
+    overflow: hidden;
+    transition: border .4s, background-color .3s;
+    border-radius: 15px;
+    align-self: center;
+    box-shadow: var(--box-shadow);
+}
+
+.seeImg {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .seeImg::after {
+        background-color: var(--cardclr);
+        height: 100%;
+        width: 100%;
+        content: '';
+        position: absolute;
+        opacity: var(--opacity);
+        filter: var(--filter);
+    }
+
+.seemore {
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+}
+
+.learn-more {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    margin-left: 15px;
+    margin-top: -10px;
+}
+
+button.learn-more {
+    width: 12rem;
+    height: auto;
+}
+
+    button.learn-more .circle {
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+        position: relative;
+        display: block;
+        margin: 0;
+        width: 3rem;
+        height: 3rem;
+        background: var(--btn);
+        border-radius: 1.625rem;
+    }
+
+        button.learn-more .circle .icon {
+            transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            background: #fff;
+        }
+
+.learn-more .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+}
+
+    .learn-more .circle .icon.arrow::before {
+        position: absolute;
+        content: "";
+        top: -0.29rem;
+        right: 0.0625rem;
+        width: 0.625rem;
+        height: 0.625rem;
+        border-top: 0.125rem solid #fff;
+        border-right: 0.125rem solid #fff;
+        transform: rotate(45deg);
+    }
+
+.learn-more .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.75rem 0;
+    margin: 0 0 0 1.85rem;
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+button:hover .circle {
+    width: 180px;
+}
+
+    button:hover .circle .icon.arrow {
+        background: #fff;
+        transform: translate(1rem, 0);
+    }
+
+button:hover .button-text {
+    color: #fff;
+}
+
+.ebookcard:last-child {
+    height: 319px;
+    padding: 0;
+}
+
+.featured-img {
+    width: 130px;
+    margin: .5rem;
+    align-self: center;
+}
+
+.ebook-descp {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    flex-flow: column nowrap;
+}
+
+.ebook-title {
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0px;
+    color: var(--text-color)
+}
+
+.featured-actions {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.8rem;
+    position: absolute;
+    top: 2.1rem;
+    right: -1.1rem;
+    transition: right .4s;
+    color: var(--text-color)
+}
+
+.ebookcard:hover .featured-actions {
+    right: 0.9rem;
+}
+
+.ebook-author {
+    width: 100%;
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.ebook-btn {
+    align-self: center;
+    padding: 0px 10px 0px 10px;
+    height: 36px;
+    border-radius: 7px;
+    background-color: var(--btn);
+    color: rgb(251, 250, 248);
+    font-weight: 400;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    text-wrap: nowrap;
+}
+
+.swiper-pagination.bullet {
+    color: #23C4F8;
+    opacity: 1;
+}
+
+.swiper-pagination.bullet-active {
+    background-color: #275EFE;
+    padding: 1rem;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    padding: 1.2rem;
+}
+
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+        background-color: #3786e763;
+        border-radius: 20px;
+    }
+
+.swiper-button-prev {
+    left: -1px !important;
+}
+
+.swiper-button-next {
+    right: -1px !important;
+}
+
+@media only screen and (max-width: 1280px) {
+    .featured {
+        grid-gap: 4px;
+    }
+}
+
+@media only screen and (max-width: 1225px) {
+    .card:hover.featured-actions {
+        right: 0.6rem;
+    }
+}
+
+
+
+
+
+
+
+/*************************************
+            Todo Code
+**************************************/
+.todo {
+    overflow: hidden;
+    min-width: 350px;
+    flex-grow: 1;
+    align-self: baseline;
+    flex-basis: 150px;
+    padding: 20px;
+    border-radius: 20px;
+    background: var(--cardclr);
+    overflow-x: hidden;
+    margin-top: 58px;
+    height: 100%;
+    box-shadow: var(--box-shadow);
+}
+
+    .todo .head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--text-color);
+        font-size: 18px;
+        padding: 0px 0px 0px 10px;
+    }
+
+        .todo .head h3{
+            cursor:pointer;
+        }
+
+            .todo .head h3:hover{
+                transform:translateY(-2px);
+                text-shadow: 2px 1px 1px rgba(66, 68, 90, 1);
+            }
+
+            .MemberdivLine {
+                border-bottom: 2px solid var(--text-color);
+                margin: 0;
+                width: 100%;
+                opacity: 0.2;
+            }
+
+.task-box {
+    margin-top: 18px;
+    margin-right: 5px;
+    padding: 10px 5px 10px 0px;
+    width: 100%;
+    line-height: 2.5rem;
+    height: 590px;
+    border-radius: 30px;
+    overflow-y: scroll;
+    overflow-x: hidden
+}
+
+    .task-box::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .task-box::-webkit-scrollbar {
+        background: #f1f1f1;
+        border-radius: 25px;
+    }
+
+    .task-box::-webkit-scrollbar-thumb {
+        background:var(--btn);
+        border-radius: 25px;
+    }
+
+    .task-box .task {
+        list-style: none;
+        font-size: 16px;
+        padding: 10px;
+        align-items: flex-start;
+        border-left: 6px solid var(--btn);
+        border-radius: 20px;
+        margin-bottom:10px;
+        background-color:var(--body-color);
+    }
+
+        .task-box .task:last-child {
+            border-bottom: 0;
+            padding-bottom: 10px;
+        }
+
+        .task-box .task p {
+            margin: 0;
+            font-size: 16px;
+            color:var(--text-color);
+        }
+@media only screen and (max-width:1250px) {
+    .todo{
+        margin-top:30px;
+    }
+    .todo .task-box{
+        height:350px;
+    }
+}

@@ -1,0 +1,94 @@
+﻿@model UnityTalk.Models.ToDoTable
+
+@{
+    ViewBag.Title = "My ToDo";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="~/Content/css/todo.css" />
+</head>
+<body>
+    <div class="todoCont">
+        <div class="todoheader">
+            <p class="todotext">Lets start the Todos</p>
+        </div>
+        <div class="new-todo">
+            @using (Html.BeginForm("editTodo", "Todo", FormMethod.Post, new { id = "todoForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.EditorFor(model => model.Cont, new { htmlAttributes = new { id = "newtodo", placeholder = "I will do ..." } })
+                @Html.ValidationMessageFor(model => model.Cont, "", new { @class = "text-danger" })
+
+                @Html.HiddenFor(model => model.Uid)
+                @Html.HiddenFor(model => model.isDone)
+                @Html.HiddenFor(model => model.ToDoId)
+                <button class="TodoAddBtn" type="submit">
+                    <div class="todoaddsign"><i class="fa-solid fa-pen-to-square" style="color: #fbfcfe;"></i></div>
+                    <div class="todoaddtext">Edit</div>
+                </button>
+            }
+        </div>
+
+        <!--<hr class="line">-->
+        <div class="todos-list">
+            <div class="todo-inputs">
+                @if (ViewBag.todoList == null || ViewBag.todoList.Count == 0)
+                {
+                    <p class="notodoitem">No item yet</p>
+                }
+                else
+                {
+                    foreach (UnityTalk.Models.ToDoTable item in ViewBag.todoList as List<UnityTalk.Models.ToDoTable>)
+                    {
+                        <div class="todoicon" id="0">
+                            <label class="container-checkbox" onclick="window.location.href='@Url.Action("doneTodo","Todo",new { itemId = item.ToDoId})'">
+                                @if (item.isDone)
+                                {
+                                    <input type="checkbox" checked>
+                                }
+                                else
+                                {
+                                    <input type="checkbox">
+                                }
+                                <span class="checkmark"></span>
+                            </label>
+                            <p class="tosoItemConttext">@Html.DisplayFor(model => item.Cont)</p>
+                            <button class="inputEditBtn" onclick="window.location.href='@Url.Action("editTodo","Todo",new { itemId = item.ToDoId})'">
+                                <div class="inputaddsign"><i class="fa-solid fa-pen"></i></div>
+                            </button>
+                            <button class="inputDeleteBtn" onclick="window.location.href='@Url.Action("removeTodo","Todo",new { itemId = item.ToDoId})'">
+                                <div class="inputdeletesign"><i class="fa-solid fa-trash-can" style="color: #dc3618;"></i></div>
+                            </button>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            let activeNavLinks = document.querySelectorAll('.nav-link.active');
+
+            activeNavLinks.forEach(function (link) {
+                link.classList.remove('active');
+            });
+            let dashboardElement = document.querySelector('.navTodo-l');
+
+            if (dashboardElement) {
+                dashboardElement.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
+

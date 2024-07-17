@@ -1,0 +1,657 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+p{
+    margin:0;
+}
+
+  :root{
+    --hover-colour:rgba(146, 218, 236, 0.311);
+    --memberlisthover:rgb(210, 224, 244);
+  }
+  .dark{
+    --hover-colour:rgba(188, 219, 231, 0.506);
+    --memberlisthover:#5a677f;
+  }
+  
+  .GroupInfoCont{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    min-height:calc(100vh - 80px);
+  }
+  .GroupInfoTable{
+    width:70%;
+    display:flex;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 10px;
+    flex-flow: column nowrap;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top:20px;
+  }
+  .GroupNameDescp{
+    padding: clamp(10px,2vw,20px);
+    width:100%;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    flex-flow: column nowrap;
+    background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    border-radius: 10px 10px 0 0;
+  }
+  .GroupModePrev{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
+    flex-flow: row nowrap;
+  }
+  .GroupModeDiv{
+    display:flex;
+    align-items: center;
+    justify-content:space-between;
+    background-color: #dae1ec;
+    gap:10px;
+    padding:10px;
+    border-radius: 10px;
+  }
+  .GroupModeDivIcon{
+    font-size: 14px;
+  }
+  .GroupModeDivText p{
+      margin:0;
+    font-size: 14px;
+  }
+  
+  .GroupEditPrev{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
+  }
+  .GroupPrevArrow{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:35px;
+    padding:10px ;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .GroupPrevArrow .search{
+    font-size: 18px;
+    color:rgb(5, 5, 84);
+  }
+  
+  .GroupPrevArrow:hover{
+    background-color:rgba(71, 163, 239, 0.226);
+  }
+
+  .GroupPrevArrow:hover .search{
+    transform: translate(-3px);
+    transition: all 0.2s ease-in-out ;
+  }
+  
+  .GroupInfoEditBtn {
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 29, 4);
+    width: 100px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+  }
+
+.GroupInfoDeleteBtn {
+    width: 160px;
+}
+
+.GroupInfoEditSign {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -15px;
+    font-size: 18px;
+    color: white;
+}
+  
+  .GroupInfoEditText {
+    right:-14%;
+    position: absolute;
+    width: 100%;
+    opacity: 3;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    transition-duration: .3s;
+  }
+  
+  
+  .GroupInfoEditBtn .GroupInfoEditSign {
+    width: 60%;
+    transition-duration: .3s;
+    padding-left: 10px;
+  }
+  .GroupInfoEditBtn .GroupInfoEditText {
+    opacity: 1;
+    transition-duration: .3s;
+  }
+  .GroupInfoEditBtn:active {
+    transform: translate(2px ,2px);
+  }
+  
+  @media only screen and (max-width:767px){
+  
+      .GroupInfoEditBtn {
+        margin-left: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          width: 40px;
+          height: 40px;
+          border: none;
+          border-radius: 50%;
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+          transition-duration: .3s;
+          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+          background-color: rgb(249, 3, 3);
+        }
+        .GroupInfoEditSign {
+          width: 100%;
+          transition-duration: .3s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: 4px;
+          font-size: 18px;
+        }
+        .GroupInfoEditText{
+          position: absolute;
+          right: 0%;
+          width: 0%;
+          opacity: 0;
+          color: white;
+          font-size: 0.9rem;
+          font-weight: 600;
+          transition-duration: .3s;
+        }
+        .GroupInfoEditBtn:active {
+          transform: translate(2px ,2px);
+        }
+  }
+  
+  .GroupInfoName{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  .GroupInfoName p{
+    font-size: clamp(23px,5vw,30px);
+    font-weight: 600;
+  }
+.GroupInfoDescp {
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  .GroupInfoDescp p{
+    font-size: clamp(14px,4vw,16px);
+    font-weight: 500;
+    opacity: 0.7;
+  }
+  .GroupAdminMembers{
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height:100%;
+    flex-flow: column nowrap;
+  }
+  .GroupAdminTable{
+    display:flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    background-color:var(--cardclr);
+    flex-flow: column nowrap;
+    padding:20px;
+  }
+  .GroupMemberSearch{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .GroupAdminTableHead{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color:transparent;
+    width: 100%;
+    margin-left:1%;
+  }
+  .GroupAdminTableHead p{
+    font-size: clamp(15px,4vw,18px);
+    font-weight: 600;
+    color:var(--text-color)
+  }
+  .MemberdivLine{
+    border-bottom: 2px solid black;
+    margin: 5px 0;
+    width:100%;
+    opacity: 0.2;
+  }
+  .GroupAdminTableBody{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display:flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap:10px;
+  }
+
+  .groupLeaveBtnCont1{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+  }
+
+  .LeaveMsgBox {
+    position: absolute;
+    z-index: 1;
+    background-color: rgb(251, 251, 254);
+    width: clamp(200px, 20vw, 250px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    gap: 10px;
+    border-radius: 10px;
+    padding: 15px 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px;
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out;
+  }
+
+    #DeleteMsgBox{
+
+    }
+
+.LeaveMsgBox.validConfBox {
+    transform: scale(1) translateX(-80%);
+}
+
+    #DeleteMsgBox.validConfBox1 {
+    transform: scale(1) translateX(100%);
+    }
+
+  
+  
+
+  .LeaveMsgText{
+  text-align: center;
+  }
+  .LeaveText{
+  font-size: clamp(14px,3vw,16px);
+    font-weight: 600;
+  }
+  .LeaveDescp{
+  font-size: clamp(11px,3vw,14px);
+    font-weight: 600;
+    opacity:0.5;
+  }
+  .GroupLeave{
+   display:flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height:30px;
+    background-color:white;
+    border-radius: 10px;
+    gap:6px;
+    border:none;
+  }
+  .GroupLeave p{
+  font-size: clamp(12px,2vw,14px);
+  font-weight: 550;
+  }
+  .RemoveMsgBox{
+    position:absolute;
+    z-index: 10;
+    background-color: rgb(251, 251, 254);
+    width:clamp(200px,20vw,250px);
+    right:10%;
+    bottom:19%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    gap:10px;
+    border-radius: 10px;
+    padding: 15px 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .RemoveMsgText{
+    text-align: center;
+  }
+  .RemoveText{
+    font-size:clamp(14px,3vw,16px);
+    font-weight: 600;
+  }
+  .RemoveDescp{
+    font-size: clamp(11px,2vw,14px);
+    font-weight: 600;
+    opacity:0.5
+  }
+  .MemberRemove{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height:30px;
+    background-color:white;
+    border-radius: 10px;
+    gap:6px;
+    border:none;
+  }
+  .MemberRemove p{
+    font-size:clamp(12px,2vw,14px);
+    font-weight: 550;
+  }
+  .CancelRemoveBtn{
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+    gap:10px;
+    padding:0 10px;
+  }
+  .CancelBtn{
+    background-color: rgb(203, 197, 197);
+  }
+  .RemoveBtn{
+    background-color: red;
+  }
+  .RemoveBtn p{
+    color:white;
+  }
+  .TableCont{
+    display:flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width:100%;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 10px;
+    flex-flow: row nowrap;
+    
+  }
+  .TableCont:hover{
+    background-color:var( --memberlisthover);
+  }
+  .TableContDetails{
+    flex:2;
+    display:flex;
+    align-items:center;
+    justify-content: flex-start;
+    gap:10px;
+  
+  }
+  .TableContImgdiv{
+    width:40px;
+    height:40px;
+    border-radius: 50%;;
+    overflow: hidden;
+  }
+  .TableContImg{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+  }
+  .TableContUserDetails{
+    flex:5;
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding-right: 5px;
+    min-width: 145px;
+  }
+  .TableContDetailsName{
+    font-size: clamp(13px,3vw,16px);
+    font-weight: 500;
+    margin-bottom: 0;
+    color:var(--text-color);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: "Open Sans", sans-serif;
+  }
+  .TableContDetailsUserName{
+    font-weight: 600;
+    margin-bottom: 0;
+    opacity:0.6;
+    font-size:12px;
+    font-family: "Open Sans", sans-serif;
+    color:var(--text-color);
+  }
+  .GroupMemberRemove{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex:1;
+    width: 100%;
+    height: 100%;
+    gap:20px;
+    flex-flow: row nowrap;
+  }
+  .GroupMemberRemoveDiv{
+    width:35px;
+    height:35px;
+    background-color: #f41d0a;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  .GroupMemberAdminDiv{
+    width:35px;
+    height:35px;
+    background-color: #6d9ced;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  .GroupMemberRemoveDiv:active{
+    transform: scale(0.9);
+  }
+  .GroupMemberAdminDiv:active{
+    transform: scale(0.9);
+  }
+  .GroupRemovetooltiptext{
+    visibility: hidden;
+    width:60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:30px;
+    position:absolute;
+    z-index: 10;
+    border-radius: 10px;
+    background-color: #b1caf5;
+    color:white;
+    transform: translate(-90%,-110%);
+  }
+  .GroupRemovetooltiptext p{
+    font-size: 13px;
+  }
+  .GroupAdmintooltiptext{
+    visibility: hidden;
+    width:60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:30px;
+    position:absolute;
+    z-index: 10;
+    border-radius: 10px;
+    background-color: #b1caf5;
+    color:white;
+    transform: translate(40%,-110%);
+  }
+  .GroupMemberAdminDiv:hover .GroupAdmintooltiptext{
+    visibility: visible;
+  }
+  .GroupMemberRemoveDiv:hover .GroupRemovetooltiptext{
+    visibility: visible;
+  }
+  .removeicon{
+    font-size: 22px;
+    color:white;
+  }
+  
+   .GroupMemberTable{
+    display:flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    background-color:var(--cardclr);
+    flex-flow: column nowrap;
+    border-radius: 0 0 10px 10px;
+    padding:20px;
+  }
+  .GroupMemberTableBody{
+    width: 100%;
+    display:flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-flow: column nowrap;
+    gap:5px;
+  }
+  .GroupMemberTableBody::-webkit-scrollbar{
+    display:none;
+  }
+  .input-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+  }
+  
+  .GroupMemberSearchInput {
+    border-style: none;
+    height: 30px;
+    width: 30px;
+    padding: 20px;
+    outline: none;
+    border-radius: 50%;
+    transition: .5s ease-in-out;
+    background-color: #147ff9;
+    box-shadow: 0px 0px 3px #f3f3f3;
+    padding-right: 20px;
+    color: #072b51;
+  }
+  
+  .GroupMemberSearchInput::placeholder,
+  .GroupMemberSearchInput {
+    font-family: "Open Sans", sans-serif;;
+    font-size: clamp(13px,2vw,16px);
+  }
+  
+  .GroupMemberSearchInput::placeholder {
+    color: #131212;
+  }
+  
+  .GroupMemberSearchicon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    width: 20px;
+    color:#06193a;
+    height: 20px;
+    outline: none;
+    border-style: none;
+    border-radius: 50%;
+    pointer-events: painted;
+    background-color: transparent;
+    transition: .2s linear;
+  }
+
+  .GroupMemberSearchicon .searchIcon{
+    color: white;
+    font-size: 16px;
+  }
+  
+  .GroupMemberSearchicon:focus ~ .GroupMemberSearchInput,
+  .GroupMemberSearchInput:focus {
+    box-shadow: none;
+    width: 200px;
+    border-radius: 0px;
+    background-color:transparent;
+    border-bottom: 3px solid #2e72df;
+    transition: all 0.3s cubic-bezier(0, 0.110, 0.35, 2);
+  }
+  
+  .GroupMemberSearchInput:focus ~ .searchIcon{
+        color: blue;
+    }
+
+    .GroupMemberSearchicon:focus .searchIcon{
+        color: blue;
+    }
+
+.GroupMemberSearchInput::placeholder{
+    color:gray;
+}
+@media only screen and (max-width: 670px) {
+    .GroupInfoTable{
+        width:100%;
+    }
+  }
+  @media only screen and (max-width: 450px){
+    .GroupMemberSearchicon:focus ~ .GroupMemberSearchInput,
+    .GroupMemberSearchInput:focus {
+      width:150px;
+    }
+  }
+

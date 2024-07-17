@@ -1,0 +1,150 @@
+﻿ @model IEnumerable<UnityTalk.Models.GroupTable>
+
+@{
+    ViewBag.Title = "Public Groups";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Classes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="~/Content/css/publicGroups.css">
+</head>
+<body>
+    @using (Html.BeginForm("publicGroups", "Group", FormMethod.Post))
+    {
+        <div class="GrpSearch-boxCont">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" id="wave">
+                <!-- Define linear gradient -->
+                <defs>
+                    <linearGradient id="gradient" gradientTransform="rotate(62deg)">
+                        <stop offset="0%" stop-color="#8EC5FC" />
+                        <stop offset="100%" stop-color="#E0C3FC" />
+                    </linearGradient>
+                </defs>
+
+                <!-- Use linear gradient as fill for the path -->
+                <path fill="url(#gradient)" fill-opacity="1" d="M0,128L48,138.7C96,149,192,171,288,154.7C384,139,480,85,576,101.3C672,117,768,203,864,197.3C960,192,1056,96,1152,85.3C1248,75,1344,149,1392,186.7L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+            </svg>
+            <div class="grpSearchbar">
+                <div class="Grpdropdown">
+
+                    <div id="GrpdropdownText" class="GrpdropdownText">
+                        @if (ViewBag.SearchBy != null)
+                        {
+                            <span id="dropdown-text-span">@ViewBag.SearchBy</span>
+                        }
+                        else
+                        {
+                            <span id="dropdown-text-span">Sort By</span>
+                        }
+
+                        <i class="fa-solid fa-chevron-down dropdownicon" id="dropdownicon"></i>
+                    </div>
+                    <ul class="Grpdropdown-list">
+                        <li class="grp-drop-down-list-item" data-searchby="top">Newest First</li>
+                        <li class="grp-drop-down-list-item" data-searchby="bottom">Newest Last</li>
+                        <li class="grp-drop-down-list-item" data-searchby="AZ">A - Z</li>
+                        <li class="grp-drop-down-list-item" data-searchby="ZA">Z - A</li>
+                    </ul>
+                </div>
+
+                <div class="GrpSearch-box">
+                    <input type="hidden" id="GrpsearchBy-input" name="searchBy" />
+                    <input type="search" id="Grpsearch-input" name="search" placeholder="Search Group By Name...">
+                    <button type="submit" class="grpSearchIcon"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+
+            </div>
+        </div>
+            }
+            <div class="grpListCont">
+                @foreach (var item in Model)
+                {
+                    <div class="Grupcard">
+                        <div class="Grupimage">
+                            <img src="@Url.Content(item.GroupImgTable.GrpImgPath)" alt="Group Image">
+                        </div>
+                        <div class="Grupcontent">
+                            <a href="#">
+                                <span class="Gruptitle">
+                                    @Html.DisplayFor(model => item.GrpName)
+                                </span>
+                                <span class="adminName">@Html.DisplayFor(model => item.UserTable.Name)</span>
+                            </a>
+
+                            <p class="Grupdesc">
+                                @Html.DisplayFor(modelItem => item.GrpDescp)
+                            </p>
+
+                            <a class="Grupaction" href="@Url.Action("joinGrpBtn", "Dashboard", new { grpId = item.GrpId })">
+                                Join Group
+                                <span aria-hidden="true">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <script>
+                console.log("hello");
+                let drpdownBtn = document.querySelector(".GrpdropdownText");
+                let list = document.querySelector(".Grpdropdown-list");
+                let icon = document.querySelector(".dropdownicon");
+                let span = document.querySelector("#dropdown-text-span")
+                let input = document.querySelector("#Grpsearch-input")
+                let listItems = document.querySelectorAll(".grp-drop-down-list-item")
+                let searchByinp = document.querySelector("#GrpsearchBy-input");
+                drpdownBtn.addEventListener("click", function () {
+                    if (list.classList.contains("show")) {
+                        icon.style.rotate = "0deg";
+                    } else {
+                        icon.style.rotate = "-180deg";
+                    }
+                    list.classList.toggle("show");
+                });
+
+                window.onclick = function (e) {
+                    if (e.target.id !== "GrpdropdownText" &&
+                        e.target.id !== "dropdown-text-span" &&
+                        e.target.id !== "dropdownicon"
+                    ) {
+                        list.classList.remove("show");
+                        icon.style.rotate = "0deg";
+                    }
+                }
+
+
+                for (item of listItems) {
+                    item.onclick = function (e) {
+                        span.innerText = e.target.innerText;
+                        searchByinp.value = e.target.getAttribute('data-searchby');
+                    }
+                }
+            </script>
+            @section scripts {
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+
+                        let activeNavLinks = document.querySelectorAll('.nav-link.active');
+
+                        activeNavLinks.forEach(function (link) {
+                            link.classList.remove('active');
+                        });
+                        let dashboardElement = document.querySelector('.navDashboard-l');
+
+                        if (dashboardElement) {
+                            dashboardElement.classList.add('active');
+                        }
+                    });
+                </script>
+            }
+    </body>
+</html>

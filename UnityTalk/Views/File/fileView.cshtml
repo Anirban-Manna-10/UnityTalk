@@ -1,0 +1,232 @@
+﻿@model UnityTalk.viewModel.GroupView
+
+@{
+    ViewBag.Title = "Group Files";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/css/fileView.css">
+
+</head>
+
+<div class="groupEntryCont">
+    <div class="GroupNavbar">
+        <div class="GroupNavIcons">
+            <div class="GroupnavAll Groupnavopt" onclick="window.location.href ='@Url.Action("grupview", "GroupView", new {grpid = Model.Group.GrpId})'">
+                <div class="GroupNavIconback">
+                    <img class="GroupNavIcon" src="~/Content/assets/IndexImages/SeakerIcon.png">
+                </div>
+                <p class="GroupIconText">All</p>
+            </div>
+
+            <div class=" GroupnavFile Groupnavopt GrpNavactive " onclick="window.location.href ='@Url.Action("fileView", "File", new {grpid = Model.Group.GrpId})'">
+                <div class="GroupNavIconback">
+                    <i class="fa-regular fa-file-lines GroupNavIcon"></i>
+
+                </div>
+                <p class="GroupIconText">Files</p>
+            </div>
+            <div class="GroupnavChat Groupnavopt" onclick="window.location.href ='@Url.Action("Chat", "Chat", new {grpid = Model.Group.GrpId})'">
+                <div class="GroupNavIconback">
+                    <i class="bi bi-chat-text-fill GroupNavIcon"></i>
+
+                </div>
+                <p class="GroupIconText">Chats</p>
+            </div>
+            <div class="GroupnavMeet Groupnavopt" onclick="window.location.href ='@Url.Action("meetingView", "Meeting", new {grpId = Model.Group.GrpId})'">
+                <div class="GroupNavIconback">
+                    <i class="fa-solid fa-video GroupNavIcon"></i>
+                </div>
+                <p class="GroupIconText">Meetings</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="GroupDetailsMembaerCont">
+
+        <div class="GroupNameAllDeatails">
+            <div class="GroupNameUploadDiv">
+                <div class="GroupNameInfo">
+                    <div class="groupbannertext">
+                        <p>@Html.DisplayFor(model => Model.Group.GrpName)</p>
+                    </div>
+                    <div class="GroupInfodiv" onclick="window.location.href = '@Url.Action("grpInfo", "GroupView", new {grpId = Model.Group.GrpId})'">
+                        <i class="fa-solid fa-circle-info " style="color: #c0c2c5;"></i>
+                    </div>
+                </div>
+
+                <button class="GroupNavSettings" onclick="window.location.href='#GroupFileUplodDiv'">
+                    <div class="GroupNavSettingSign">
+                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                    </div>
+                    <div class="GroupCustomizeText">Upload</div>
+                </button>
+            </div>
+
+            <div class="GroupDetailCont">
+                <div class="GroupDetail">
+                    <div class="GroupDetailText">Files List</div>
+                    <div class="searchBox">
+                        <input class="searchInput" type="text" placeholder="Search" id="FileSearchInput">
+                        <button class="searchButton">
+                            <i class="fa-solid fa-magnifying-glass searchicon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="AnnounceDetailsCont">
+                    <div class="groupFileshareCont" id="groupFileshareCont">
+                        @if (Model.FileTbl == null || !Model.FileTbl.Any())
+                        {
+                            <div class="notodoitem">
+                                <img src="~/Content/assets/IndexImages/Empty-File.png" alt="No todo Here" />
+
+                                No Files Here—Be the First to Share!
+                            </div>
+                        }
+                        else
+                        {
+                            foreach (var item in Model.FileTbl)
+                            {
+                                <div class="groupFileshareBox" onclick="window.open('@Url.Content(item.FilePath)', '_blank')">
+                                    @if (item.GroupMemberTable.UserTable.Uid == (int)Session["Id"] || item.GroupTable.UserTable.Uid == (int)Session["Id"])
+                                    {
+                                        <button class="File-Delete-icon">
+                                            <span class="File-Delete-icon-tooltip">Delete</span>
+                                            <span class="material-symbols-outlined" style="color:white" onclick="window.location.href='@Url.Action("deleteFile", "File", new {fileId = item.FileId,grpId = Model.Group.GrpId})'">
+                                                delete
+                                            </span>
+                                        </button>
+                                    }
+                                    <div class="GroupFileImgDiv">
+                                        @if (item.FileType == "application/pdf")
+                                        {
+                                            <img src="~/Content/assets/IndexImages/pdfPic.png" class="GroupFileImg">
+                                        }
+                                        else if (item.FileType == "image/jpeg" || item.FileType == "image/jpg")
+                                        {
+                                            <img src="~/Content/assets/IndexImages/jpg.png" class="GroupFileImg">
+                                        }
+                                        else if (item.FileType == "image/png")
+                                        {
+                                            <img src="~/Content/assets/IndexImages/png.png" class="GroupFileImg">
+                                        }
+                                        else if (item.FileType == "application/x-zip-compressed")
+                                        {
+                                            <img src="~/Content/assets/IndexImages/zipPic.png" class="GroupFileImg">
+                                        }
+                                        else if (item.FileType == "text/plain")
+                                        {
+                                            <img src="~/Content/assets/IndexImages/txtPic.png" class="GroupFileImg">
+                                        }
+                                        else if (item.FileType == "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+                                        {
+                                            <img src="~/Content/assets/IndexImages/docPic.png" class="GroupFileImg">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Content/assets/IndexImages/docsPic.png" class="GroupFileImg">
+                                        }
+                                    </div>
+                                    <div class="GroupFileNameDate">
+
+                                        <div class="GroupFileName">
+                                            <p>@Html.DisplayFor(modelItem => item.FileName)</p>
+                                        </div>
+                                        <div class="GroupFileDate">
+                                            <p>@Html.DisplayFor(modelItem => item.Date)</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            }
+                        }
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="GroupFileUplodPreview">
+            <div class="GroupFileUplodDiv" id="GroupFileUplodDiv">
+                <div class="groupFileUploadtextdiv">
+                    <p class="groupFileUploadtext">Upload the Files</p>
+                </div>
+                <hr class="UploaddivLine">
+                @using (Html.BeginForm("fileView", "File", FormMethod.Post, new { enctype = "multipart/form-data", @class = "GroupUploadDiv selectFile" }))
+                {
+
+                    <div class="GroupUploadText">
+                        <p>Share Your Files with the Group!</p>
+                    </div>
+                    <div class="UserUploadPartDiv">
+                        <div class="UserUploadPart">
+                            <div class="UploadimgDiv">
+                                <img src="~/Content/assets/IndexImages/upload_drop.png" class="Uploadimg">
+
+                            </div>
+                            <div class="UserUploadFileText">
+                                <p>Drag and Drop Your first File here</p>
+                                <p class="textOr">OR</p>
+                            </div>
+
+                            <div class="FileBrowseBtn">
+                                <label for="filechoseArea" class="LabelBrowse">Browse</label>
+
+                                <input type="file" class="filechoseArea" name="file" required />
+
+                                <input type="hidden" name="grpId" value="@Model.Group.GrpId" />
+                            </div>
+                        </div>
+                        <div class="UserUploadPart">
+                            <div class="dropHere">Drop Here</div>
+                        </div>
+                    </div>
+                    <div class="FilenameinputDiv">
+                        <div class="FileNametxt">
+                            <p>File Name:</p>
+                        </div>
+                        <input type="text" name="filename" class="File-name-input" placeholder="Enter the File Name...">
+                    </div>
+                    <div class="FileUploadCancelDiv">
+                        <button class="FileUploadbtn" type="submit">
+                            <p>Upload</p>
+                        </button>
+                        <button class="FileUploadbtn FileUploadCancelBtn" type="reset" onclick="window.location.reload()">
+                            <p>Cancel</p>
+                        </button>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            let activeNavLinks = document.querySelectorAll('.nav-link.active');
+
+            activeNavLinks.forEach(function (link) {
+                link.classList.remove('active');
+            });
+            let dashboardElement = document.querySelector('.navAllGroups-l');
+
+            if (dashboardElement) {
+                dashboardElement.classList.add('active');
+            }
+        });
+    </script>
+
+    <script src="~/Content/js/fileView.js"></script>
+
+
+}

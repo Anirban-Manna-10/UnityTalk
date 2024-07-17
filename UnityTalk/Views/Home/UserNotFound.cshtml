@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/Content/css/UserNotFound.css">
+</head>
+<body>
+    <div class="frem">
+        <p>OOPS!</p>
+        <h2>@ViewBag.ErrorMsg</h2>
+        <h5>Sign in to unlock the full potential of our communication and collaboration platform.</h5>
+        <div class="btn-Div">
+            <button class="btn-prev error-home" onclick="window.location.href='@Url.Action("Index","Home")'">Back Home</button>
+            <button class="btn-prev" onclick="window.location.href='@Url.Action("login","Home")'">Login</button>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserNotFound</title>
+</head>
+<body>
+    <div>
+        @ViewBag.ErrorMsg
+        <a href="@Url.Action("login","Home")" method="get" ,"class="btn">
+            <span class="span">Login</span>
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+﻿@model IEnumerable<UnityTalk.Models.EbookTable>
+
+@{
+    ViewBag.Title = "ViewEbook";
+    Layout = null;
+}
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <img src="~/Content/assets/Images/logo.png" height="45px" style="margin-left:20px;" />
+        <div class="container">
+
+            @Html.ActionLink("UnityTalk", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+
+
+
+
+    <h2>ViewEbook</h2>
+
+    <p>
+        @Html.ActionLink("Back", "Dashboard", "Admin")
+    </p>
+
+    <p>
+        @using (Html.BeginForm("Search", "Product", FormMethod.Get))
+        {
+            <b>Search By : </b>
+            @Html.RadioButton("SearchBy", "Name", true)<text>Name</text>
+            @Html.RadioButton("SearchBy", "Author")<text>Author</text>
+            @Html.TextBox("search", "", htmlAttributes: new { @class = "w=50 form-control" })
+            <input type="submit" value="Search" class="btn btn-success" style="margin:10px"/>
+        }
+    </p>
+
+    <table class="table table-striped" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EbookName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EbookDescp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EbookImgPath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EbookPath)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EbookName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EbookDescp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.EbookImgPath)" style="height:200px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EbookPath)
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary" href="@item.EbookPath" target="_blank">
+                        Open
+                    </a>
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EbookId })
+                    @{
+                        if (ViewBag.Message != null)
+                        {
+                            @ViewBag.Message
+                        }
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+</body>
+</html>

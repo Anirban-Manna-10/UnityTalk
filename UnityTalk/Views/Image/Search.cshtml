@@ -1,0 +1,44 @@
+﻿@model IEnumerable<UnityTalk.Models.GroupImgTable>
+@{ 
+    Layout = null;
+}
+<br/><br/>
+
+
+<table class="table table-striped" border="1">
+    <thead>
+        <tr>
+            <th>ImgName</th>
+            <th>GrpImgPath</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model.Count() == 0)
+            {
+                <tr>
+                    <td colspan="2" style="color:red">
+                        No Match
+                    </td>
+                </tr>
+        }
+        else
+        {
+            foreach(var item in Model)
+                {
+    <tr>
+        <td>@item.ImgName</td>
+        <td>
+            <img src="@Url.Content(item.GrpImgPath)" style="height:200px" />
+        </td>
+
+
+    </tr>
+                }
+        }
+        
+    </tbody>
+</table>
+
+<div>
+    @Html.ActionLink("Back", "ViewImage", "Image")
+</div>

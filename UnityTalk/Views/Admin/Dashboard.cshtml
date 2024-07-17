@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "Admin Dashboard";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebooks</title>
+    <link rel="stylesheet" href="~/Content/css/adminDashboard.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        
+       <div class="header">
+            <div class="nav">
+                <div class="img-design">
+                    <img src="~/Content/assets/Images/logo.png" alt="Unity Talk Logo">
+                </div>
+                <h2>UnityTalk</h2>
+            </div>
+            <div class="admin">
+                <h2>@ViewBag.Title</h2>
+            </div>
+            <div class="logout" onclick="window.location.href='@Url.Action("logout", "Admin")'">
+                <button>
+                    <i class='bx bx-log-out'></i>
+                    <p>log out</p>
+                </button>
+            </div>
+        </div> 
+    </div>
+        <div class="content">
+        <div class="cards">
+			<a class="card education" href="@Url.Action("UploadBook", "Product")">
+				<div class="overlay"></div>
+			 <div class="circle">
+                <img src="~/Content/assets/Images/Adminebook.svg">
+			 </div>
+			 <p>Upload Ebook</p>
+		   </a>
+        </div>
+
+        <div class="cards">
+			<a class="card education" href="@Url.Action("ViewEbook", "Product")">
+				<div class="overlay"></div>
+			 <div class="circle">
+                <img src="~/Content/assets/Images/AdminViewEook.svg">
+			 </div>
+			 <p>View Ebooks</p>
+		   </a>
+        </div>
+
+        <div class="cards">
+			<a class="card education" href="@Url.Action("ViewGroup", "Member")">
+				<div class="overlay"></div>
+                <div class="circle">
+                    <img src="~/Content/assets/Images/AdminMembers.svg">
+                </div>
+			 <p>View Group</p>
+		   </a>
+        </div>
+        <div class="cards">
+			<a class="card education" href="@Url.Action("ViewMember", "Member")">
+				<div class="overlay"></div>
+                <div class="circle">
+                    <img src="~/Content/assets/Images/AdminGroup.svg">
+                </div>
+			 <p>View Member</p>
+		   </a>
+        </div>
+        <div class="cards">
+			<a class="card education" href="@Url.Action("UploadImage", "Image")">
+				<div class="overlay"></div>
+                <div class="circle">
+                    <img src="~/Content/assets/Images/AdminBanner.svg">
+                </div>
+			 <p>Upload Group Banner</p>
+		   </a>
+        </div>
+        <div class="cards">
+			<a class="card education" href="@Url.Action("ViewImage", "Image")">
+				<div class="overlay"></div>
+                <div class="circle">
+                    <img src="~/Content/assets/Images/adminBanner2.svg">
+                </div>
+			 <p>View Group Banner</p>
+		   </a>
+        </div>
+        
+        <div class="cards">
+			<a class="card education" href="@Url.Action("feedBack", "Admin")">
+				<div class="overlay"></div>
+			 <div class="circle">
+                <img src="~/Content/assets/Images/AdminFeedback.svg">
+			 </div>
+			 <p>Feedbacks</p>
+		   </a>
+        </div>
+    </div>
+    
+</body>
+</html>

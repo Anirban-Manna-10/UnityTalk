@@ -1,0 +1,90 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.frem {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: url('/Content/assets/IndexImages/Not-user.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+    .frem p {
+        position: absolute;
+        top: 3rem;
+        font-size: 7rem;
+        color: #00000063;
+    }
+
+    .frem h2 {
+        position: absolute;
+        bottom: 10rem;
+        font-size: 34px;
+        backdrop-filter: blur(10px);
+        text-align: center;
+        padding: 0 10vw;
+    }
+
+    .frem h5 {
+        position: absolute;
+        bottom: 7rem;
+        color: #6b6b6b;
+        font-size: 16px;
+        text-align: center;
+    }
+
+.btn-prev {
+    border: 3px solid #2a86ff;
+    background-color: #2A86FF;
+    padding: 12px;
+    width: 150px;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+    .btn-prev:active {
+        transform: scale(0.9);
+    }
+
+@media only screen and (max-width: 370px) {
+    .frem p {
+        font-size: 50px;
+        font-weight: 600;
+    }
+}
+
+.btn-Div {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row nowrap;
+    gap: 2vw;
+}
+
+.error-home {
+    background-image: none;
+    background-color: white;
+    border: 3px solid;
+    border-color: #2a86ff;
+    border-radius: 10px;
+    white-space: nowrap;
+    color: black;
+}

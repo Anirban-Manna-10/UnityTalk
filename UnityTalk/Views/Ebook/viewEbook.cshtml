@@ -1,0 +1,155 @@
+﻿@model IEnumerable<UnityTalk.Models.EbookTable>
+
+@{
+    ViewBag.Title = "Our Ebooks";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="~/Content/css/viewEbook.css">
+</head>
+<body>
+    @using (Html.BeginForm("viewEbook", "Ebook", FormMethod.Post))
+    {
+        <div class="GrpSearch-boxCont">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" id="wave">
+                <!-- Define linear gradient -->
+                <defs>
+                    <linearGradient id="gradient" gradientTransform="rotate(62deg)">
+                        <stop offset="0%" stop-color="#8EC5FC" />
+                        <stop offset="100%" stop-color="#E0C3FC" />
+                    </linearGradient>
+                </defs>
+
+                <!-- Use linear gradient as fill for the path -->
+                <path fill="url(#gradient)" fill-opacity="1" d="M0,128L48,138.7C96,149,192,171,288,154.7C384,139,480,85,576,101.3C672,117,768,203,864,197.3C960,192,1056,96,1152,85.3C1248,75,1344,149,1392,186.7L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+            </svg>
+            <h1>Read. Download. Thrive. Discover Your Next eBook.</h1>
+            <div class="grpSearchbar">
+                <div class="Grpdropdown">
+
+                    <div id="GrpdropdownText" class="GrpdropdownText">
+                        @if (ViewBag.SearchBy != null)
+                        {
+                            <span id="dropdown-text-span">@ViewBag.SearchBy</span>
+                        }
+                        else
+                        {
+                            <span id="dropdown-text-span">Sort By</span>
+                        }
+
+                        <i class="fa-solid fa-chevron-down dropdownicon" id="dropdownicon"></i>
+                    </div>
+                    <ul class="Grpdropdown-list">
+                        <li class="grp-drop-down-list-item" data-searchby="top">Newest First</li>
+                        <li class="grp-drop-down-list-item" data-searchby="bottom">Newest Last</li>
+                        <li class="grp-drop-down-list-item" data-searchby="AZ">A - Z</li>
+                        <li class="grp-drop-down-list-item" data-searchby="ZA">Z - A</li>
+                    </ul>
+                </div>
+
+                <div class="GrpSearch-box">
+                    <input type="hidden" id="GrpsearchBy-input" name="searchBy" />
+                    <input type="search" id="Grpsearch-input" name="search" placeholder="Search Group By Name...">
+                    <button type="submit" class="grpSearchIcon"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+
+            </div>
+        </div>
+    }
+<div class="grpListCont">
+    @foreach (var item in Model)
+    {
+        <div class="ebook-card">
+            <div class="ebook-image">
+                <img src="@Url.Content(item.EbookImgPath)" alt="Ebook cover image">
+            </div>
+            <div class="ebook-info">
+                <h3 class="ebook-title">@Html.DisplayFor(model => item.EbookName)</h3>
+                <p class="ebook-author">@Html.DisplayFor(model => item.Author)</p>
+                <button onclick="window.location.href='@Url.Action("ebookDetails", "Ebook", new {id = item.EbookId})'" class="ebook-button">Get Book</button>
+            </div>
+        </div>
+    }
+</div>
+    <script src="~/Content/js/viewEbook.js"></script>
+    @section scripts {
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+
+                let activeNavLinks = document.querySelectorAll('.nav-link.active');
+
+                activeNavLinks.forEach(function (link) {
+                    link.classList.remove('active');
+                });
+                let dashboardElement = document.querySelector('.navEbooks-l');
+
+                if (dashboardElement) {
+                    dashboardElement.classList.add('active');
+                }
+            });
+        </script>
+    }
+</body>
+</html>
+
+
+@*<h2>viewEbook</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EbookName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EbookDescp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EbookPath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EbookImgPath)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EbookName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EbookDescp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EbookPath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EbookImgPath)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.EbookId }) |
+
+            </td>
+        </tr>
+    }
+
+    </table>*@

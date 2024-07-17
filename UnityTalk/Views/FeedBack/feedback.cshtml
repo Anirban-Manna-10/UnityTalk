@@ -1,0 +1,140 @@
+﻿@model UnityTalk.Models.FeedBackTable
+
+@{
+    ViewBag.Title = "feedback";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/css/feedback.css" />
+</head>
+<body>
+    <div class="ratingDivHeight">
+        <div class="Rating-div">
+            <h3>Please kindly Rate Us</h3>
+            <form action="@Url.Action("feedback","FeedBack")" method="post">
+                <div class="rating-input-div">
+                    @Html.HiddenFor(model => model.Rating)
+                    <i class='bx bx-star star' style="--i: 0;"></i>
+                    <i class='bx bx-star star' style="--i: 1;"></i>
+                    <i class='bx bx-star star' style="--i: 2;"></i>
+                    <i class='bx bx-star star' style="--i: 3;"></i>
+                    <i class='bx bx-star star' style="--i: 4;"></i>
+                </div>
+                <div class="OpinionText">
+                    <p>Please share with us your experience</p>
+                </div>
+                @Html.TextAreaFor(model => model.cont, new { htmlAttributes = new { @class = "form-control" ,
+               cols = "30", rows = "5", placeholder = "Your opinion..." } })
+               
+                <div class="FileUploadCancelDiv" >
+                    <button class="FileUploadbtn" type="submit">
+                        <p>Submit</p>
+                    </button>
+                    <button class="FileUploadbtn FileUploadCancelBtn" type="button">
+                        <p>Cancel</p>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    @section scripts {
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+
+                let activeNavLinks = document.querySelectorAll('.nav-link.active');
+
+                activeNavLinks.forEach(function (link) {
+                    link.classList.remove('active');
+                });
+                let dashboardElement = document.querySelector('.navFeed-l');
+
+                if (dashboardElement) {
+                    dashboardElement.classList.add('active');
+                }
+            });
+        </script>
+
+        <script src="~/Content/js/feedback.js"></script>
+
+
+    }
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @*@using (Html.BeginForm())
+    {
+        
+
+        <div class="form-horizontal">
+            <h4>FeedBackTable</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.FeedbackId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cont, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.cont, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.cont, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

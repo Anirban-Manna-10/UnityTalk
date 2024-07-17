@@ -1,0 +1,105 @@
+﻿@model UnityTalk.Models.EbookTable
+@{
+    Layout = null;
+
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <img src="~/Content/assets/Images/logo.png" height="45px" style="margin-left:20px;"/>
+        <div class="container">
+
+            @Html.ActionLink("UnityTalk", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+
+   
+
+    <div class="container body-content">
+
+
+
+        @using (Html.BeginForm("UploadBook", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Ebook Upload</h4>
+            <hr />
+
+            Ebook Name
+            @Html.EditorFor(model => model.EbookName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.DisplayNameFor(a => Model.Author)
+            @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control" } })
+            Ebook Description
+            @Html.EditorFor(model => model.EbookDescp, new { htmlAttributes = new { @class = "form-control" } })
+
+
+            <div class="form-group">
+                @Html.Label("Select Ebook File", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="ebookfile" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Select EbookCover File", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="coverfile" />
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Upload" class="btn btn-default" />
+                    @if (ViewBag.Mssg1 != null)
+                    {
+                        @ViewBag.Messg1
+                    }
+                    else if (ViewBag.Mssg2 != null)
+                    {
+                        @ViewBag.Mssg2
+                    }
+                    else
+                    {
+                        @ViewBag.Mssg3
+                    }
+                </div>
+            </div>
+
+
+
+        </div>
+
+            <div>
+                @Html.ActionLink("Back", "Dashboard", "Admin")
+            </div>
+        }
+        <hr />
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+﻿@model UnityTalk.Models.GroupTable
+
+@{
+    ViewBag.Title = "Group Settings";
+    var imgList = ViewBag.ImgList as List<UnityTalk.Models.GroupImgTable> ?? new List<UnityTalk.Models.GroupImgTable>();
+    ViewBag.BackImage = @Url.Content(Model.GroupImgTable.GrpImgPath);
+}
+<head>
+    <link rel="stylesheet" href="~/Content/css/grupEdit.css">
+</head>
+<body>
+    @using (Html.BeginForm("grupEdit", "Group", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="GrpCustomizeCont">
+            <div class="GrpCustomizeTable">
+
+                <div class="groupBannerImg" style="background-image: url('@ViewBag.BackImage')">
+                    @Html.HiddenFor(model => model.GrpId)
+                    @Html.HiddenFor(model => model.GrpImgId, new { id = "BannerImgId", value = Model.GrpImgId })
+                    <button class="GroupNavSettings" onclick="hideshow()" type="button">
+                        <div class="GroupNavSettingSign">
+                            <i class="fa-solid fa-pen"></i>
+                        </div>
+                        <div class="GroupCustomizeText">Change</div>
+
+                    </button>
+
+                    <div class="dropdown-content" id="dropdown-content">
+                        @if (ViewBag.ImgList == null)
+                        {
+                            <p>No images available.</p>
+                        }
+                        else
+                        {
+                            foreach (var item in imgList)
+                            {
+                                <div class="BannerImgThemeDiv" data-Image-no="@item.GrpImgId">
+                                    <div class="BannerImgDiv">
+                                        <img src="@Url.Content(item.GrpImgPath)">
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </div>
+                </div>
+
+                <div class="GroupNameDescpDiv">
+                    <div class="GroupCodeMode">
+                        <div class="GroupCodeInfo">
+                            <div class="GroupCodeText">
+                                <p> Group Code :</p>
+                            </div>
+                            <div class="GroupCodeTextInfo">
+                                <p>@Html.DisplayFor(model => model.GrpCode)</p>
+                            </div>
+                        </div>
+                        <div class="GroupModeDiv">
+                            @if (Model.GrpMode)
+                            {
+                                <div class="GroupModeDivIcon">
+                                    <i class="fa-solid fa-lock-open"></i>
+                                </div>
+                                <div class="GroupModeDivText">
+                                    <p>Public</p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="GroupModeDivIcon">
+                                    <i class="fa-solid fa-lock "></i>
+                                </div>
+                                <div class="GroupModeDivText">
+                                    <p>Private</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="GroupNameCustomize">
+                        <div class="GroupNameText"><p>Group Name :</p></div>
+                        @Html.EditorFor(model => model.GrpName, new { htmlAttributes = new { @class = "GroupNameCustomizeText", placeholder = "Group Name", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.GrpName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="GroupNameCustomize">
+                        <div class="GroupNameText"><p>Group Description :</p></div>
+                        @Html.TextAreaFor(model => model.GrpDescp, new { @class = "GroupDescpCustomizeText", placeholder = "Group Description", required = "required" })
+                        @Html.ValidationMessageFor(model => model.GrpDescp, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="GroupInfoSaveCancel">
+                        <div class="GroupInfoSave">
+                            <button class="GroupInfoSaveBtn" type="submit">
+                                <p>Save</p>
+                            </button>
+                        </div>
+                        <div class="GroupInfoSave">
+                            <button class="GroupInfoCancelBtn">
+                                <p>Cancel</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+    @section scripts {
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+
+                let activeNavLinks = document.querySelectorAll('.nav-link.active');
+
+                activeNavLinks.forEach(function (link) {
+                    link.classList.remove('active');
+                });
+                let dashboardElement = document.querySelector('.navAllGroups-l');
+
+                if (dashboardElement) {
+                    dashboardElement.classList.add('active');
+                }
+            });
+        </script>
+
+    }
+    <script src="~/Content/js/grupEdit.js"></script>
+</body>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f5004e8e961456795ba61b0d54316fd" Name="Diagram1">
+        <EntityTypeShape EntityType="UnityTalkModel.AdminTable" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnityTalkModel.AnnouncementTable" Width="1.5" PointX="8.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnityTalkModel.EbookTable" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnityTalkModel.FeedBackTable" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnityTalkModel.FileTable" Width="1.5" PointX="11.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnityTalkModel.GroupImgTable" Width="1.5" PointX="3.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnityTalkModel.GroupMemberTable" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnityTalkModel.GroupTable" Width="1.5" PointX="6" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnityTalkModel.MeetingTable" Width="1.5" PointX="8.25" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnityTalkModel.MessageTable" Width="1.5" PointX="8.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnityTalkModel.ToDoTable" Width="1.5" PointX="3" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnityTalkModel.UserTable" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="UnityTalkModel.FK_AnnouncementTable_GroupMemberTable" ManuallyRouted="false" />
+        <AssociationConnector Association="UnityTalkModel.FK_AnnouncementTable_GroupTable" ManuallyRouted="false" />
+        <AssociationConnector Association="UnityTalkModel.FK_FeedBack_User" ManuallyRouted="false" />
+        <AssociationConnector Association="UnityTalkModel.FK_FileTable_GroupMemberTable" ManuallyRouted="false" />
+        <AssociationConnector Association="UnityTalkModel.FK_FileTable_GroupTable" ManuallyRouted="false" />
+        <AssociationConnector Association="UnityTalkModel.FK_GroupTable_GroupImgTable" ManuallyRouted="false" />
+        <AssociationConnector Association="UnityTalkModel.FK_GroupMemberTable_GroupTable" ManuallyRouted="false" />
+        <AssociationConnector Association="UnityTalkModel.FK_GroupMemberTable_UserTable" ManuallyRouted="false" />
+        <AssociationConnector Association="UnityTalkModel.FK_MeetingTable_GroupMemberTable" ManuallyRouted="false" />
+        <AssociationConnector Association="UnityTalkModel.FK_MessageTable_GroupMemberTable" ManuallyRouted="false" />
+        <AssociationConnector Association="UnityTalkModel.FK_GroupTable_UserTable" ManuallyRouted="false" />
+        <AssociationConnector Association="UnityTalkModel.FK_MeetingTable_GroupTable" ManuallyRouted="false" />
+        <AssociationConnector Association="UnityTalkModel.FK_MessageTable_GroupTable" ManuallyRouted="false" />
+        <AssociationConnector Association="UnityTalkModel.FK_ToDoTable_UserTable" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

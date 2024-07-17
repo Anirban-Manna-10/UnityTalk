@@ -1,0 +1,80 @@
+﻿@model IEnumerable<UnityTalk.Models.EbookTable>
+
+@{ 
+    Layout = null;
+}
+
+<table class="table table-striped" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EbookName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EbookDescp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EbookPath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EbookImgPath)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="4" class="text-danger" fw-bold>"No data found"</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.EbookName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EbookDescp)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Author)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EbookPath)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EbookImgPath)
+    </td>
+    <td>
+        <a class="btn btn-outline-primary" href="@item.EbookImgPath" target="_blank">
+            Open
+        </a>
+
+        @Html.ActionLink("Delete", "Delete", new { id = item.EbookId })
+        @{
+            if (ViewBag.Message != null)
+            {
+                @ViewBag.Message
+            }
+        }
+    </td>
+    <td>
+        <img src="@Url.Content(item.EbookImgPath)"/>
+    </td>
+</tr>
+        }
+
+    }
+
+
+
+</table>
+
+<p>
+    @Html.ActionLink("Back", "ViewEbook", "Product")
+</p>

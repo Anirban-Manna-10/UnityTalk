@@ -1,0 +1,983 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-style-head: "Poppins", sans-serif;
+    --font-style-text: "Open Sans", sans-serif;
+}
+/*************************************
+            group-entry
+**************************************/
+/*************************************
+            group-bar
+**************************************/
+
+.GroupNavbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    flex-flow: column nowrap;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.GroupNavIcons {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    overflow: hidden;
+    overflow-x: scroll;
+    &::-webkit-scrollbar
+
+{
+    display: none;
+}
+
+}
+
+.Groupnavopt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row nowrap;
+    padding: 15px;
+    gap: 12px;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    transition: var(--tran-03);
+}
+
+.GroupNavIconback {
+    background-color: white;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 16px -10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.GroupnavFile .GroupNavIconback {
+    color: rgb(255, 179, 0);
+}
+
+.GroupnavChat .GroupNavIconback {
+    color: #37cc98;
+}
+
+.GroupnavMeet .GroupNavIconback {
+    color: #0ba7fb;
+}
+
+.GroupnavWhiteboard .GroupNavIconback {
+    color: #560797;
+}
+
+.GroupNavIcon {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.GroupIconText {
+    margin-bottom: 0;
+    font-size: clamp(12px,2vw,15px);
+    font-weight: 500;
+    color: var(--text-color);
+    font-family: var(--font-style-head);
+}
+
+.Groupnavopt:hover .GroupNavIconback {
+    color: white;
+}
+
+.Groupnavopt:hover {
+    transform: scale(1.09);
+}
+
+.GroupnavFile:hover .GroupNavIconback {
+    background: radial-gradient(rgb(255, 179, 0),rgb(235, 194, 59));
+}
+
+.GroupnavChat:hover .GroupNavIconback {
+    background: radial-gradient(#5fd39f,#37cc98)
+}
+
+.GroupnavMeet:hover .GroupNavIconback {
+    background: radial-gradient(#0886ee,#1f9fe9)
+}
+
+.GroupnavWhiteboard:hover .GroupNavIconback {
+    background: radial-gradient(#7835f5,#9565f3)
+}
+
+.GroupnavAll .GroupNavIconback {
+    padding: 5px;
+}
+
+    .GroupnavAll .GroupNavIconback img {
+        width: 100%;
+    }
+
+.Groupnavopt.GrpNavactive {
+    background-color: var(--cardclr);
+    transform: scale(1.05);
+}
+
+
+
+/*************************************
+              group-entry-banner
+  **************************************/
+.groupEntryCont {
+    min-height: 100%;
+    width: 100%;
+}
+
+.GroupDetailsMembaerCont {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-flow: row wrap;
+    scroll-behavior: smooth;
+    gap: 20px;
+}
+
+.GroupNameAllDeatails {
+    flex: 3;
+    flex-basis: 450px;
+    height: 100%;
+    width: 100%;
+    background-color: var(--cardclr);
+    color: var(--text-color);
+    flex-flow: row wrap;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-radius: 0px 10px 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.GroupNameUploadDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+    width: 100%;
+}
+
+.GroupNameInfo {
+    display: flex;
+    flex-direction: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    gap: 15px;
+    padding-right: 18px;
+}
+
+.groupbannertext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .groupbannertext p {
+        font-family: var(--font-style-head);
+        font-size: clamp(20px,3vw,22px);
+        font-weight: 600;
+        margin: 0;
+    }
+
+.GroupInfodiv {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+    .GroupInfodiv:hover {
+        background-color: rgba(147, 216, 235, 0.404);
+    }
+
+.GroupNavSettings {
+    height: 40px;
+    border: none;
+    margin-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: var(--cardclr);
+    width: 100px;
+}
+
+.GroupNavSettingSign {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 3%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -15px;
+    color: var(--text-color);
+}
+
+.GroupCustomizeText {
+    transform: translateY(-50%);
+    position: absolute;
+    width: 100%;
+    opacity: 3;
+    font-family: var(--font-style-text);
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 600;
+    transition-duration: .3s;
+    margin-left: 12px;
+}
+
+
+.GroupNavSettings .GroupNavSettingSign {
+    width: 60%;
+    transition-duration: .3s;
+    padding-left: 10px;
+}
+
+.GroupNavSettings .GroupCustomizeText {
+    opacity: 1;
+    transition-duration: .3s;
+}
+
+.GroupNavSettings:active {
+    transform: translate(2px,2px);
+}
+
+@media only screen and (max-width:600px) {
+
+    .GroupNavSettings {
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition-duration: .3s;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+        background-color: var(--cardclr);
+    }
+
+    .GroupNavSettingSign {
+        width: 100%;
+        transition-duration: .3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 4px;
+        font-size: 17px;
+        color: var(--text-color);
+    }
+
+    .GroupCustomizeText {
+        position: absolute;
+        right: 0%;
+        width: 0%;
+        opacity: 0;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition-duration: .3s;
+    }
+
+    .GroupNavSettings:active {
+        transform: translate(2px,2px);
+    }
+}
+
+/*************************************
+              File List Code
+  **************************************/
+.GroupDetailCont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    padding: 0 10px 15px 10px;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.GroupDetail {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    padding: 10px 0;
+}
+
+
+.GroupDetailText {
+    color: var(--text-color);
+    margin-bottom: 0;
+    font-size: clamp(18px,2vw,20px);
+    font-weight: 500;
+    font-family: var(--font-style-head);
+    gap: 10px;
+}
+
+.searchBox {
+    background-color: var(--body-color);
+    padding: 10px 2px 10px 10px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row nowrap;
+    height: 44px;
+    gap: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.searchInput {
+    height: 38px;
+    width: clamp(140px,4vw,160px);
+    border-radius: 30px;
+    border: 0;
+    padding: 0 10px;
+    outline: none;
+    color: rgb(11, 115, 241);
+    font-size: 15px;
+    background-color: var(--body-color);
+}
+
+    .searchInput::placeholder {
+        color: rgb(14, 104, 231);
+    }
+
+.searchButton {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 39px;
+    max-height: 39px;
+    width: 38px;
+    max-width: 38px;
+    border-radius: 20px;
+    border: none;
+    margin-left: -10px;
+    background-color: rgb(19, 144, 233);
+    transition: all 0.3s ease-in-out;
+}
+
+    .searchButton:active {
+        transform: scale(0.9);
+    }
+
+.searchicon {
+    color: white;
+    font-size: 15px;
+}
+
+.searchButton:hover > .searchInput {
+    height: 38px;
+    width: 190px;
+    padding-left: 15px;
+}
+
+.AnnounceDetailsCont {
+    position:relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    width: 100%;
+    min-height: 410px;
+    background-color: var(--body-color);
+    padding: 16px 16px 10px 16px;
+    border-radius: 10px;
+    gap: 10px;
+    height: 100%;
+}
+
+.groupFileshareCont {
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 20px;
+    flex-flow: row wrap;
+    width: 100%;
+    overflow: hidden;
+}
+
+    .groupFileshareCont::-webkit-scrollbar {
+        width: 2px;
+        background-color: rgb(182, 224, 245);
+    }
+
+    .groupFileshareCont::-webkit-scrollbar-thumb {
+        background-color: rgb(61, 180, 240);
+    }
+
+.groupFileshareBox {
+    position: relative;
+    display: flex;
+    flex: 1 1 120px;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    background-color: var(--cardclr);
+    padding: 15px 20px;
+    gap: 5px;
+    width: 15%;
+    max-width: 120px;
+    border-radius: 10px;
+    overflow-x: hidden;
+    cursor: pointer;
+}
+
+    .groupFileshareBox:hover .File-open-icon {
+        transform: translateX(-20%);
+    }
+
+.File-open-icon {
+    position: absolute;
+    background: #93b4f6;
+    border-radius: 50%;
+    border: none;
+    width: 35px;
+    z-index: 3;
+    top: 40%;
+    right: 5%;
+    height: 35px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transform: translateX(120%);
+    transition: all 0.3s ease-in-out;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.File-open-icon-tooltip {
+    position: absolute;
+    top: 0;
+    right: 10%;
+    text-wrap: nowrap;
+    font-size: 14px;
+    background: #fff;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+    .File-open-icon-tooltip::before {
+        position: absolute;
+        content: "";
+        height: 8px;
+        width: 8px;
+        background: #fff;
+        bottom: -3px;
+        left: 50%;
+        transform: translate(-50%) rotate(45deg);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+.File-open-icon:hover .File-open-icon-tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.File-open-icon:hover span,
+.File-open-icon:hover .File-open-icon-tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+    .File-open-icon:hover,
+    .File-open-icon:hover .File-open-icon-tooltip,
+    .File-open-icon:hover .File-open-icon-tooltip::before {
+        background: #1877f2;
+        color: #fff;
+    }
+
+.Svg-file-open-icon {
+    fill: white;
+}
+
+.File-Delete-icon {
+    position: absolute;
+    background: #f60606;
+    border-radius: 50%;
+    border: none;
+    width: 35px;
+    z-index: 3;
+    top: 40%;
+    left: -65%;
+    height: 35px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transform: translateX(120%);
+    transition: all 0.3s ease-in-out;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.File-Delete-icon-tooltip {
+    position: absolute;
+    top: 0;
+    left: 5%;
+    text-wrap: nowrap;
+    font-size: 14px;
+    background: #f70707;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+    .File-Delete-icon-tooltip::before {
+        position: absolute;
+        content: "";
+        height: 8px;
+        width: 8px;
+        background: #ef0606;
+        bottom: -3px;
+        right: 50%;
+        transform: translate(-50%) rotate(45deg);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+.File-Delete-icon:hover .File-Delete-icon-tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.File-Delete-icon:hover span,
+.File-Delete-icon:hover .File-Delete-icon-tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.groupFileshareBox:hover .File-Delete-icon {
+    left: -24%;
+}
+
+.FileImgNameDiv {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 5px;
+    width: 100%;
+    max-width: 100px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.GroupFileImgDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 80px;
+    background-color: transparent;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.GroupFileImg {
+    width: 100%;
+    height: 100%;
+}
+
+.GroupFileNameDate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    gap: 5px;
+}
+
+.GroupFileName {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 20px;
+    max-width: 80px;
+}
+
+    .GroupFileName p {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 500;
+        font-family: var(--font-style-text);
+        overflow: hidden;
+        text-overflow:ellipsis;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+
+.GroupFileDate p {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.5;
+    font-family: var(--font-style-text);
+}
+
+/*************************************
+              Upload Code
+  **************************************/
+.GroupFileUplodPreview {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-basis: 350px;
+    background-color: transparent;
+    flex-flow: row wrap;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.GroupFileUplodDiv {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    flex-flow: column nowrap;
+    flex-basis: 300px;
+    background-color: var(--cardclr);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.groupFileUploadtextdiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.groupFileUploadtext {
+    width: 100%;
+    color: var(--text-color);
+    margin-bottom: 0;
+    font-size: clamp(18px,2vw,20px);
+    font-weight: 500;
+    font-family: var(--font-style-head);
+}
+
+.UploaddivLine {
+    border-bottom: 2px solid var(--text-color);
+    margin: 0;
+    width: 100%;
+    opacity: 0.2;
+}
+
+.GroupUploadDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    gap: 10px;
+    padding: 10px;
+}
+
+.GroupUploadText {
+    width: 100%;
+    padding: 1.5px;
+}
+
+    .GroupUploadText p {
+        margin: 0;
+        color: var(--text-color);
+        font-size: clamp(14px,2vw,16px);
+        text-align: center;
+        font-family: var(--font-style-text);
+    }
+
+.UserUploadPartDiv {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    gap: 10px;
+    border: 1px dashed rgb(143, 173, 236);
+    background: linear-gradient(180deg,rgb(204, 227, 239),#F1F6FF);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+    .UserUploadPartDiv div.UserUploadPart:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column nowrap;
+        gap: 10px;
+        background-color: transparent;
+        border: none;
+        border-radius: 10px;
+        transform: scale(1);
+        transition-duration: 0.2s;
+    }
+
+    .UserUploadPartDiv div.UserUploadPart:last-child {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+.drag-over-effect div.UserUploadPart:first-child {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(1.1);
+}
+
+.drag-over-effect div.UserUploadPart:last-child {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: none;
+    transform: scale(1);
+}
+
+.dropHere {
+    color: rgb(135, 189, 236);
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.UploadimgDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.Uploadimg {
+    width: 100%;
+    height: 100%;
+}
+
+.UserUploadFileText {
+    text-wrap: wrap;
+}
+
+    .UserUploadFileText p {
+        font-size: 15px;
+        font-weight: 550;
+        text-align: center;
+        margin: 0;
+        opacity: 0.5;
+        font-family: var(--font-style-text);
+    }
+
+    .UserUploadFileText .textOr {
+        text-align: center;
+        font-family: var(--font-style-text);
+    }
+
+.FileBrowseBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(38, 142, 234);
+    color: white;
+    transition: all 0.3s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+    .FileBrowseBtn p {
+        margin: 0;
+        font-size: clamp(15px,3vw,17px);
+    }
+
+    .FileBrowseBtn:active {
+        transform: scale(0.9);
+    }
+
+.filechoseArea {
+    width: 0;
+    opacity: 1;
+}
+
+.LabelBrowse {
+    font-size: clamp(14px,2vw,15px);
+    text-align: center;
+    cursor: pointer;
+    font-family: var(--font-style-text);
+}
+/* FileUploadCancel button Input*/
+.FilenameinputDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row nowrap;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.FileNametxt p {
+    margin: 0;
+    font-size: clamp(14px,2vw,15px);
+    font-weight: 550;
+    white-space: nowrap;
+    font-family: var(--font-style-text);
+    color: var(--text-color);
+}
+
+.File-name-input {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+    outline: none;
+    color: dimgray;
+    background-color: var(--body-color);
+}
+
+
+.FileUploadCancelDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row nowrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.FileUploadbtn {
+    padding: 7px 17px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    height: 40px;
+    max-width: 200px;
+    background-color: #0ba7fb;
+    transition: all 0.3s ease-in-out;
+}
+
+    .FileUploadbtn p {
+        margin: 0;
+        font-size: clamp(14px,2vw,15px);
+        color: white;
+        font-weight: 500;
+        font-family: var(--font-style-text);
+    }
+
+    .FileUploadbtn:active {
+        transform: scale(0.9);
+    }
+
+.FileUploadCancelBtn {
+    background-color: red;
+}
+
+
+
+@media only screen and (max-width:520px) {
+    .groupFileshareCont {
+        align-items: center;
+        justify-content: flex-start;
+    }
+}
+
+@media only screen and (max-width:374px) {
+    .groupFileshareCont {
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+}
+
+
+footer {
+    display: none;
+}
+
+
+.notodoitem {
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(14px, 4vw, 20px);
+    font-weight: bold;
+    opacity: 0.7;
+    min-width: 200px;
+    max-width: 300px;
+    color: var(--text-color);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+}
+
+    .notodoitem img {
+        width: 100%;
+        height: auto;
+    }

@@ -1,0 +1,127 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+
+:root {
+    --yellow: #FFBD13;
+    --blue: #4383FF;
+    --blue-d-1: #3278FF;
+    --light: #F5F5F5;
+    --grey: #AAA;
+    --white: #FFF;
+    --shadow: 8px 8px 30px rgba(0,0,0,.05);
+}
+
+.ratingDivHeight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 100px);
+}
+
+.Rating-div {
+    background: var(--cardclr);
+    padding: 2rem;
+    max-width: 576px;
+    width: 100%;
+    border-radius: .75rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+    color:var(--text-color);
+}
+
+    .Rating-div h3 {
+        font-size: clamp(22px,6vw,24px);
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+
+.rating-input-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 8px;
+    font-size: 32px;
+    color: var(--yellow);
+    margin-bottom: 32px;
+}
+
+    .rating-input-div .star {
+        cursor: pointer;
+    }
+
+        .rating-input-div .star.active {
+            opacity: 0;
+            animation: animate .5s calc(var(--i) * .1s) ease-in-out forwards;
+        }
+
+@keyframes animate {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.rating-input-div .star:hover {
+    transform: scale(1.1);
+}
+
+textarea {
+    width: 100%;
+    background: var(--body-color);
+    color:var(--text-color);
+    padding: 16px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    resize: none !important;
+    margin-bottom: 10px;
+}
+
+.FileUploadCancelDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row nowrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.FileUploadbtn {
+    padding: 10px 17px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    color: white;
+    max-width: 150px;
+    background-color: #0ba7fb;
+    transition: all 0.3s ease-in-out;
+}
+
+    .FileUploadbtn p {
+        margin: 0;
+        font-size: clamp(14px,2vw,15px);
+        font-weight: 500;
+        font-family: var(--font-style-text);
+    }
+
+    .FileUploadbtn:active {
+        transform: scale(0.9);
+    }
+
+.FileUploadCancelBtn {
+    background-color: transparent;
+    border:2px solid var(--btn);
+    color:var(--btn);
+}

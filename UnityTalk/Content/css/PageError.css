@@ -1,0 +1,169 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+@mixin breakpoint($point) {
+    @if $point==mobile {
+        @media (max-width: 480px) and (min-width: 320px) {
+            @content;
+        }
+    }
+}
+
+@keyframes floating {
+    from {
+        transform: translateY(0px);
+    }
+
+    65% {
+        transform: translateY(15px);
+    }
+
+    to {
+        transform: translateY(-0px);
+    }
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url("https://assets.codepen.io/1538474/star.svg"), linear-gradient(to bottom, #05007a, #4d007d);
+    margin: 0;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.mars {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    height: 27vmin;
+    background: url("https://assets.codepen.io/1538474/mars.svg") no-repeat bottom center;
+    background-size: cover;
+    z-index: -1;
+}
+
+.logo-404 {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    left: 0;
+    right: 0;
+    top: 9vmin;
+    text-align: center;
+
+    @include breakpoint(mobile) {
+        top: 45vmin;
+    }
+}
+
+    .logo-404 p {
+        font-size: max(9vw,30px);
+        color: aliceblue;
+        font-weight: 600;
+    }
+
+.meteor {
+    position: absolute;
+    right: 2vmin;
+    top: 16vmin;
+}
+
+.title {
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    font-size: clamp(15px,10vw,30px);
+    margin-top: 31vmin;
+
+    @include breakpoint(mobile) {
+        margin-top: 65vmin;
+    }
+}
+
+.subtitle {
+    color: white;
+    font-weight: 400;
+    text-align: center;
+    font-size: clamp(15px,6vw,25px);
+    margin-top: 5vw;
+    margin-bottom: 4vw;
+    padding: 0 10px;
+}
+
+.Backtoprev {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-flow: row wrap;
+    padding: 20px;
+}
+
+.btn-back {
+    border: 1px solid rgb(6, 157, 251);
+    color: rgb(245, 243, 243);
+    padding: 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 175px;
+    cursor: pointer;
+    background-color: rgb(6, 157, 251);
+    font-size: clamp(14px,3vw,15px);
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    &:hover
+
+{
+    background-color: rgb(255, 255, 255);
+    color: #4d007d;
+}
+
+@include breakpoint(mobile) {
+    font-size: 7vmin;
+}
+
+}
+
+.btn-back:active {
+    transform: scale(0.9);
+}
+
+.btn-back.error-login {
+    background-color: rgba(0, 0, 0, 0.14);
+    color: white;
+}
+
+.astronaut {
+    position: absolute;
+    top: 18vmin;
+    left: 10vmin;
+    height: 30vmin;
+    animation: floating 3s infinite ease-in-out;
+    z-index: -1;
+
+    @include breakpoint(mobile) {
+        top: 2vmin;
+    }
+}
+
+.spaceship {
+    position: absolute;
+    bottom: 15vmin;
+    right: 24vmin;
+
+    @include breakpoint(mobile) {
+        width: 45vmin;
+        bottom: 18vmin;
+    }
+}

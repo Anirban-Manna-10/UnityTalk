@@ -1,0 +1,87 @@
+﻿@model IEnumerable<UnityTalk.Models.GroupTable>
+
+@{
+    ViewBag.Title = "ViewGroup";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <img src="~/Content/assets/Images/logo.png" height="45px" style="margin-left:20px;" />
+        <div class="container">
+
+            @Html.ActionLink("UnityTalk", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+        </div>
+    </nav>
+
+
+
+    <h2>ViewGroup</h2>
+
+    <p>
+        @Html.ActionLink("Back", "Dashboard", "Admin")
+    </p>
+
+    @using (Html.BeginForm("Search_Group", "Member", FormMethod.Get))
+    {
+        @Html.TextBox("search")
+        <input type="submit" value="Search Group" />
+    }
+
+    <table class="table table-striped" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GrpName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GrpDescp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GrpMode)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.UserTable.UserName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GrpName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GrpDescp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GrpMode)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserTable.UserName)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+</body>
+</html>

@@ -1,0 +1,347 @@
+﻿    @{ 
+        ViewData["Properjs"] = "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js";
+    }
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!----======== CSS ======== -->
+        <link rel="stylesheet" href="/Content/css/layout.css">
+        <!----------Font Awesome Icon Link --------------->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!-- -------------Google Icon------------ -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+        <!----===== Boxicons CSS ===== -->
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--:::::  Google Fonts  ::::-->
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+        <title>Dashboard Sidebar Menu</title>
+    </head>
+    <body class="light">
+
+        <!-- sidebar -->
+        <nav class="sidebar open">
+            <header>
+                <div class="image-text" onclick="location.href='@Url.Action("Index", "Home")'" style="cursor:pointer">
+                    <span class="image">
+                        <img src="~/Content/assets/IndexImages/logo1.png" alt="UnitalkLogo">
+                    </span>
+
+                    <div class="text logo-text">
+                        <span class="name">Unity<span>Talk</span></span>
+                    </div>
+                </div>
+
+                <i class='bx bx-chevron-right toggle'></i>
+            </header>
+
+            <hr />
+
+            <div class="menu-bar">
+                <div class="menu">
+                    <ul class="menu-links">
+                        <li class="nav-link navDashboard-l">
+                            <a href="@Url.Action("dashboard","Dashboard")" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Dashboard">
+                                <i class='bx bx-grid-alt icon'></i>
+                                <span class="text nav-text">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link navAllGroups-l">
+                            <a href="@Url.Action("allGroup","Group")" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="My Groups">
+                                <i class="bi bi-people icon"></i>
+                                <span class="text nav-text">My Groups</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link navEbooks-l">
+                            <a href="@Url.Action("viewEbook","Ebook")" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Ebooks">
+                                <i class="bi bi-book icon"></i>
+                                <span class="text nav-text">My Ebooks</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link navTodo-l">
+                            <a href="@Url.Action("todo","Todo")" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="My Todos">
+                                <i class='bx bxs-book-content icon'></i>
+                                <span class="text nav-text">My ToDos</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link navBoard-l">
+                            <a href="@Url.Action("whiteBoard","Dashboard")" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Whiteboard">
+                                @*<i class="bi bi-calendar2-week icon"></i>*@
+                                <i class='bx bx-chalkboard icon'></i>
+                                <span class="text nav-text">Whiteboard</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link navFeed-l">
+                            <a href="@Url.Action("feedback","FeedBack")" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="FeedBack">
+                                <i class="bi bi-chat-square-text icon"></i>
+                                <span class="text nav-text">Feedback</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar-userInfo dropup sidebar-lower">
+                <div class="dropdown">
+                    <!-- Add the "dropdown" class here -->
+                    <div type="button" class="sidebar-userId">
+                        <div type="button" class="dropup " data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="@Url.Content(Session["Img"].ToString())" alt="userImage" />
+
+                        </div>
+                        <ul class="dropdown-menu dropdown-menu-dark" style="z-index: 101;">
+                            
+                            <li><a class="dropdown-item" href="#">Mode</a></li> 
+                            <li><a class="dropdown-item" href="@Url.Action("viewProfile","Dashboard",new { UserId = (int)Session["Id"] })">Profile</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("feedback","FeedBack",new { UserId = (int)Session["Id"] })">Report issue</a></li>
+                            <hr class="dropdown-divider">
+                            <li><a class="dropdown-item" href="@Url.Action("logout","Home")">Sign Out</a></li>
+                        </ul>
+                        <p class="userInfo" ,type="button" ,class="dropdown-toggle">@Session["Name"]<span>@Session["Email"]</span></p>
+
+                        <a href="@Url.Action("logout","Home")" style="text-decoration:none" class="sidebarlogout_btn">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </a>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </nav>
+        <!-- HomeSection- Main Body -->
+        <section class="home">
+            <nav class="homeheader">
+                <label class="hamburger">
+                    <input type="checkbox">
+                    <svg viewBox="0 0 32 32">
+                        <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                        <path class="line" d="M7 16 27 16"></path>
+                    </svg>
+                </label>
+                <div class="leftOptions">
+                    <p class="pageTitle">@ViewBag.Title</p>
+                    <p class="date">WeekDay ,<span> 2nd june 2024</span></p>
+                </div>
+
+                <div class="rightOptions">
+                    <div class="themeChange toggle-switch" type="button" data-toggle="tooltip" data-placement="bottom" title="light">
+                        <i class='bx bx-moon toggle-dark'></i>
+                        <i class='bx bxs-sun toggle-light'></i>
+                    </div>
+                    <div class="notification">
+                        <i class="bi bi-bell"></i>
+                        <i class="bi bi-circle-fill notify-mark"></i>
+                    </div>
+                    <div class="joinDropDown" type="button">
+                        <i class="bi bi-plus-circle"></i>
+                    </div>
+                    <div class="joinBtn">
+                        <button class="CreateBtn" onclick="window.location.href = '@Url.Action("createGrp", "Dashboard")'">
+                            <span class="button_top createBtn">Create Group</span>
+                        </button>
+                        <button onclick="window.location.href = '@Url.Action("JoinGrp","Dashboard")'">
+                            <span class="button_top jnBtn">
+                                Join Group
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            @if (TempData["Success"] != null)
+            {
+                <div class="Successtoast">
+                    <div class="toast-cont">
+                        <i class="fas fa-solid fa-check check"></i>
+
+                        <div class="toastmessage">
+                            <span class="toasttext text-1">Success</span>
+                            <span class="toasttext text-2">@TempData["Success"]</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-xmark toastclose"></i>
+
+                    <div class="progress"></div>
+                </div>
+            }
+            @if (TempData["Error"] != null)
+            {
+                <div class="Successtoast Errortoast">
+                    <div class="toast-cont">
+                        <i class="bi bi-exclamation-triangle errorwarn"></i>
+
+                        <div class="toastmessage">
+                            <span class="toasttext text-1">Error</span>
+
+                            <span class="toasttext text-2">@TempData["Error"]</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-xmark toastclose"></i>
+
+                    <div class="progress"></div>
+                </div>
+            }
+
+
+
+
+            @RenderBody()
+
+
+
+            <footer class="text-center text-lg-start text-muted">
+                <!-- Section: Social media -->
+                <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom footer-Social">
+                    <!-- Left -->
+                    <div class="me-5 d-none d-lg-block">
+                        <span>Get connected with us on social networks:</span>
+                    </div>
+                    <!-- Left -->
+                    <!-- Right -->
+                    <div class="d-flex">
+                        <a href="https://www.facebook.com" class="me-4 text-reset">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com" class="me-4 text-reset">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.google.com" class="me-4 text-reset">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="https://www.instagram.com" class="me-4 text-reset">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com" class="me-4 text-reset">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com" class="me-4 text-reset">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <!-- Right -->
+                </section>
+                <!-- Section: Social media -->
+                <!-- Section: Links  -->
+                <section class="footer2">
+                    <div class="container">
+                        <!-- Grid row -->
+                        <div class="row">
+                            <!-- Grid column -->
+                            <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
+                                <!-- Content -->
+                                <h6 class="text-uppercase fw-bold mb-4">
+                                    <i class="fa-solid fa-comment-dots me-3"></i>
+                                    Talk To us
+                                </h6>
+                                <form>
+                                    <div class="formDiv">
+                                        <input type="text" class="Email" id="floationName" required>
+                                        <label for="floationName">Email</label>
+                                    </div>
+                                    <div class="formDiv">
+                                        <input type="text" class="Comment" id="floationComment" required>
+                                        <label for="floationComment">Comment</label>
+                                    </div>
+                                    <button type="submit" class="sendbutton">
+                                        <div class="svg-wrapper-1">
+                                            <div class="svg-wrapper">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     viewBox="0 0 24 24"
+                                                     width="24"
+                                                     height="24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path fill="currentColor"
+                                                          d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <span>Send</span>
+                                    </button>
+
+                                </form>
+                            </div>
+
+                            <!-- Grid column -->
+                            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                                <!-- Links -->
+                                <h6 class="text-uppercase fw-bold mb-4">
+                                    Products
+                                </h6>
+                                <p>
+                                    <a href="#!" class="text-reset">ASP.net 4.7</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">cshtml</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">Bootstrap</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">Kuchvi</a>
+                                </p>
+                            </div>
+
+                            <!-- Grid column -->
+                            <div class="col-md-5 col-lg-4 col-xl-3 mx-auto mb-md-0 mb-4">
+                                <!-- Links -->
+                                <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                                <p><i class="fa-solid fa-briefcase me-3"></i> Kolkata, INDIA</p>
+                                <p>
+                                    <i class="fas fa-envelope me-3"></i>
+                                    UnityTalk5@gmail.com
+                                </p>
+                                <p><i class="fas fa-phone me-3"></i> + 91-62911-90305</p>
+                                <p><i class="fas fa-print me-3"></i> + 91-85850-40975</p>
+                            </div>
+
+                        </div>
+                        <!-- Grid row -->
+                    </div>
+                    <div class="text-center p-4 text-white">
+                        © 2024 UnityTalk, Inc.
+                    </div>
+                </section>
+                <!-- Section: Links  -->
+                <!-- Copyright -->
+
+            </footer>
+            <!-- Footer -->
+        </section>
+        <!-- Footer -->
+        <!-- Boot strap Script link -->
+        <!-- Bootstrap Script link -->
+        <script src="~/Content/js/sideBaropen.js"></script>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @*<script type="text/javascript" src="~/Content/javaScript/JavaScript.js"></script>*@
+        @if (IsSectionDefined("Scripts"))
+        {
+
+            @RenderSection("scripts", required: true)
+        }
+        <script src="@ViewData["Properjs"]" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+
+        <script src="/Content/js/layout.js"></script>
+
+    </body>
+</html>

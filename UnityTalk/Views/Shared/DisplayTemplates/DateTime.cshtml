@@ -1,0 +1,7 @@
+﻿@model Nullable<DateTime>
+
+@if (Model.HasValue) {
+    <p>@Model.Value.Day.@Model.Value.Month.@Model.Value.Year</p>
+} else {
+    <p>No date specified</p>
+}

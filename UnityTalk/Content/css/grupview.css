@@ -1,0 +1,1156 @@
+﻿.GroupNavbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    flex-flow: row nowrap;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.GroupNamebar {
+    flex: 1;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    flex-basis: 200px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.GroupNamebar {
+    margin-bottom: 0;
+    color: var(--text-color);
+    font-size: 30px;
+}
+
+.GroupNamebartext {
+    color: var(--text-color);
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.GroupNavIcons {
+    flex: 2;
+    height: 100%;
+    flex-basis: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    overflow: hidden;
+    overflow-x: scroll;
+    &::-webkit-scrollbar
+
+{
+    display: none;
+}
+
+}
+
+.Groupnavopt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row nowrap;
+    padding: 14px 15px;
+    gap: 7px;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    transition: var(--tran-03);
+}
+
+.GroupNavIconback {
+    background-color: white;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 16px -10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.GroupnavFile .GroupNavIconback {
+    color: rgb(255, 179, 0);
+}
+
+.GroupnavChat .GroupNavIconback {
+    color: #37cc98;
+}
+
+.GroupnavMeet .GroupNavIconback {
+    color: #0ba7fb;
+}
+
+.GroupnavWhiteboard .GroupNavIconback {
+    color: #560797;
+}
+
+.GroupNavIcon {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.GroupIconText {
+    margin-bottom: 0;
+    font-size: clamp(12px,2vw,15px);
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.Groupnavopt:hover .GroupNavIconback {
+    color: white;
+}
+
+.Groupnavopt:hover {
+    transform: scale(1.09);
+}
+
+.GroupnavFile:hover .GroupNavIconback {
+    background: radial-gradient(rgb(255, 179, 0),rgb(235, 194, 59));
+}
+
+.GroupnavChat:hover .GroupNavIconback {
+    background: radial-gradient(#5fd39f,#37cc98)
+}
+
+.GroupnavMeet:hover .GroupNavIconback {
+    background: radial-gradient(#0886ee,#1f9fe9)
+}
+
+.GroupnavWhiteboard:hover .GroupNavIconback {
+    background: radial-gradient(#7835f5,#9565f3)
+}
+
+.GroupnavAll .GroupNavIconback {
+    padding: 5px;
+}
+
+    .GroupnavAll .GroupNavIconback img {
+        width: 100%;
+    }
+
+.Groupnavopt.GrpNavactive {
+    background-color: var(--cardclr);
+    transform: scale(1.05);
+}
+
+@media only screen and (max-width:500px) {
+}
+
+/*************************************
+            group-entry-banner
+**************************************/
+.groupEntryCont {
+    min-height: 100%;
+    width: 100%;
+}
+
+.GroupDetailsMembaerCont {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 20px;
+    flex-flow: row wrap;
+}
+
+.groupBannerCont {
+    flex: 3;
+    flex-basis: 500px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 10px;
+    padding: 20px 20px;
+    background-color: var(--cardclr);
+    border-radius: 0px 10px 10px 10px;
+    gap: 10px;
+}
+
+.groupBannerImg {
+    height: 20vw;
+    min-height:150px;
+    width: 100%;
+/*    background-image: url(banner1.jpg);*/
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.GroupModeDiv {
+    display: flex;
+    justify-content: center;
+    background-color: #dae1ec;
+    gap: 7px;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.GroupModeDivIcon {
+    font-size: 12px;
+    color: rgb(11, 11, 65);
+}
+
+.GroupModeDivText p {
+    font-size: 12px;
+    margin: 0;
+    color: rgb(11, 11, 65);
+}
+
+.GroupNavSettings {
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: var(--cardclr);
+    width: 110px;
+}
+
+.GroupNavSettingSign {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -23px;
+    font-size: 12px;
+    color: var(--text-color);
+}
+
+.GroupCustomizeText {
+    transform: translateY(-50%);
+    position: absolute;
+    width: 100%;
+    opacity: 3;
+    color: var(--text-color);
+    font-size: 12px;
+    font-weight: 600;
+    transition-duration: .3s;
+    margin-left: 12px;
+}
+
+.GroupNavSettings .GroupNavSettingSign {
+    width: 60%;
+    transition-duration: .3s;
+    padding-left: 10px;
+}
+
+.GroupNavSettings .GroupCustomizeText {
+    opacity: 1;
+    transition-duration: .3s;
+}
+
+.GroupNavSettings:active {
+    transform: translate(2px,2px);
+}
+
+@media only screen and (max-width:600px) {
+
+    .GroupNavSettings {
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition-duration: .3s;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+        background-color: var(--cardclr);
+    }
+
+    .GroupNavSettingSign {
+        width: 100%;
+        transition-duration: .3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 4px;
+        font-size: 13px;
+        color: var(--text-color);
+    }
+
+    .GroupCustomizeText {
+        position: absolute;
+        right: 0%;
+        width: 0%;
+        opacity: 0;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition-duration: .3s;
+    }
+
+    .GroupNavSettings:active {
+        transform: translate(2px,2px);
+    }
+}
+
+.GroupNameAllDeatails {
+    height: 100%;
+    width: 100%;
+    background-color: var(--cardclr);
+    color: var(--text-color);
+    flex-flow: row wrap;
+    padding: 10px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.GroupNameInfo {
+    display: flex;
+    flex-direction: row nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    gap: 15px;
+    padding-right: 18px;
+}
+
+.groupbannertext h4 {
+    font-size: 2.9vw,;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.GroupInfodiv {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #353755c4;
+}
+
+    .GroupInfodiv:hover {
+        background-color: rgba(147, 216, 235, 0.7);
+    }
+
+
+.GrpAdmin {
+    font-size: 1rem;
+    opacity: 0.5;
+    font-weight: 600;
+}
+
+.Copytext {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row nowrap;
+    margin-top: 10px;
+    padding: 3px 3px;
+    background-color: var(--cardclr);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px;
+}
+
+.copied {
+    padding: 2px 5px 2px 5px;
+    min-width: 100px;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+.copy {
+    /* button */
+    --button-bg: #ffffff;
+    --button-hover-bg: #464646;
+    --button-text-color: #474747;
+    --button-hover-text-color: #8bb9fe;
+    --button-border-radius: 10px;
+    --button-diameter: 36px;
+    --button-outline-width: 1px;
+    --button-outline-color: rgb(141, 141, 141);
+    /* tooltip */
+    --tooltip-bg: #f4f3f3;
+    --toolptip-border-radius: 4px;
+    --tooltip-font-family: Menlo, Roboto Mono, monospace;
+    /* 👆 this field should not be empty */
+    --tooltip-font-size: 12px;
+    /* 👆 this field should not be empty */
+    --tootip-text-color: rgb(50, 50, 50);
+    --tooltip-padding-x: 7px;
+    --tooltip-padding-y: 7px;
+    --tooltip-offset: 8px;
+    /* --tooltip-transition-duration: 0.3s; */
+    /* 👆 if you need a transition, 
+    just remove the comment,
+    but I didn't like the transition :| */
+}
+
+.copy {
+    box-sizing: border-box;
+    width: var(--button-diameter);
+    height: var(--button-diameter);
+    border-radius: var(--button-border-radius);
+    background-color: var(--btn);
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+}
+
+.tooltip {
+    position: absolute;
+    opacity: 0;
+    visibility: 0;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font: var(--tooltip-font-size) var(--tooltip-font-family);
+    color: var(--tootip-text-color);
+    background: var(--tooltip-bg);
+    padding: var(--tooltip-padding-y) var(--tooltip-padding-x);
+    border-radius: var(--toolptip-border-radius);
+    pointer-events: none;
+    transition: all var(--tooltip-transition-duration) cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+    .tooltip::before {
+        content: attr(data-text-initial);
+    }
+
+    .tooltip::after {
+        content: "";
+        position: absolute;
+        bottom: calc(var(--tooltip-padding-y) / 2 * -1);
+        width: var(--tooltip-padding-y);
+        height: var(--tooltip-padding-y);
+        background: inherit;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+        z-index: -999;
+        pointer-events: none;
+    }
+
+.copy svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkmark {
+    display: none;
+}
+
+/* actions */
+
+.copy:hover .tooltip,
+.copy:focus:not(:focus-visible) .tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: calc((100% + var(--tooltip-offset)) * -1);
+}
+
+    .copy:focus:not(:focus-visible) .tooltip::before {
+        content: attr(data-text-end);
+    }
+
+.copy:focus:not(:focus-visible) .clipboard {
+    display: none;
+}
+
+.copy:focus:not(:focus-visible) .checkmark {
+    display: block;
+}
+
+.copy:hover,
+.copy:focus {
+    background-color: var(--button-hover-bg);
+}
+
+.copy:active {
+    outline: var(--button-outline-width) solid var(--button-outline-color);
+}
+
+.copy:hover svg {
+    color: var(--button-hover-text-color);
+}
+
+
+
+/*************************************
+            Group Details Code
+**************************************/
+.GroupDetailCont {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: var(--cardclr);
+    border-radius: 0 0 10px 10px;
+}
+    .GroupDetailCont p{
+        margin:0px;
+    }
+
+    .GroupHeadInputdetail {
+        width: 100%;
+        height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-flow: column nowrap;
+        gap: 10px;
+    }
+
+.AnnouncementInput {
+    width: 100%;
+    height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    background-color:var(--body-color);
+    padding: 0px;
+    flex-flow: row nowrap;
+    transform-origin: top;
+    overflow: hidden;
+    transition: all 0.15s ease-in-out;
+}
+
+.AnnouncementInputTextdiv {
+    width: 100%;
+    height: 100%;
+}
+
+.AnnouncementInputText {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    resize: none;
+    border-radius: 10px;
+    overflow-y: scroll;
+    padding: 10px;
+    border: none;
+}
+
+    .AnnouncementInputText::-webkit-scrollbar {
+        display: none;
+    }
+
+.GroupDetail {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+    padding: 10px 0;
+}
+
+.AnnouncementSendBtn {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 57px;
+    height: 51px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(65, 179, 255);
+}
+
+.AnnouncementSendIcon {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-left: -2px;
+    color: white;
+}
+
+
+.GroupMeetingboardIcon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    gap: 15px;
+}
+
+.AnnouncementAdd {
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(65, 176, 255);
+    width: 90px;
+}
+
+.AnnouncementAddSign {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -10px;
+    color: white;
+}
+
+.AnnouncementAddText {
+    right: -6%;
+    position: absolute;
+    width: 100%;
+    opacity: 3;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    transform: translateY(-50%);
+    transition-duration: .3s;
+}
+
+.AnnouncementSendBtn:active {
+    transform: translate(2px,2px);
+}
+
+.AnnouncementAdd .AnnouncementAddSign {
+    width: 60%;
+    transition-duration: .3s;
+    padding-left: 10px;
+}
+
+.AnnouncementAdd .AnnouncementAddText {
+    opacity: 1;
+    transition-duration: .3s;
+}
+
+.AnnouncementAdd:active {
+    transform: translate(2px,2px);
+}
+
+@media only screen and (max-width:600px) {
+
+    .AnnouncementAdd {
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 38px;
+        height: 38px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition-duration: .3s;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+        background-color: rgb(65, 179, 255);
+    }
+
+    .AnnouncementAddSign {
+        color: white;
+        width: 100%;
+        transition-duration: .3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 3px;
+        font-size: 18px;
+    }
+
+    .AnnouncementAddText {
+        position: absolute;
+        right: 0%;
+        width: 0%;
+        opacity: 0;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition-duration: .3s;
+    }
+
+    .AnnouncementAdd {
+        transform: translate(2px,2px);
+    }
+}
+
+.AnounceMeeting {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.AnnounceWhiteBoard {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.GroupDetailText {
+    width: 100%;
+    border-radius: 5px;
+    color: var(--text-color);
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight:450;
+}
+
+.AnnounceDetailsCont {
+    position:relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-flow: column nowrap;
+    width: 100%;
+    background-color: var(--body-color);
+    height: 500px; padding: 16px 16px 0 16px;
+    border-radius: 10px;
+    gap: 10px;
+    overflow: hidden;
+    overflow-y: scroll;
+    &::-webkit-scrollbar{
+    display: none;
+}
+
+}
+
+.AnnouncementSendDetails {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    width: 100%;
+    gap: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.AnnounceOperatingInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-flow: row nowrap;
+}
+
+.AnnouncAdminNameImg {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+    flex-flow: row nowrap;
+}
+
+.AdminNameDateTime {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-flow: column nowrap;
+}
+
+.AnnounceDetails {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    flex-flow: column wrap;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.AnnounceDate {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    gap: 5px;
+    border-radius: 10px;
+}
+
+    .AnnounceDate p {
+        margin: 0;
+        font-size: 12px;
+        text-wrap: nowrap;
+        color: rgb(6, 6, 71);
+    }
+
+.AnnounceTextHead {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+    .AnnounceTextHead p {
+        margin-bottom: 0;
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+.AnnounceText {
+    width: 100%;
+    height: 100%;
+}
+
+    .AnnounceText p {
+        margin-bottom: 0;
+        font-size: 15px;
+    }
+
+.AnnounceTime p {
+    margin-bottom: 0;
+    font-size: 12px;
+    text-wrap: nowrap;
+    color: rgb(6, 6, 71);
+}
+
+.AdminAnnounce {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.AdminUsername {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(6, 6, 71);
+}
+
+.AnnouncedeleteIcon {
+    font-size: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+    .AnnouncedeleteIcon:hover {
+        color: red;
+        transition: var(--tran-03);
+        font-size: 19px;
+    }
+/*************************************
+            Members Code
+**************************************/
+.GroupMembers {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    flex: 1;
+    flex-basis: 370px;
+    background-color: var(--cardclr);
+    padding: 15px;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 8px;
+}
+
+.GroupMembertextdiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px
+}
+
+.GroupMembertext {
+    width: 100%;
+    border-radius: 5px;
+    color: var(--text-color);
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: 450;
+}
+
+.MemberdivLine {
+    border-bottom: 2px solid var(--text-color);
+    margin: 0;
+    width: 100%;
+    opacity: 0.2;
+}
+
+.GroupMembersTable {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    flex-flow: column nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin-top: 15px;
+}
+
+    .GroupMembersTable::-webkit-scrollbar {
+        width: 10px;
+        display: none;
+    }
+
+.GroupMembersTableheading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.GroupMembersTableheadingName {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+    .GroupMembersTableheadingName p {
+        font-size: 16px;
+        font-weight: 600;
+        opacity: 0.6;
+        color: var(--text-color);
+    }
+
+.GroupMembersTableheadingStatus p {
+    font-size: 16px;
+    font-weight: 600;
+    opacity: 0.6;
+    color: var(--text-color);
+}
+
+.GroupMembersTableheadingStatus {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.TableCont {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    cursor: pointer;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+
+    .TableCont:hover {
+        background-color: var( --memberlisthover);
+    }
+
+.TableContDetails {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.TableContImgdiv {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    ;
+    overflow: hidden;
+}
+
+.TableContImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.TableContUserDetails {
+    flex: 5;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding-right: 5px;
+    min-width: 145px;
+}
+
+.TableContDetailsName {
+    font-weight: 600;
+    margin-bottom: 0;
+    color: var(--text-color);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.TableContDetailsUserName {
+    font-weight: 600;
+    margin-bottom: 0;
+    opacity: 0.6;
+    font-size: 12px;
+    color: var(--text-color);
+}
+
+.GroupMemberStatusOn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5px;
+}
+
+    .GroupMemberStatusOn p {
+        background-color: rgb(211, 240, 211);
+        margin: 0;
+        font-weight: 600;
+        color: #04aa6d;
+        font-size: 12px;
+        padding: 5px 0;
+        border-radius: 20px;
+        padding-left: clamp(12px,2vw,20px);
+        padding-right: clamp(12px,2vw,20px);
+        text-align: center;
+        width: 80px;
+    }
+
+.GroupMemberStatusOff {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5px;
+}
+
+    .GroupMemberStatusOff p {
+        background-color: rgb(243, 198, 198);
+        margin: 0;
+        font-weight: 600;
+        font-size: 12px;
+        padding: 5px 0;
+        padding-left: clamp(12px,2vw,20px);
+        padding-right: clamp(12px,2vw,20px);
+        text-align: center;
+        border-radius: 20px;
+        color: #fd0909;
+        width: 80px;
+    }
+
+.GroupLinkCopy {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-flow: column nowrap;
+      gap: 5px;
+}
+
+.SharelinkDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row nowrap;
+    width: 100%;
+    gap: 1px;
+}
+
+.Sharelinktext p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.ShareIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+    .ShareIcon:hover {
+        background-color: #04aa4c;
+    }
+
+    .ShareIcon:active {
+        transform: scale(0.9);
+    }
+
+.notodoitem {
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(14px, 4vw, 20px);
+    font-weight: bold;
+    opacity: 0.7;
+    min-width: 200px;
+    max-width: 300px;
+    color: var(--text-color);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+}
+
+    .notodoitem img {
+        width: 100%;
+        height: auto;
+    }

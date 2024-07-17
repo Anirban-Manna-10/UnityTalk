@@ -1,0 +1,57 @@
+﻿@model IEnumerable<UnityTalk.Models.GroupTable>
+@{ 
+    Layout = null;
+}
+<br />
+<br />
+
+
+<table class="table table-striped" border="1">
+    <thead>
+        <tr>
+            <th>GrpName</th>
+            <th>GrpDescp</th>
+            <th>GrpMode</th>
+            <th>User Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="4" style="color:red">
+                    No Match
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <th>@Html.DisplayFor(model => item.GrpName)</th>
+                    <th>@Html.DisplayFor(model => item.GrpDescp)</th>
+                    <th>
+
+                        @if (item.GrpMode)
+                        {
+
+
+                            <p>Public</p>
+                        }
+                        else
+                        {
+                            <p>Private</p>
+                        }
+                    </th>
+                    <th>@Html.DisplayFor(model => item.UserTable.UserName)</th>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+<div>
+    @Html.ActionLink("Back", "ViewGroup", "Member")
+</div>

@@ -1,0 +1,86 @@
+﻿@model UnityTalk.Models.EbookTable
+
+@{
+    ViewBag.Title = "Ebook Details";
+}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Ebook Title</title>
+    <link rel="stylesheet" href="~/Content/css/ebookDetails.css">
+</head>
+<body>
+    <div class="productDetails">
+        <h1 class="ebookHead">Product Details</h1>
+        <div class="ebook-container">
+            <div class="ebookImgCont">
+                <div class="ImgBack"></div>
+                <img src="@Url.Content(Model.EbookImgPath)" alt="Ebook Image">
+            </div>
+            <div class="ebook-details">
+                <div class="EbookName">
+                    <h2>@Html.DisplayFor(model => Model.EbookName)</h2>
+                </div>
+                <div class="EbookauthName">
+                    <p>By @Html.DisplayFor(model => Model.Author)</p>
+                </div>
+                <p class="Ebookdesc">@Html.DisplayFor(model => Model.EbookDescp)</p>
+                <div class="pricing">
+                    <span><i class="fa-regular fa-credit-card"></i> Free</span>
+                    <div class="EbookButtons">
+                        <button onclick="window.location.href='@Url.Action("viewEbook", "Ebook")'" class="Ecancelbtn Ebtn">Cancel</button>
+                        <button onclick="window.open('@Url.Content(Model.EbookPath)', '_blank')" class="Ereadbtn Ebtn">Read Now</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <h1 class="ebookHead">More Like this..</h1>
+        <div class="ebookList">
+            @if (ViewBag.bookList != null)
+            {
+                foreach (var item in @ViewBag.bookList as List<UnityTalk.Models.EbookTable>)
+                {
+                    <div class="ebook-card">
+                        <div class="ebook-image">
+                            <img src="@Url.Content(item.EbookImgPath)" alt="Ebook cover image">
+                        </div>
+                        <div class="ebook-info">
+                            <h3 class="ebook-title">@Html.DisplayFor(model => item.EbookName)</h3>
+                            <p class="ebook-author">@Html.DisplayFor(model => item.Author)</p>
+                            <button onclick="window.location.href='@Url.Action("ebookDetails", "Ebook", new {id = item.EbookId})'" class="ebook-button">Get Book</button>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p style="margin:20px 40%;opacity:0.8;color:var(--text-color)">No Similar Items!!</p>
+            }
+        </div>
+    </div>
+    @section scripts {
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+
+                let activeNavLinks = document.querySelectorAll('.nav-link.active');
+
+                activeNavLinks.forEach(function (link) {
+                    link.classList.remove('active');
+                });
+                let dashboardElement = document.querySelector('.navEbooks-l');
+
+                if (dashboardElement) {
+                    dashboardElement.classList.add('active');
+                }
+            });
+        </script>
+    }
+</body>
+</html>
+
+

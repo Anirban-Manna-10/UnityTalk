@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "whiteBoard";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/css/whiteBoard.css" />
+</head>
+<div class="container1">
+    <section class="tools-board">
+        <div class="shapes">
+            <button id="toggleShapesButton">
+                <span class="material-symbols-outlined">
+                    category
+                </span>
+            </button>
+            <div class="shape">
+                <div class="row" id="shapeOptions">
+                    <ul class="options">
+                        <li class="option tool" id="rectangle">
+                            <i class="bi bi-square"></i>
+                        </li>
+                        <li class="option tool" id="circle">
+                            <i class="bi bi-circle"></i>
+                        </li>
+                        <li class="option tool" id="triangle">
+                            <i class="bi bi-triangle"></i>
+                        </li>
+                        <li class="option" id="">
+                            <input type="checkbox" id="fill-color">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <ul class="options">
+                <li class="option active tool" id="brush">
+                    <i class="bi bi-pen"></i>
+                </li>
+
+                <li class="option tool" id="eraser">
+                    <i class='bx bxs-eraser'></i>
+                </li>
+                <li class="option">
+                    <select id="size-dropdown">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5" selected>5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+        <div class="row colors">
+            <ul class="options">
+                <li class="option"></li>
+                <li class="option selected"></li>
+                <li class="option">
+                    <input type="color" id="color-picker" value="#4A98F7">
+                </li>
+            </ul>
+        </div>
+        <div class="row buttons">
+            <div class="clear">
+                <button class="clear-canvas">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+            <div class="clear">
+                <button class="save-img">
+                    <i class="bi bi-download"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    <section class="drawing-board">
+        <canvas id="mainCanvas"></canvas>
+    </section>
+</div>
+@section scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            let activeNavLinks = document.querySelectorAll('.nav-link.active');
+
+            activeNavLinks.forEach(function (link) {
+                link.classList.remove('active');
+            });
+            let dashboardElement = document.querySelector('.navBoard-l');
+
+            if (dashboardElement) {
+                dashboardElement.classList.add('active');
+            }
+        });
+    </script>
+    <script src="~/Content/js/whiteboardBoard.js"></script>
+
+}

@@ -1,0 +1,927 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UnityTalkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminTable">
+          <Key>
+            <PropertyRef Name="Adminid" />
+          </Key>
+          <Property Name="Adminid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pwd" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnnouncementTable">
+          <Key>
+            <PropertyRef Name="AunId" />
+          </Key>
+          <Property Name="AunId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
+          <Property Name="SenderId" Type="int" Nullable="false" />
+          <Property Name="Cont" Type="nvarchar(max)" />
+          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="EbookTable">
+          <Key>
+            <PropertyRef Name="EbookId" />
+          </Key>
+          <Property Name="EbookId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EbookName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EbookDescp" Type="nvarchar(max)" />
+          <Property Name="Author" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EbookPath" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EbookImgPath" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FeedBackTable">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="cont" Type="nvarchar(max)" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FileTable">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Name="FileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SenderId" Type="int" Nullable="false" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="FilePath" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FileType" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="GroupImgTable">
+          <Key>
+            <PropertyRef Name="GrpImgId" />
+          </Key>
+          <Property Name="GrpImgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GrpImgPath" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ImgName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupMemberTable">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupTable">
+          <Key>
+            <PropertyRef Name="GrpId" />
+          </Key>
+          <Property Name="GrpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GrpName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GrpDescp" Type="nvarchar(max)" />
+          <Property Name="GrpAdminId" Type="int" Nullable="false" />
+          <Property Name="GrpImgId" Type="int" Nullable="false" />
+          <Property Name="GrpMode" Type="bit" Nullable="false" />
+          <Property Name="GrpCode" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MeetingTable">
+          <Key>
+            <PropertyRef Name="MeetingId" />
+          </Key>
+          <Property Name="MeetingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MeetingLink" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MessageTable">
+          <Key>
+            <PropertyRef Name="MsgId" />
+          </Key>
+          <Property Name="MsgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SenderId" Type="int" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
+          <Property Name="Cont" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ToDoTable">
+          <Key>
+            <PropertyRef Name="ToDoId" />
+          </Key>
+          <Property Name="ToDoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Uid" Type="int" Nullable="false" />
+          <Property Name="Cont" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="isDone" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pwd" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="UserStatus" Type="bit" />
+          <Property Name="UserImgPath" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_AnnouncementTable_GroupMemberTable">
+          <End Role="GroupMemberTable" Type="Self.GroupMemberTable" Multiplicity="1" />
+          <End Role="AnnouncementTable" Type="Self.AnnouncementTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupMemberTable">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="AnnouncementTable">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnnouncementTable_GroupTable">
+          <End Role="GroupTable" Type="Self.GroupTable" Multiplicity="1" />
+          <End Role="AnnouncementTable" Type="Self.AnnouncementTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupTable">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="AnnouncementTable">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedBack_User">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="FeedBackTable" Type="Self.FeedBackTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="FeedBackTable">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FileTable_GroupMemberTable">
+          <End Role="GroupMemberTable" Type="Self.GroupMemberTable" Multiplicity="1" />
+          <End Role="FileTable" Type="Self.FileTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupMemberTable">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="FileTable">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FileTable_GroupTable">
+          <End Role="GroupTable" Type="Self.GroupTable" Multiplicity="1" />
+          <End Role="FileTable" Type="Self.FileTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupTable">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="FileTable">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupMemberTable_GroupTable">
+          <End Role="GroupTable" Type="Self.GroupTable" Multiplicity="1" />
+          <End Role="GroupMemberTable" Type="Self.GroupMemberTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupTable">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="GroupMemberTable">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupMemberTable_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="GroupMemberTable" Type="Self.GroupMemberTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="GroupMemberTable">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupTable_GroupImgTable">
+          <End Role="GroupImgTable" Type="Self.GroupImgTable" Multiplicity="1" />
+          <End Role="GroupTable" Type="Self.GroupTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupImgTable">
+              <PropertyRef Name="GrpImgId" />
+            </Principal>
+            <Dependent Role="GroupTable">
+              <PropertyRef Name="GrpImgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupTable_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="GroupTable" Type="Self.GroupTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="GroupTable">
+              <PropertyRef Name="GrpAdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetingTable_GroupMemberTable">
+          <End Role="GroupMemberTable" Type="Self.GroupMemberTable" Multiplicity="1" />
+          <End Role="MeetingTable" Type="Self.MeetingTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupMemberTable">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="MeetingTable">
+              <PropertyRef Name="CreatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetingTable_GroupTable">
+          <End Role="GroupTable" Type="Self.GroupTable" Multiplicity="1" />
+          <End Role="MeetingTable" Type="Self.MeetingTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupTable">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="MeetingTable">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageTable_GroupMemberTable">
+          <End Role="GroupMemberTable" Type="Self.GroupMemberTable" Multiplicity="1" />
+          <End Role="MessageTable" Type="Self.MessageTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupMemberTable">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="MessageTable">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageTable_GroupTable">
+          <End Role="GroupTable" Type="Self.GroupTable" Multiplicity="1" />
+          <End Role="MessageTable" Type="Self.MessageTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupTable">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="MessageTable">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToDoTable_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="ToDoTable" Type="Self.ToDoTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="ToDoTable">
+              <PropertyRef Name="Uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UnityTalkModelStoreContainer">
+          <EntitySet Name="AdminTable" EntityType="Self.AdminTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnnouncementTable" EntityType="Self.AnnouncementTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EbookTable" EntityType="Self.EbookTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeedBackTable" EntityType="Self.FeedBackTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileTable" EntityType="Self.FileTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupImgTable" EntityType="Self.GroupImgTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupMemberTable" EntityType="Self.GroupMemberTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupTable" EntityType="Self.GroupTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeetingTable" EntityType="Self.MeetingTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessageTable" EntityType="Self.MessageTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ToDoTable" EntityType="Self.ToDoTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AnnouncementTable_GroupMemberTable" Association="Self.FK_AnnouncementTable_GroupMemberTable">
+            <End Role="GroupMemberTable" EntitySet="GroupMemberTable" />
+            <End Role="AnnouncementTable" EntitySet="AnnouncementTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnnouncementTable_GroupTable" Association="Self.FK_AnnouncementTable_GroupTable">
+            <End Role="GroupTable" EntitySet="GroupTable" />
+            <End Role="AnnouncementTable" EntitySet="AnnouncementTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedBack_User" Association="Self.FK_FeedBack_User">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="FeedBackTable" EntitySet="FeedBackTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FileTable_GroupMemberTable" Association="Self.FK_FileTable_GroupMemberTable">
+            <End Role="GroupMemberTable" EntitySet="GroupMemberTable" />
+            <End Role="FileTable" EntitySet="FileTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FileTable_GroupTable" Association="Self.FK_FileTable_GroupTable">
+            <End Role="GroupTable" EntitySet="GroupTable" />
+            <End Role="FileTable" EntitySet="FileTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupMemberTable_GroupTable" Association="Self.FK_GroupMemberTable_GroupTable">
+            <End Role="GroupTable" EntitySet="GroupTable" />
+            <End Role="GroupMemberTable" EntitySet="GroupMemberTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupMemberTable_UserTable" Association="Self.FK_GroupMemberTable_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="GroupMemberTable" EntitySet="GroupMemberTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupTable_GroupImgTable" Association="Self.FK_GroupTable_GroupImgTable">
+            <End Role="GroupImgTable" EntitySet="GroupImgTable" />
+            <End Role="GroupTable" EntitySet="GroupTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupTable_UserTable" Association="Self.FK_GroupTable_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="GroupTable" EntitySet="GroupTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetingTable_GroupMemberTable" Association="Self.FK_MeetingTable_GroupMemberTable">
+            <End Role="GroupMemberTable" EntitySet="GroupMemberTable" />
+            <End Role="MeetingTable" EntitySet="MeetingTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetingTable_GroupTable" Association="Self.FK_MeetingTable_GroupTable">
+            <End Role="GroupTable" EntitySet="GroupTable" />
+            <End Role="MeetingTable" EntitySet="MeetingTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageTable_GroupMemberTable" Association="Self.FK_MessageTable_GroupMemberTable">
+            <End Role="GroupMemberTable" EntitySet="GroupMemberTable" />
+            <End Role="MessageTable" EntitySet="MessageTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageTable_GroupTable" Association="Self.FK_MessageTable_GroupTable">
+            <End Role="GroupTable" EntitySet="GroupTable" />
+            <End Role="MessageTable" EntitySet="MessageTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToDoTable_UserTable" Association="Self.FK_ToDoTable_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="ToDoTable" EntitySet="ToDoTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UnityTalkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminTable">
+          <Key>
+            <PropertyRef Name="Adminid" />
+          </Key>
+          <Property Name="Adminid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pwd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnnouncementTable">
+          <Key>
+            <PropertyRef Name="AunId" />
+          </Key>
+          <Property Name="AunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GrpId" Type="Int32" Nullable="false" />
+          <Property Name="SenderId" Type="Int32" Nullable="false" />
+          <Property Name="Cont" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="GroupMemberTable" Relationship="Self.FK_AnnouncementTable_GroupMemberTable" FromRole="AnnouncementTable" ToRole="GroupMemberTable" />
+          <NavigationProperty Name="GroupTable" Relationship="Self.FK_AnnouncementTable_GroupTable" FromRole="AnnouncementTable" ToRole="GroupTable" />
+        </EntityType>
+        <EntityType Name="EbookTable">
+          <Key>
+            <PropertyRef Name="EbookId" />
+          </Key>
+          <Property Name="EbookId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EbookName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EbookDescp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EbookPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EbookImgPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FeedBackTable">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="cont" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK_FeedBack_User" FromRole="FeedBackTable" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="FileTable">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Name="FileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SenderId" Type="Int32" Nullable="false" />
+          <Property Name="GrpId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GroupMemberTable" Relationship="Self.FK_FileTable_GroupMemberTable" FromRole="FileTable" ToRole="GroupMemberTable" />
+          <NavigationProperty Name="GroupTable" Relationship="Self.FK_FileTable_GroupTable" FromRole="FileTable" ToRole="GroupTable" />
+        </EntityType>
+        <EntityType Name="GroupImgTable">
+          <Key>
+            <PropertyRef Name="GrpImgId" />
+          </Key>
+          <Property Name="GrpImgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GrpImgPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImgName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="GroupTables" Relationship="Self.FK_GroupTable_GroupImgTable" FromRole="GroupImgTable" ToRole="GroupTable" />
+        </EntityType>
+        <EntityType Name="GroupMemberTable">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="GrpId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AnnouncementTables" Relationship="Self.FK_AnnouncementTable_GroupMemberTable" FromRole="GroupMemberTable" ToRole="AnnouncementTable" />
+          <NavigationProperty Name="FileTables" Relationship="Self.FK_FileTable_GroupMemberTable" FromRole="GroupMemberTable" ToRole="FileTable" />
+          <NavigationProperty Name="GroupTable" Relationship="Self.FK_GroupMemberTable_GroupTable" FromRole="GroupMemberTable" ToRole="GroupTable" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK_GroupMemberTable_UserTable" FromRole="GroupMemberTable" ToRole="UserTable" />
+          <NavigationProperty Name="MeetingTables" Relationship="Self.FK_MeetingTable_GroupMemberTable" FromRole="GroupMemberTable" ToRole="MeetingTable" />
+          <NavigationProperty Name="MessageTables" Relationship="Self.FK_MessageTable_GroupMemberTable" FromRole="GroupMemberTable" ToRole="MessageTable" />
+        </EntityType>
+        <EntityType Name="GroupTable">
+          <Key>
+            <PropertyRef Name="GrpId" />
+          </Key>
+          <Property Name="GrpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GrpName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GrpDescp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GrpAdminId" Type="Int32" Nullable="false" />
+          <Property Name="GrpImgId" Type="Int32" Nullable="false" />
+          <Property Name="GrpMode" Type="Boolean" Nullable="false" />
+          <Property Name="GrpCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AnnouncementTables" Relationship="Self.FK_AnnouncementTable_GroupTable" FromRole="GroupTable" ToRole="AnnouncementTable" />
+          <NavigationProperty Name="FileTables" Relationship="Self.FK_FileTable_GroupTable" FromRole="GroupTable" ToRole="FileTable" />
+          <NavigationProperty Name="GroupImgTable" Relationship="Self.FK_GroupTable_GroupImgTable" FromRole="GroupTable" ToRole="GroupImgTable" />
+          <NavigationProperty Name="GroupMemberTables" Relationship="Self.FK_GroupMemberTable_GroupTable" FromRole="GroupTable" ToRole="GroupMemberTable" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK_GroupTable_UserTable" FromRole="GroupTable" ToRole="UserTable" />
+          <NavigationProperty Name="MeetingTables" Relationship="Self.FK_MeetingTable_GroupTable" FromRole="GroupTable" ToRole="MeetingTable" />
+          <NavigationProperty Name="MessageTables" Relationship="Self.FK_MessageTable_GroupTable" FromRole="GroupTable" ToRole="MessageTable" />
+        </EntityType>
+        <EntityType Name="MeetingTable">
+          <Key>
+            <PropertyRef Name="MeetingId" />
+          </Key>
+          <Property Name="MeetingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MeetingLink" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="GrpId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GroupMemberTable" Relationship="Self.FK_MeetingTable_GroupMemberTable" FromRole="MeetingTable" ToRole="GroupMemberTable" />
+          <NavigationProperty Name="GroupTable" Relationship="Self.FK_MeetingTable_GroupTable" FromRole="MeetingTable" ToRole="GroupTable" />
+        </EntityType>
+        <EntityType Name="MessageTable">
+          <Key>
+            <PropertyRef Name="MsgId" />
+          </Key>
+          <Property Name="MsgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderId" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="GrpId" Type="Int32" Nullable="false" />
+          <Property Name="Cont" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GroupMemberTable" Relationship="Self.FK_MessageTable_GroupMemberTable" FromRole="MessageTable" ToRole="GroupMemberTable" />
+          <NavigationProperty Name="GroupTable" Relationship="Self.FK_MessageTable_GroupTable" FromRole="MessageTable" ToRole="GroupTable" />
+        </EntityType>
+        <EntityType Name="ToDoTable">
+          <Key>
+            <PropertyRef Name="ToDoId" />
+          </Key>
+          <Property Name="ToDoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Uid" Type="Int32" Nullable="false" />
+          <Property Name="Cont" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isDone" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK_ToDoTable_UserTable" FromRole="ToDoTable" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pwd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserStatus" Type="Boolean" />
+          <Property Name="UserImgPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FeedBackTables" Relationship="Self.FK_FeedBack_User" FromRole="UserTable" ToRole="FeedBackTable" />
+          <NavigationProperty Name="GroupMemberTables" Relationship="Self.FK_GroupMemberTable_UserTable" FromRole="UserTable" ToRole="GroupMemberTable" />
+          <NavigationProperty Name="GroupTables" Relationship="Self.FK_GroupTable_UserTable" FromRole="UserTable" ToRole="GroupTable" />
+          <NavigationProperty Name="ToDoTables" Relationship="Self.FK_ToDoTable_UserTable" FromRole="UserTable" ToRole="ToDoTable" />
+        </EntityType>
+        <Association Name="FK_AnnouncementTable_GroupMemberTable">
+          <End Role="GroupMemberTable" Type="Self.GroupMemberTable" Multiplicity="1" />
+          <End Role="AnnouncementTable" Type="Self.AnnouncementTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupMemberTable">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="AnnouncementTable">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnnouncementTable_GroupTable">
+          <End Role="GroupTable" Type="Self.GroupTable" Multiplicity="1" />
+          <End Role="AnnouncementTable" Type="Self.AnnouncementTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupTable">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="AnnouncementTable">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedBack_User">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="FeedBackTable" Type="Self.FeedBackTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="FeedBackTable">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FileTable_GroupMemberTable">
+          <End Role="GroupMemberTable" Type="Self.GroupMemberTable" Multiplicity="1" />
+          <End Role="FileTable" Type="Self.FileTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupMemberTable">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="FileTable">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FileTable_GroupTable">
+          <End Role="GroupTable" Type="Self.GroupTable" Multiplicity="1" />
+          <End Role="FileTable" Type="Self.FileTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupTable">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="FileTable">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupTable_GroupImgTable">
+          <End Role="GroupImgTable" Type="Self.GroupImgTable" Multiplicity="1" />
+          <End Role="GroupTable" Type="Self.GroupTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupImgTable">
+              <PropertyRef Name="GrpImgId" />
+            </Principal>
+            <Dependent Role="GroupTable">
+              <PropertyRef Name="GrpImgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupMemberTable_GroupTable">
+          <End Role="GroupTable" Type="Self.GroupTable" Multiplicity="1" />
+          <End Role="GroupMemberTable" Type="Self.GroupMemberTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupTable">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="GroupMemberTable">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupMemberTable_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="GroupMemberTable" Type="Self.GroupMemberTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="GroupMemberTable">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetingTable_GroupMemberTable">
+          <End Role="GroupMemberTable" Type="Self.GroupMemberTable" Multiplicity="1" />
+          <End Role="MeetingTable" Type="Self.MeetingTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupMemberTable">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="MeetingTable">
+              <PropertyRef Name="CreatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageTable_GroupMemberTable">
+          <End Role="GroupMemberTable" Type="Self.GroupMemberTable" Multiplicity="1" />
+          <End Role="MessageTable" Type="Self.MessageTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupMemberTable">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="MessageTable">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupTable_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="GroupTable" Type="Self.GroupTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="GroupTable">
+              <PropertyRef Name="GrpAdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetingTable_GroupTable">
+          <End Role="GroupTable" Type="Self.GroupTable" Multiplicity="1" />
+          <End Role="MeetingTable" Type="Self.MeetingTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupTable">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="MeetingTable">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageTable_GroupTable">
+          <End Role="GroupTable" Type="Self.GroupTable" Multiplicity="1" />
+          <End Role="MessageTable" Type="Self.MessageTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupTable">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="MessageTable">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToDoTable_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="ToDoTable" Type="Self.ToDoTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="ToDoTable">
+              <PropertyRef Name="Uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UnityTalkEntities8" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminTables" EntityType="Self.AdminTable" />
+          <EntitySet Name="AnnouncementTables" EntityType="Self.AnnouncementTable" />
+          <EntitySet Name="EbookTables" EntityType="Self.EbookTable" />
+          <EntitySet Name="FeedBackTables" EntityType="Self.FeedBackTable" />
+          <EntitySet Name="FileTables" EntityType="Self.FileTable" />
+          <EntitySet Name="GroupImgTables" EntityType="Self.GroupImgTable" />
+          <EntitySet Name="GroupMemberTables" EntityType="Self.GroupMemberTable" />
+          <EntitySet Name="GroupTables" EntityType="Self.GroupTable" />
+          <EntitySet Name="MeetingTables" EntityType="Self.MeetingTable" />
+          <EntitySet Name="MessageTables" EntityType="Self.MessageTable" />
+          <EntitySet Name="ToDoTables" EntityType="Self.ToDoTable" />
+          <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+          <AssociationSet Name="FK_AnnouncementTable_GroupMemberTable" Association="Self.FK_AnnouncementTable_GroupMemberTable">
+            <End Role="GroupMemberTable" EntitySet="GroupMemberTables" />
+            <End Role="AnnouncementTable" EntitySet="AnnouncementTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnnouncementTable_GroupTable" Association="Self.FK_AnnouncementTable_GroupTable">
+            <End Role="GroupTable" EntitySet="GroupTables" />
+            <End Role="AnnouncementTable" EntitySet="AnnouncementTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedBack_User" Association="Self.FK_FeedBack_User">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="FeedBackTable" EntitySet="FeedBackTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FileTable_GroupMemberTable" Association="Self.FK_FileTable_GroupMemberTable">
+            <End Role="GroupMemberTable" EntitySet="GroupMemberTables" />
+            <End Role="FileTable" EntitySet="FileTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FileTable_GroupTable" Association="Self.FK_FileTable_GroupTable">
+            <End Role="GroupTable" EntitySet="GroupTables" />
+            <End Role="FileTable" EntitySet="FileTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupTable_GroupImgTable" Association="Self.FK_GroupTable_GroupImgTable">
+            <End Role="GroupImgTable" EntitySet="GroupImgTables" />
+            <End Role="GroupTable" EntitySet="GroupTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupMemberTable_GroupTable" Association="Self.FK_GroupMemberTable_GroupTable">
+            <End Role="GroupTable" EntitySet="GroupTables" />
+            <End Role="GroupMemberTable" EntitySet="GroupMemberTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupMemberTable_UserTable" Association="Self.FK_GroupMemberTable_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="GroupMemberTable" EntitySet="GroupMemberTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetingTable_GroupMemberTable" Association="Self.FK_MeetingTable_GroupMemberTable">
+            <End Role="GroupMemberTable" EntitySet="GroupMemberTables" />
+            <End Role="MeetingTable" EntitySet="MeetingTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageTable_GroupMemberTable" Association="Self.FK_MessageTable_GroupMemberTable">
+            <End Role="GroupMemberTable" EntitySet="GroupMemberTables" />
+            <End Role="MessageTable" EntitySet="MessageTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupTable_UserTable" Association="Self.FK_GroupTable_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="GroupTable" EntitySet="GroupTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetingTable_GroupTable" Association="Self.FK_MeetingTable_GroupTable">
+            <End Role="GroupTable" EntitySet="GroupTables" />
+            <End Role="MeetingTable" EntitySet="MeetingTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageTable_GroupTable" Association="Self.FK_MessageTable_GroupTable">
+            <End Role="GroupTable" EntitySet="GroupTables" />
+            <End Role="MessageTable" EntitySet="MessageTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToDoTable_UserTable" Association="Self.FK_ToDoTable_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="ToDoTable" EntitySet="ToDoTables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UnityTalkModelStoreContainer" CdmEntityContainer="UnityTalkEntities8">
+          <EntitySetMapping Name="AdminTables">
+            <EntityTypeMapping TypeName="UnityTalkModel.AdminTable">
+              <MappingFragment StoreEntitySet="AdminTable">
+                <ScalarProperty Name="Adminid" ColumnName="Adminid" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnnouncementTables">
+            <EntityTypeMapping TypeName="UnityTalkModel.AnnouncementTable">
+              <MappingFragment StoreEntitySet="AnnouncementTable">
+                <ScalarProperty Name="AunId" ColumnName="AunId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="Cont" ColumnName="Cont" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EbookTables">
+            <EntityTypeMapping TypeName="UnityTalkModel.EbookTable">
+              <MappingFragment StoreEntitySet="EbookTable">
+                <ScalarProperty Name="EbookId" ColumnName="EbookId" />
+                <ScalarProperty Name="EbookName" ColumnName="EbookName" />
+                <ScalarProperty Name="EbookDescp" ColumnName="EbookDescp" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="EbookPath" ColumnName="EbookPath" />
+                <ScalarProperty Name="EbookImgPath" ColumnName="EbookImgPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeedBackTables">
+            <EntityTypeMapping TypeName="UnityTalkModel.FeedBackTable">
+              <MappingFragment StoreEntitySet="FeedBackTable">
+                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="cont" ColumnName="cont" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileTables">
+            <EntityTypeMapping TypeName="UnityTalkModel.FileTable">
+              <MappingFragment StoreEntitySet="FileTable">
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupImgTables">
+            <EntityTypeMapping TypeName="UnityTalkModel.GroupImgTable">
+              <MappingFragment StoreEntitySet="GroupImgTable">
+                <ScalarProperty Name="GrpImgId" ColumnName="GrpImgId" />
+                <ScalarProperty Name="GrpImgPath" ColumnName="GrpImgPath" />
+                <ScalarProperty Name="ImgName" ColumnName="ImgName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupMemberTables">
+            <EntityTypeMapping TypeName="UnityTalkModel.GroupMemberTable">
+              <MappingFragment StoreEntitySet="GroupMemberTable">
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupTables">
+            <EntityTypeMapping TypeName="UnityTalkModel.GroupTable">
+              <MappingFragment StoreEntitySet="GroupTable">
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="GrpDescp" ColumnName="GrpDescp" />
+                <ScalarProperty Name="GrpAdminId" ColumnName="GrpAdminId" />
+                <ScalarProperty Name="GrpImgId" ColumnName="GrpImgId" />
+                <ScalarProperty Name="GrpMode" ColumnName="GrpMode" />
+                <ScalarProperty Name="GrpCode" ColumnName="GrpCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeetingTables">
+            <EntityTypeMapping TypeName="UnityTalkModel.MeetingTable">
+              <MappingFragment StoreEntitySet="MeetingTable">
+                <ScalarProperty Name="MeetingId" ColumnName="MeetingId" />
+                <ScalarProperty Name="MeetingLink" ColumnName="MeetingLink" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageTables">
+            <EntityTypeMapping TypeName="UnityTalkModel.MessageTable">
+              <MappingFragment StoreEntitySet="MessageTable">
+                <ScalarProperty Name="MsgId" ColumnName="MsgId" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="Cont" ColumnName="Cont" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToDoTables">
+            <EntityTypeMapping TypeName="UnityTalkModel.ToDoTable">
+              <MappingFragment StoreEntitySet="ToDoTable">
+                <ScalarProperty Name="ToDoId" ColumnName="ToDoId" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+                <ScalarProperty Name="Cont" ColumnName="Cont" />
+                <ScalarProperty Name="isDone" ColumnName="isDone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTables">
+            <EntityTypeMapping TypeName="UnityTalkModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="UserImgPath" ColumnName="UserImgPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

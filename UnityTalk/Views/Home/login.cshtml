@@ -1,0 +1,130 @@
+﻿@model UnityTalk.Models.UserTable
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login-form</title>
+    <link rel="stylesheet" href="~/Content/css/login.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+<body>
+    <div class="background"></div>
+    <nav class="nav">
+        <div class="logo" onclick="window.location.href='@Url.Action("Index","Home")'">
+            <img src="~/Content/assets/IndexImages/logo1.png" alt="Company-Logo" />
+            <div class="logo-text">
+                <p class="unity-talk">Unity<span>Talk</span></p>
+                <!-- <p class="Subtext">Connect, Collaborate & succeed</p>-->
+            </div>
+        </div>
+    </nav>
+    <main>
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="Successtoast">
+                <div class="toast-cont">
+                    <i class="fas fa-solid fa-check check"></i>
+
+                    <div class="toastmessage">
+                        <span class="toasttext text-1">Success</span>
+                        <span class="toasttext text-2">@TempData["Success"]</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-xmark toastclose"></i>
+
+                <div class="progress"></div>
+            </div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div class="Successtoast Errortoast">
+                <div class="toast-cont">
+                    <i class="bi bi-exclamation-triangle errorwarn"></i>
+
+                    <div class="toastmessage">
+                        <span class="toasttext text-1">Error</span>
+
+                        <span class="toasttext text-2">@TempData["Error"]</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-xmark toastclose"></i>
+
+                <div class="progress"></div>
+            </div>
+        }
+        <section class="contact">
+            <div class="containerM">
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert-danger erorMesg" role="alert">
+                        @TempData["ErrorMessage"]
+                        @ViewData["msg"];
+                    </div>
+                }
+
+                <div class="left">
+                    <div class="form-wrapper">
+                        <div class="contact-heading">
+                            <h1>Welcome Back<span>.</span></h1>
+                            <p class="text">Don't have an Account ? <a href="@Url.Action("signUp","Home")">Sign up</a></p>
+                        </div>
+                        <form action="@Url.Action("login","Home")" method="post" class="contact-form">
+                            @Html.AntiForgeryToken()
+                            <div class="input-wrap">
+                                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "contact-input", autocomplete = "off" } })
+                                <label>@Html.DisplayNameFor(model => model.UserName)</label>
+                                <i class="icon fa-solid fa-user"></i>
+                                <p>@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })</p>
+                            </div>
+                            <div class="input-wrap w-100">
+                                @Html.EditorFor(model => model.Pwd, new { htmlAttributes = new { @class = "contact-input passward", autocomplete = "off" } })
+                                <label>@Html.DisplayNameFor(model => model.Pwd)</label>
+                                <img src="\Content\assets\Images\icons-hide.png" alt="" class="icon eye" id="show-password" onclick="pass()" style="cursor:pointer" />
+                                <p>@Html.ValidationMessageFor(model => model.Pwd, "", new { @class = "text-danger" })</p>
+                            </div>
+                            <div class="loginpass">
+                                <div class="log-in">
+                                    <div class="log">
+                                        <button type="submit" class="log-btn">Login</button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="image-wrapper">
+                        <img src="~/Content/assets/IndexImages/login_img.gif" class="img" />
+                        <div class="wave-wrap">
+                            <svg class="wave" viewBox="0 0 783 1538" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path id="wave" d="M236.705 1356.18C200.542 1483.72 64.5004 1528.54 1 1535V1H770.538C793.858 63.1213 797.23 196.197 624.165 231.531C407.833 275.698 274.374 331.715 450.884 568.709C627.393 805.704 510.079 815.399 347.561 939.282C185.043 1063.17 281.908 1196.74 236.705 1356.18Z" />
+                            </svg>
+                        </div>
+                        <svg class="dashed-wave" viewBox="0 0 345 877" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path id="dashed-wave" d="M0.5 876C25.6667 836.167 73.2 739.8 62 673C48 589.5 35.5 499.5 125.5 462C215.5 424.5 150 365 87 333.5C24 302 44 237.5 125.5 213.5C207 189.5 307 138.5 246 87C185 35.5 297 1 344.5 1" stroke="white" />
+                        </svg>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"></script>
+    <script src="~/Content/js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>

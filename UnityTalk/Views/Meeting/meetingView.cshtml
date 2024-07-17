@@ -1,0 +1,160 @@
+﻿@model UnityTalk.viewModel.GroupView
+
+@{
+    ViewBag.Title = "Group Meeting";
+}
+
+<head>
+
+    <link rel="stylesheet" href="~/Content/css/MeeetingView.css">
+
+</head>
+
+<div class="groupEntryCont" id="groupEntryCont">
+    <div class="GroupNavbar">
+        <div class="GroupNavIcons">
+            <div class="GroupnavAll Groupnavopt" onclick="window.location.href ='@Url.Action("grupview", "GroupView", new {grpid = Model.Group.GrpId})'">
+                <div class="GroupNavIconback">
+                    <img class="GroupNavIcon" src="~/Content/assets/IndexImages/SeakerIcon.png">
+                </div>
+                <p class="GroupIconText">All</p>
+            </div>
+
+            <div class=" GroupnavFile Groupnavopt " onclick="window.location.href ='@Url.Action("fileView", "File", new {grpid = Model.Group.GrpId})'">
+                <div class="GroupNavIconback">
+                    <i class="fa-regular fa-file-lines GroupNavIcon"></i>
+
+                </div>
+                <p class="GroupIconText">Files</p>
+            </div>
+            <div class="GroupnavChat Groupnavopt" onclick="window.location.href ='@Url.Action("Chat", "Chat", new {grpid = Model.Group.GrpId})'">
+                <div class="GroupNavIconback">
+                    <i class="bi bi-chat-text-fill GroupNavIcon"></i>
+
+                </div>
+                <p class="GroupIconText">Chats</p>
+            </div>
+            <div class="GroupnavMeet Groupnavopt  GrpNavactive" onclick="window.location.href ='@Url.Action("meetingView", "Meeting", new {grpId = Model.Group.GrpId})'">
+                <div class="GroupNavIconback">
+                    <i class="fa-solid fa-video GroupNavIcon"></i>
+                </div>
+                <p class="GroupIconText">Meetings</p>
+            </div>
+        </div>
+    </div>
+    <div class="GroupDetailsMembaerCont">
+        <div class="GroupShareLinkDiv">
+            <div class="GroupShareLinkText">
+                <p>Share the Meeting link :</p>
+            </div>
+            <div class="GroupShareLinkInput">
+                @using (Html.BeginForm("meetingView", "Meeting", FormMethod.Post, new { @class = "GroupShareLink" }))
+                {
+                    <input type="hidden" name="grpId" value="@Model.Group.GrpId" />
+
+                    @Html.EditorFor(model => model.MeetingModel.MeetingLink, new { htmlAttributes = new { @class = "SharelinkInputArea", placeholder = "Enter the meeting link..", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.MeetingModel.MeetingLink, "", new { @class = "text-danger" })
+
+
+
+
+                    <button class="SharelinkIcon" type="submit">
+                        <i class="fa-solid fa-share shareIcon"></i>
+                    </button>
+                }
+
+                <button type="button" class="GroupNavSettings" onclick="window.open('@Url.Action("makeMeet","Meeting")', '_blank')">
+                    <div class="GroupNavSettingSign">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="GroupCustomizeText">Join Meeting</div>
+                </button>
+            </div>
+        </div>
+        <div class="GroupMembers">
+            <div class="GroupMembertextdiv">
+                <span class="GroupMembertext">Group Meeting Links</span>
+            </div>
+            <hr class="MemberdivLine">
+            <div class="GroupMembersTable">
+                @if (Model.MeetingTabl == null || Model.MeetingTabl.ToList().Count == 0)
+                {
+                        <div class="notodoitem">
+                            <img src="~/Content/assets/IndexImages/create2.png" alt="No todo Here" />
+
+                            No Meeting link Shared Yet!
+                        </div>
+                }
+                else
+                {
+
+                    foreach (var item in Model.MeetingTabl)
+                    {
+                        <div class="TableCont">
+                            <div class="TableContDetails">
+                                <div class="TableContImgdiv">
+                                    <img src="@Url.Content(item.GroupMemberTable.UserTable.UserImgPath)" class="TableContImg">
+                                </div>
+                                <div class="TableContUserDetails">
+                                    <p class="TableContDetailsName">
+                                        @Html.DisplayFor(modelItem => item.GroupMemberTable.UserTable.Name)
+                                    </p>
+                                    <p class="TableContDetailsUserName">
+                                        @Html.DisplayFor(modelItem => item.MeetingLink)
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="linkcopybtn copyButton">
+                                <div class="GroupMemberStatusOn">
+                                    <p> <i class="fa-regular fa-copy"></i></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+@section scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            let activeNavLinks = document.querySelectorAll('.nav-link.active');
+
+            activeNavLinks.forEach(function (link) {
+                link.classList.remove('active');
+            });
+            let dashboardElement = document.querySelector('.navAllGroups-l');
+
+            if (dashboardElement) {
+                dashboardElement.classList.add('active');
+            }
+        });
+    </script>
+    <script>
+        var copyButtons = document.querySelectorAll('.copyButton');
+        document.addEventListener('DOMContentLoaded', function () {
+            var copyButtons = document.querySelectorAll('.copyButton');
+            copyButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var parent = this.closest('.TableCont');
+                    var textElement = parent.querySelector('.TableContDetailsUserName');
+
+                    if (textElement) {
+                        var textToCopy = textElement.textContent.trim();
+                        var tempTextArea = document.createElement('textarea');
+                        tempTextArea.value = textToCopy;
+                        document.body.appendChild(tempTextArea);
+                        tempTextArea.select();
+                        document.execCommand('copy');
+
+                        document.body.removeChild(tempTextArea);
+                    }
+                });
+            });
+        });
+    </script>
+}
+

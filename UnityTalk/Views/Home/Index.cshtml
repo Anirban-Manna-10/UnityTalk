@@ -1,0 +1,929 @@
+﻿@model UnityTalk.Models.UserTable
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+      - primary meta tag
+    -->
+    <title>UnityTalk</title>
+    <meta name="title" content="EduWeb - The Best Program to Enroll for Exchange">
+    <meta name="description" content="This is an education html template made by codewithsadee">
+
+    <!--
+      - favicon
+    -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!--
+      - custom css link
+    -->
+    <link rel="stylesheet" href="~/Content/css/Index.css">
+
+    <!--
+      - google font link
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+    <!--
+      - preload images
+    -->
+    <link rel="preload" as="image" href="/assets/images/hero-bg.svg">
+    <link rel="preload" as="image" href="/assets/images/hero-banner-1.jpg">
+    <link rel="preload" as="image" href="/assets/images/hero-banner-2.jpg">
+    <link rel="preload" as="image" href="/assets/images/hero-shape-1.svg">
+    <link rel="preload" as="image" href="/assets/images/hero-shape-2.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body id="top">
+
+    <!--
+      - #HEADER
+    -->
+
+    <header class="header" data-header>
+        <div class="container">
+            <div class="LogoTextDiv">
+                <a href="/" class="logo">
+                    <img src="~/Content/assets/IndexImages/logo1.png" width="62" height="20" alt="UnityTalk logo">
+                </a>
+                <div class="logo-text">
+                    <p class="unity-talk">Unity<span>Talk</span></p>
+                    <!-- <p class="Subtext">Connect, Collaborate & succeed</p>-->
+                </div>
+            </div>
+
+            <nav class="navbar" data-navbar>
+
+                <div class="wrapper">
+                    <div class="LogoTextDiv">
+                        <a href="#" class="logo">
+                            <img src="/assets/images/logo1.png" width="62" height="20" alt="UnityTalk logo">
+                        </a>
+                        <div class="logo-text">
+                            <p class="unity-talk">Unity<span>Talk</span></p>
+                            <!-- <p class="Subtext">Connect, Collaborate & succeed</p>-->
+                        </div>
+                    </div>
+
+                    <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                        <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+
+                <ul class="navbar-list">
+
+                    <li class="navbar-item">
+                        <a href="#home" class="navbar-link" data-nav-link>Home</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="#about" class="navbar-link" data-nav-link>Features</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="#courses" class="navbar-link" data-nav-link>Groups</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="#Contact" class="navbar-link" data-nav-link>Contact</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+            <div class="header-actions">
+                @if (Session["Id"] == null)
+                {
+
+
+                    <a href="@Url.Action("login", "Home")" class="btn has-before">
+                        <span class="span">Login</span>
+
+                        <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                    </a>
+                }
+                else
+                {
+                    <button class="header-action-btn" aria-label="cart" title="Dashboard" onclick="window.location.href='@Url.Action("dashboard","Dashboard")'">
+                        <span class="material-symbols-outlined">
+                            dashboard
+                        </span>
+                    </button>
+
+                    <a href="@Url.Action("logout", "Home")" class="btnlogout has-before">
+                        <span class="span">Logout</span>
+
+                        <span class="material-symbols-outlined">
+                            logout
+                        </span>
+                    </a>
+
+
+                    <div class="TableContImgdiv">
+                        <img src="@Url.Content(Model.UserImgPath)" alt="userImage" class="TableContImg">
+                    </div>
+                }
+                <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
+                    <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+                </button>
+
+            </div>
+
+            <div class="overlay" data-nav-toggler data-overlay></div>
+
+        </div>
+    </header>
+
+
+
+
+
+    <main>
+        <article>
+
+            <!--
+              - #HERO
+            -->
+
+            <section class="section hero has-bg-image" id="home" aria-label="home"
+                     style="background-image: url('/assets/images/hero-bg.svg')">
+                <div class="container">
+
+                    <div class="hero-content">
+
+                        <h1 class="h1 section-title">
+                            Embrace growth, inspire change <span class="span"> within your groups</span> to connect
+                        </h1>
+
+                        <p class="hero-text">
+                            Secure connections, share progress: Public or private, your group's fortress.
+                        </p>
+
+                        <a href="@Url.Action("signUp","Home")" class="btn has-before">
+                            <span class="span">Register Now</span>
+
+                            <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                        </a>
+
+                    </div>
+
+                    <figure class="hero-banner">
+
+                        <div class="img-holder one" style="--width: 270; --height: 300;">
+                            <img src="/assets/images/Image1.jpeg" width="270" height="300" alt="hero banner" class="img-cover">
+                        </div>
+
+                        <div class="img-holder two" style="--width: 240; --height: 370;">
+                            <img src="/assets/images/hero-banner-2.jpg" width="240" height="370" alt="hero banner" class="img-cover">
+                        </div>
+
+
+                        <img src="/assets/images/hero-shape-2.png" width="622" height="551" alt="" class="shape hero-shape-2">
+
+                    </figure>
+
+                </div>
+            </section>
+
+
+
+
+
+            <!--
+              - #CATEGORY
+            -->
+
+            <section class="section category" aria-label="category" id="about">
+                <div class="container">
+
+                    <p class="section-subtitle">Features</p>
+
+                    <h2 class="h2 section-title">
+                        Online <span class="span">Groups</span> For Focused Learning.
+                    </h2>
+
+                    <p class="section-text">
+                        Make the learning interesting by using the features.
+                    </p>
+
+                    <ul class="grid-list">
+
+                        <li>
+                            <div class="category-card" style="--color: 170, 75%, 41%">
+
+                                <div class="card-icon">
+                                    <img src="/assets/images/todolist.png" width="50" height="50" loading="lazy"
+                                         alt="Online Degree Programs" class="img">
+                                </div>
+
+                                <h3 class="h3">
+                                    <a href="#" class="card-title">Focus on your Schedule</a>
+                                </h3>
+
+                                <p class="card-text">
+                                    Add , edit , update or remove tasks on the to-do list Seize the day, conquer the list
+                                </p>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="category-card" style="--color: 351, 83%, 61%">
+
+                                <div class="card-icon">
+                                    <img src="/assets/images/Group.png" width="50" height="50" loading="lazy"
+                                         alt="Non-Degree Programs" class="img">
+                                </div>
+
+                                <h3 class="h3">
+                                    <a href="#" class="card-title">Create or Join your own Community</a>
+                                </h3>
+
+                                <p class="card-text">
+                                    Join the circle, expand your world
+                                </p>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="category-card" style="--color: 229, 75%, 58%">
+
+                                <div class="card-icon">
+                                    <img src="/assets/images/file.png" width="45" height="45" style="margin-left: 10px;" loading="lazy"
+                                         alt="Off-Campus Programs" class="img">
+                                </div>
+
+                                <h3 class="h3">
+                                    <a href="#" class="card-title">Share Files and realtime chat in your groups</a>
+                                </h3>
+
+                                <p class="card-text">
+                                    Exchange files, live chat, ignite collaboration in dedicated groups
+                                </p>
+
+                                <!-- <span class="card-badge">8 Courses</span>-->
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="category-card" style="--color: 42, 94%, 55%">
+
+                                <div class="card-icon">
+                                    <img src="/assets/images/video-call.png" width="55" height="55" loading="lazy"
+                                         alt="Hybrid Distance Programs" class="img">
+                                </div>
+
+                                <h3 class="h3">
+                                    <a href="#" class="card-title">Secure your meeting in your own group</a>
+                                </h3>
+
+                                <p class="card-text">
+                                    Come together, spark ideas, and forge new paths
+                                </p>
+
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </section>
+
+
+
+
+
+            <!--
+              - #ABOUT
+            -->
+
+            <section class="section about" aria-label="about">
+                <div class="container">
+
+                    <figure class="about-banner">
+
+                        <div class="img-holder" style="--width: 520; --height: 370;">
+                            <img src="/assets/images/GroupImg.jpeg" width="520" height="370" loading="lazy" alt="about banner"
+                                 class="img-cover">
+                        </div>
+                        <img src="/assets/images/about-shape-3.png" width="722" height="528" loading="lazy" alt=""
+                             class="shape about-shape-3">
+
+                    </figure>
+
+                    <div class="about-content">
+
+                        <p class="section-subtitle">Features</p>
+
+                        <h2 class="h2 section-title">
+                            Unlock collaboration <span class="span">Join Your Groups</span>  your space awaits to connect
+                        </h2>
+
+                        <p class="section-text">
+                            The website offers public and private groups, ensuring security and inclusivity. Each group features announcements, live chats, and file sharing. Users can manage tasks, access ebooks, and admins have customization options.
+                        </p>
+
+                        <ul class="about-list">
+
+                            <li class="about-item">
+                                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+
+                                <span class="span">Public and Private Groups</span>
+                            </li>
+
+                            <li class="about-item">
+                                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+
+                                <span class="span">Todo-Lists</span>
+                            </li>
+
+                            <li class="about-item">
+                                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+
+                                <span class="span">File Sharing</span>
+                            </li>
+
+                            <li class="about-item">
+                                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+
+                                <span class="span">Live Group Chats</span>
+                            </li>
+
+                            <li class="about-item">
+                                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+
+                                <span class="span">Ebook-Lists</span>
+                            </li>
+                            <li class="about-item">
+                                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+
+                                <span class="span">Whiteboard</span>
+                            </li>
+                            <li class="about-item">
+                                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+
+                                <span class="span">Group Meeting</span>
+                            </li>
+
+                        </ul>
+
+                        <img src="/assets/images/about-shape-4.svg" width="100" height="100" loading="lazy" alt=""
+                             class="shape about-shape-4">
+
+                    </div>
+
+                </div>
+            </section>
+
+
+
+
+
+            <!--
+              - #COURSE
+            -->
+
+            <section class="section course" id="courses" aria-label="course">
+                <div class="container">
+
+                    <p class="section-subtitle">Popular Groups</p>
+
+                    <h2 class="h2 section-title">Pick A Group To Get Started</h2>
+
+                    <ul class="grid-list">
+
+                        <li>
+                            <div class="course-card">
+
+                                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                                    <img src="/assets/images/course-1.jpg" width="370" height="220" loading="lazy"
+                                         alt="Build Responsive Real- World Websites with HTML and CSS" class="img-cover">
+                                </figure>
+
+                                <div class="card-content">
+
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Build Responsive Real- World Websites with HTML and CSS</a>
+                                    </h3>
+
+                                    <div class="wrapper">
+
+                                        <p class="rating-text">we are here to dicuss</p>
+
+                                    </div>
+
+                                    <ul class="card-meta-list">
+
+                                        <li class="card-meta-item">
+                                            <i class="fa-solid fa-lock"></i>
+
+                                            <span class="span">Private</span>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="course-card">
+
+                                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                                    <img src="/assets/images/course-2.jpg" width="370" height="220" loading="lazy"
+                                         alt="Java Programming Masterclass for Software Developers" class="img-cover">
+                                </figure>
+
+                                <div class="card-content">
+
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Java Programming Masterclass for Software Developers</a>
+                                    </h3>
+
+                                    <div class="wrapper">
+
+                                        <p class="rating-text">Hey do you know the fun facts</p>
+
+                                    </div>
+
+                                    <ul class="card-meta-list">
+
+                                        <li class="card-meta-item">
+                                            <i class="fa-solid fa-lock-open"></i>
+
+                                            <span class="span">Public</span>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="course-card">
+
+                                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                                    <img src="/assets/images/course-3.jpg" width="370" height="220" loading="lazy"
+                                         alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+                                </figure>
+
+                                <div class="card-content">
+
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">The Complete Camtasia Course for Content Creators</a>
+                                    </h3>
+
+                                    <div class="wrapper">
+
+                                        <p class="rating-text">We do business</p>
+
+                                    </div>
+
+                                    <ul class="card-meta-list">
+
+                                        <li class="card-meta-item">
+                                            <i class="fa-solid fa-lock-open"></i>
+
+                                            <span class="span">Public</span>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <a href="@Url.Action("publicGroups","Group")" class="btn has-before">
+                        <span class="span">Browse more groups</span>
+
+                        <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                    </a>
+
+                </div>
+            </section>
+
+
+
+
+
+            <!--
+              - #VIDEO
+            -->
+
+            <section class="video has-bg-image" aria-label="video"
+                     style="background-image: url('/assets/images/video-bg.png')">
+                <div class="container">
+
+                    <div class="video-card">
+
+                        <div class="video-banner img-holder has-after" style="--width: ; --height: ; " controls>
+                            <video src="/assets/images/video.mp4" type="video/mp4" width="970" height="550" loading="lazy" alt="video banner"
+                                   class="img-cover" id="companyVideo">
+                            </video>
+
+                            <button class="play-btn" id="play-btn" aria-label="play video" onclick="playVideo()">
+                                <ion-icon name="play" aria-hidden="true"></ion-icon>
+                            </button>
+                        </div>
+
+                        <img src="/assets/images/video-shape-1.png" width="1089" height="605" loading="lazy" alt=""
+                             class="shape video-shape-1">
+
+                        <img src="/assets/images/video-shape-2.png" width="158" height="174" loading="lazy" alt=""
+                             class="shape video-shape-2">
+
+                    </div>
+
+                </div>
+            </section>
+
+
+
+
+
+            <!--
+              - #STATE
+            -->
+
+            <section class="section stats" aria-label="stats"  >
+                <div class="container">
+
+                    <ul class="grid-list">
+
+                        <li>
+                            <div class="stats-card" style="--color: 170, 75%, 41%">
+                                <h3 class="card-title">2.3k</h3>
+
+                                <p class="card-text">User Enrolled</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="stats-card" style="--color: 351, 83%, 61%">
+                                <h3 class="card-title">3.4K</h3>
+
+                                <p class="card-text">Groups Created</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="stats-card" style="--color: 260, 100%, 67%">
+                                <h3 class="card-title">100%</h3>
+
+                                <p class="card-text">Satisfaction Rate</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="stats-card" style="--color: 42, 94%, 55%">
+                                <h3 class="card-title">354+</h3>
+
+                                <p class="card-text">Ebooks Available</p>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </section>
+            <div class="about-section" id="Contact">
+                <h2 class="h2 section-title">
+                    We are here <span class="span team">Working as a team</span> For executing the unreals.
+                </h2>
+                <div class="swiper mySwiper container">
+                    <div class="swiper-wrapper content">
+
+                        <div class="swiper-slide card">
+                            <div class="card-content">
+                                <div class="image">
+                                    <img src="~/assets/images/imgAnirban.png" alt="">
+                                </div>
+
+                                <div class="media-icons">
+                                    <i class="fab fa-facebook"></i>
+                                    <i class="fab fa-twitter"></i>
+                                    <i class="fab fa-github"></i>
+                                </div>
+
+                                <div class="name-profession">
+                                    <span class="name">Anirban Manna</span>
+                                    <span class="profession">Web Developer</span>
+                                </div>
+
+                                <div class="button">
+                                    <button class="aboutMe">About Me</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card">
+                            <div class="card-content">
+                                <div class="image">
+                                    <img src="~/assets/images/imgShuctika.jpg" alt="">
+                                </div>
+
+                                <div class="media-icons">
+                                    <i class="fab fa-facebook"></i>
+                                    <i class="fab fa-twitter"></i>
+                                    <i class="fab fa-github"></i>
+                                </div>
+
+                                <div class="name-profession">
+                                    <span class="name">Shuctika Sarkar</span>
+                                    <span class="profession">Web Developer</span>
+                                </div>
+
+                                <div class="button">
+                                    <button class="aboutMe">About Me</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card">
+                            <div class="card-content">
+                                <div class="image">
+                                    <img src="~/assets/images/imgSamya.jpg" alt="">
+                                </div>
+
+                                <div class="media-icons">
+                                    <i class="fab fa-facebook"></i>
+                                    <i class="fab fa-twitter"></i>
+                                    <i class="fab fa-github"></i>
+                                </div>
+
+                                <div class="name-profession">
+                                    <span class="name">Samya Biswas</span>
+                                    <span class="profession">Web Developer</span>
+                                </div>
+
+                                <div class="button">
+                                    <button class="aboutMe">About Me</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card">
+                            <div class="card-content">
+                                <div class="image">
+                                    <img src="~/assets/images/imgPritam.jpg" alt="">
+                                </div>
+
+                                <div class="media-icons">
+                                    <i class="fab fa-facebook"></i>
+                                    <i class="fab fa-twitter"></i>
+                                    <i class="fab fa-github"></i>
+                                </div>
+
+                                <div class="name-profession">
+                                    <span class="name">Pritam Majhi</span>
+                                    <span class="profession">Web Developer</span>
+                                </div>
+
+                                <div class="button">
+                                    <button class="aboutMe">About Me</button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide card">
+                            <div class="card-content">
+                                <div class="image">
+                                    <img src="~/assets/images/imgSoham.png" alt="">
+                                </div>
+
+                                <div class="media-icons">
+                                    <i class="fab fa-facebook"></i>
+                                    <i class="fab fa-twitter"></i>
+                                    <i class="fab fa-github"></i>
+                                </div>
+
+                                <div class="name-profession">
+                                    <span class="name">Sohom Maity</span>
+                                    <span class="profession">Web Developer</span>
+                                </div>
+
+                                <div class="button">
+                                    <button class="aboutMe">About Me</button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+
+        </article>
+    </main>
+
+
+
+
+
+    <!--
+      - #FOOTER
+    -->
+
+    <footer class="footer" style="background-image: url('/assets/images/footer-bg.png')">
+
+        <div class="footer-top section">
+            <div class="container grid-list">
+
+                <div class="footer-brand">
+
+                    <div class="LogoTextDiv">
+                        <a href="#" class="logo">
+                            <img src="~/Content/assets/IndexImages/logo1.png" width="62" height="20" alt="EduWeb logo">
+                        </a>
+                        <div class="logo-text">
+                            <p class="unity-talk-footer">UnityTalk</p>
+                            
+                        </div>
+                    </div>
+
+                    <p class="footer-brand-text">
+                        Connect , collaborate and succeed , empower your connections
+                    </p>
+
+                    <div class="wrapper">
+                        <span class="span">Call:</span>
+
+                        <a href="tel:+011234567890" class="footer-link">+91 6291190305</a>
+                    </div>
+
+                    <div class="wrapper">
+                        <span class="span">Email:</span>
+                        <a href="mailto:info@eduweb.com" class="footer-link">UnityTalk@gmail.com</a>
+                    </div>
+
+                    <p class="footer-list-title admin" style="cursor:pointer" onclick="window.location.href='@Url.Action("login","Admin")'">
+                        Admin Login
+                    </p>
+
+
+                </div>
+
+
+
+                <div class="footer-list-wrap">
+
+                    <div class="footer-list">
+
+                        <p class="footer-list-title">Contacts</p>
+
+                        <p class="footer-list-text">
+                            Enter your email address to register to our newsletter subscription
+                        </p>
+
+                        <form action="" class="newsletter-form">
+                            <input type="email" name="email_address" placeholder="Your email" required class="input-field">
+
+                            <button type="submit" class="btn has-before">
+                                <span class="span">Subscribe</span>
+
+                                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                            </button>
+                        </form>
+
+                        <ul class="social-list">
+
+                            <li>
+                                <a href="#" class="social-link">
+                                    <ion-icon name="logo-facebook"></ion-icon>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="social-link">
+                                    <ion-icon name="logo-linkedin"></ion-icon>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="social-link">
+                                    <ion-icon name="logo-instagram"></ion-icon>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="social-link">
+                                    <ion-icon name="logo-twitter"></ion-icon>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="social-link">
+                                    <ion-icon name="logo-youtube"></ion-icon>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="container">
+
+                </div>
+            </div>
+
+    </footer>
+
+
+
+
+
+    <!--
+      - #BACK TO TOP
+    -->
+
+    <a href="#top" class="back-top-btn" aria-label="back top top" data-back-top-btn>
+        <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+    </a>
+
+
+
+
+
+    <!--
+      - custom js link
+    -->
+    <script src="~/Content/js/Index.js" defer></script>
+
+    <!--
+      - ionicon link
+    -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            loop: true,
+
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                    centeredSlides: false,
+                },
+                765: {
+                    slidesPerView: 2,
+                    centeredSlides: false,
+                },
+                1000: {
+                    slidesPerView: 3,
+                    centeredSlides: false,
+                },
+
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

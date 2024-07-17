@@ -1,0 +1,89 @@
+﻿@model IEnumerable<UnityTalk.Models.GroupImgTable>
+
+@{
+    ViewBag.Title = "ViewImage";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <img src="~/Content/assets/Images/logo.png" height="45px" style="margin-left:20px;" />
+        <div class="container">
+
+            @Html.ActionLink("UnityTalk", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+
+    <h2>ViewImage</h2>
+
+    <p>
+        @Html.ActionLink("Back", "Dashboard", "Admin")
+    </p>
+
+    @using (Html.BeginForm("Search", "Image", FormMethod.Get))
+    {
+        @Html.TextBox("search")
+        <input type="submit" value="Search" />
+    }
+
+    <table class="table table-striped" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImgName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.GrpImgPath)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImgName)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.GrpImgPath)" style="height:200px" />
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary" href="@item.GrpImgPath">
+                        Open
+                    </a>
+
+                    <a class="btn btn-outline-primary" href="@Url.Action("Delete", "Image", new {id = item.GrpImgId})">
+                        Delete
+                    </a>
+
+                    @{
+                        if (ViewBag.Message != null)
+                        {
+                            @ViewBag.Message
+                        }
+                    }
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+﻿@model UnityTalk.Models.GroupTable
+
+@{
+    ViewBag.Title = "Join Group";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create class</title>
+    <link href="~/Content/css/JoinGrp.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--Font Link - League Sharpen , Poppins , Open Sans-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+</head>
+<body class="home">
+    <div class="Maincontainer">
+        @if (TempData["Success"] != null)
+        {
+            <div class="SuccessOverlay">
+                <div class="successcard">
+                    <button type="button" class="successdismiss" onclick="closesuccessOverlay()"><i class="fa-solid fa-xmark"></i></button>
+                    <div class="successheader">
+                        <div class="successimage">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                        </div>
+                        <div class="successcontent">
+                            <span class="title">Successfully Group Joined</span>
+                            <p class="successmessage">@TempData["Success"]</p>
+                        </div>
+                        <div class="successactions">
+                            <button class="successopen" type="button" onclick="window.location.href = '@Url.Action("grupView", "Groupview", new { grpid = TempData["grpId"] })'">View Group</button>
+                            <button class="successback" type="button" onclick="window.location.href = '@Url.Action("dashboard","Dashboard")'">Return to Dashboard</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="rightPart">
+            <div class="formContainer">
+                <h1>Join Group</h1>
+                <form action="@Url.Action("JoinGrp","Dashboard")" method="post" class="JoinForm">
+                    @Html.AntiForgeryToken()
+                    <div class="formDescp">
+                        <p class="inputHeader">Group code :</p>
+                        <p class="helpingComment">Ask your group host for the group code.</p>
+                        <p class="helpingComment">Enter a valid code with 5-7 letters or numbers.</p>
+                        <div class="inputCont">
+                            @Html.EditorFor(model => model.GrpCode, new { htmlAttributes = new { @class = "input", placeholder = "Type the code", maxlength = "20" } })
+
+                            <i class="fa-regular fa-keyboard inputIcon"></i>
+                        </div>
+                        <p class="helpingComment" style="padding-left:10px; color:red">@ViewBag.notify</p>
+                    </div>
+                    <!-- add Choice of Images or banner if u want -->
+
+                    <button type="submit" class="createBtn" role="button">
+                        <span>Join</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="leftPart">
+            <div class="headerText">
+                <h1>Join <span>Class</span>: </h1>
+                <h1> Step into the <span>Virtual</span> space</h1>
+                <p>Chat, share files, and meet virtually - all in one place</p>
+                <p>Textbook learning just got interactive. Join the study revolution.</p>
+                <p>Access files and folders within your group.</p>
+            </div>
+            <div class="ImageContainer swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="~/Content/assets/IndexImages/join1.png"></div>
+                    <div class="swiper-slide"><img src="~/Content/assets/IndexImages/join2.png"></div>
+                    <div class="swiper-slide"><img src="~/Content/assets/IndexImages/join3.png"></div>
+                    <div class="swiper-slide"><img src="~/Content/assets/IndexImages/join4.png"></div>
+
+                </div>
+                <div class="swiper-button-n"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="swiper-button-p"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            let activeNavLinks = document.querySelectorAll('.nav-link.active');
+
+            activeNavLinks.forEach(function (link) {
+                link.classList.remove('active');
+            });
+            let dashboardElement = document.querySelector('.navDashboard-l');
+
+            if (dashboardElement) {
+                dashboardElement.classList.add('active');
+            }
+        });
+
+        function closesuccessOverlay() {
+            let a = document.querySelector(".SuccessOverlay");
+            if (a) {
+                a.style.display = "none";
+            }
+        }
+
+
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1, // Adjust as needed
+    spaceBetween: 30, // Adjust as needed
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+    </script>
+
+</body>
+</html>

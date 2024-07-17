@@ -1,0 +1,254 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: #BBE2EC;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0; /* Set left to 0 to stretch to the left edge */
+    width: 100%;
+    height: 80px;
+    background: #EEEEEE;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align items at the start and end */
+    box-shadow: 0 4px 8px 0 rgb(0,0,0,0.2);
+    padding: 0 20px; /* Add padding to the header */
+}
+
+.container .header .nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+    .container .header .nav .admin {
+        margin-left: auto; /* Push the admin section to the right */
+    }
+
+.comp_name {
+    padding: 20px;
+}
+
+.container .header .nav img {
+    width: 40px;
+    height: 40px;
+}
+
+.container .header .nav .img-design {
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+    .container .header .nav .img-design img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+.logout button {
+    display: flex;
+    background-color: #FF204E;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    height:40px;
+    padding:0 10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .logout button i {
+        margin-right: 3px;
+    }
+
+.bx-log-out {
+    font-size: 16px;
+}
+
+.logout button p {
+    font-size: 14px;
+}
+
+.logout button:hover {
+    background-color: #D12041; /* Change background color on hover */
+}
+
+@media (max-width: 768px) {
+    .logout button p {
+        display: none;
+    }
+
+    .logout button i {
+        margin-right: 3px;
+    }
+
+    .bx-log-out {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 550px) {
+    .header .nav h2 {
+        display: none;
+    }
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    position: relative;
+    min-height: 70vh;
+}
+
+    .content .cards {
+        padding: 0 13px;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+        /* .container .content .cards .card{
+	width: 250px;
+	height: 150px;
+	background: white;
+	margin: 20px 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	box-shadow: 0 4px 8px 0 rgb(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+} */
+
+        .content .cards .education {
+            --bg-color: #ffd861;
+            --bg-color-light: #ffeeba;
+            --text-color-hover: #4C5656;
+            --box-shadow-color: rgba(255, 215, 97, 0.48);
+        }
+
+        .content .cards .card {
+            width: 220px;
+            height: 230px;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 14px 26px rgba(0,0,0,0.04);
+            transition: all 0.3s ease-out;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+            .content .cards .card:hover {
+                transform: translateY(-5px) scale(1.005) translateZ(0);
+                box-shadow: 0 24px 36px rgba(0,0,0,0.11), 0 24px 46px var(--box-shadow-color);
+            }
+
+                .content .cards .card:hover .overlay {
+                    transform: scale(4) translateZ(0);
+                }
+
+                .content .cards .card:hover .circle {
+                    border-color: var(--bg-color-light);
+                    background: var(--bg-color);
+                }
+
+                    .content .cards .card:hover .circle:after {
+                        background: var(--bg-color-light);
+                    }
+
+                .content .cards .card:hover p {
+                    color: var(--text-color-hover);
+                }
+
+            .content .cards .card:active {
+                transform: scale(1) translateZ(0);
+                box-shadow: 0 15px 24px rgba(0,0,0,0.11), 0 15px 24px var(--box-shadow-color);
+            }
+
+            .content .cards .card p {
+                font-size: 17px;
+                color: #4C5656;
+                margin-top: 30px;
+                z-index: 1000;
+                transition: color 0.3s ease-out;
+            }
+
+            .content .cards .card .circle {
+                width: 131px;
+                height: 131px;
+                border-radius: 50%;
+                background: #fff;
+                border: 3px solid var(--bg-color);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                z-index: 1;
+                transition: all 0.3s ease-out;
+            }
+
+                .content .cards .card .circle:after {
+                    content: "";
+                    width: 118px;
+                    height: 118px;
+                    display: block;
+                    position: absolute;
+                    background: var(--bg-color);
+                    border-radius: 50%;
+                    transition: opacity 0.3s ease-out;
+                }
+
+                .content .cards .card .circle img {
+                    height: 75px;
+                    z-index: 10000;
+                    transform: translateZ(0);
+                }
+
+            .content .cards .card .overlay {
+                width: 118px;
+                position: absolute;
+                height: 118px;
+                border-radius: 50%;
+                background: var(--bg-color);
+                top: 27px;
+                left: 50px;
+                z-index: 0;
+                transition: transform 0.3s ease-out;
+            }
+
+            .content .cards .card .icon-design img {
+                width: 60px;
+                height: 60px;
+            }
+
+    .content .content-ii {
+        min-height: 60vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }

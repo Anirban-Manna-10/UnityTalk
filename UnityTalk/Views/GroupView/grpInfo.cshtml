@@ -1,0 +1,248 @@
+﻿@model UnityTalk.viewModel.GroupView
+
+@{
+    ViewBag.Title = "Group Details";
+}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/css/grpinfo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+<body>
+    <main>
+        <div class="GroupInfoCont">
+            <div class="GroupInfoTable">
+                <div class="GroupNameDescp">
+                    <div class="GroupModePrev">
+                        <div class="GroupPrevArrow" onclick="window.location.href ='@Url.Action("grupview", "GroupView", new { grpid = Model.Group.GrpId })'">
+                            <i class="fa-solid fa-arrow-left search"></i>
+                        </div>
+                        @if (Model.Group.GrpMode)
+                        {
+
+
+                            <div class="GroupModeDiv">
+                                <div class="GroupModeDivIcon">
+                                    <i class="fa-solid fa-lock-open"></i>
+                                </div>
+                                <div class="GroupModeDivText">
+                                    <p>Public</p>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="GroupModeDiv">
+                                <div class="GroupModeDivIcon">
+                                    <i class="fa-solid fa-lock "></i>
+                                </div>
+                                <div class="GroupModeDivText">
+                                    <p>Private</p>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                    <div class="GroupInfoName">
+                        <p>@Html.DisplayFor(model => model.Group.GrpName)</p>
+                    </div>
+                    <div class="GroupInfoDescp">
+                        <p>@Html.DisplayFor(model => model.Group.GrpDescp)</p>
+                    </div>
+                    <div class="GroupEditPrev">
+                        <div class="groupLeaveBtnCont1">
+                            @if (Model.Group.GrpAdminId == (int)Session["Id"])
+                            {
+                                <button class="GroupInfoEditBtn GroupInfoDeleteBtn" id="GroupInfoDeleteBtn">
+                                    <div class="GroupInfoEditSign"><i class="fa-solid fa-delete-left"></i></div>
+                                    <div class="GroupInfoEditText">Delete group</div>
+                                </button>
+                            }
+                            <div class="LeaveMsgBox" id="DeleteMsgBox">
+                                <div class="LeaveMsgText LeaveText">
+                                    <p>Delete Group </p>
+                                </div>
+                                <div class="LeaveMsgText LeaveDescp">
+                                    <p>Do you want to permanently Delete the group?</p>
+                                </div>
+                                <div class="CancelRemoveBtn">
+                                    <button class="GroupLeave CancelBtn" id="CancelDeleteBtn">
+
+                                        <p>Cancle</p>
+                                    </button>
+                                    <button class="GroupLeave RemoveBtn" onclick="window.location.href ='@Url.Action("deleteGroup", "GroupView", new { GrpId = Model.Group.GrpId })'">
+
+                                        <p>Delete</p>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="groupLeaveBtnCont1">
+                            <button class="GroupInfoEditBtn" id="GroupInfoEditBtn">
+                                <div class="GroupInfoEditSign"><i class="fa-solid fa-right-from-bracket"></i></div>
+                                <div class="GroupInfoEditText">Leave</div>
+                            </button>
+                            <div class="LeaveMsgBox" id="LeaveMsgBox">
+                                <div class="LeaveMsgText LeaveText" >
+                                    <p>Leave Group </p>
+                                </div>
+                                <div class="LeaveMsgText LeaveDescp">
+                                    <p>Do you want to permanently leave the group?</p>
+                                </div>
+                                <div class="CancelRemoveBtn">
+                                    <button class="GroupLeave CancelBtn" id="CancelLeaveBtn">
+
+                                        <p>Cancle</p>
+                                    </button>
+                                    <button class="GroupLeave RemoveBtn" onclick="window.location.href ='@Url.Action("leaveGroup", "GroupView", new { grpid = Model.Group.GrpId })'">
+
+                                        <p>Leave</p>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="GroupAdminMembers">
+                    <div class="GroupAdminTable">
+                        <div class="GroupAdminTableHead">
+                            <p>Admin Member</p>
+                        </div>
+                        <hr class="MemberdivLine">
+                        <div class="GroupAdminTableBody">
+
+                            <div class="TableCont">
+                                <div class="TableContDetails">
+                                    <div class="TableContImgdiv">
+                                        <img src="@Url.Content(Model.Group.UserTable.UserImgPath)" class="TableContImg">
+                                    </div>
+                                    <div class="TableContUserDetails">
+                                        <p class="TableContDetailsName">
+                                            @Html.DisplayFor(model => model.Group.UserTable.Name)
+                                        </p>
+                                        <p class="TableContDetailsUserName">
+                                            @Html.DisplayFor(model => model.Group.UserTable.UserName)
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="GroupMemberTable">
+                        <div class="GroupMemberSearch">
+                            <div class="GroupAdminTableHead">
+                                <p>Group Members</p>
+                            </div>
+
+                            <div class="input-search">
+                                <button class="GroupMemberSearchicon">
+                                    <i class="bi bi-search searchIcon"></i>
+                                </button>
+                                <input type="search" placeholder="search.." class="GroupMemberSearchInput" name="text" type="text">
+                            </div>
+
+                        </div>
+                        <hr class="MemberdivLine">
+                        <div class="GroupMemberTableBody">
+
+                            @foreach (var item in Model.GroupMemberTabl)
+                            {
+                                <div class="TableCont">
+                                    <div class="TableContDetails">
+                                        <div class="TableContImgdiv">
+                                            <img src="@Url.Content(item.UserTable.UserImgPath)" class="TableContImg">
+                                        </div>
+                                        <div class="TableContUserDetails">
+                                            <p class="TableContDetailsName">
+                                                @Html.DisplayFor(modelItem => item.UserTable.Name)
+                                            </p>
+                                            <p class="TableContDetailsUserName">
+                                                @Html.DisplayFor(modelItem => item.UserTable.UserName)
+                                            </p>
+                                        </div>
+                                    </div>
+                                    @if ((int)Session["Id"] == Model.Group.UserTable.Uid)
+                                    {
+                                        <div class="GroupMemberRemove">
+                                            <div class="GroupMemberRemoveDiv" onclick="window.location.href = '@Url.Action("removeMember", "GroupView", new {item.MemberId})'">
+
+                                                <i class="bi bi-person-dash removeicon"></i>
+
+                                            </div>
+                                            <div class="GroupRemovetooltiptext"><p>Remove</p></div>
+                                            <div class="GroupMemberAdminDiv" onclick="window.location.href = '@Url.Action("makeAdmin", "GroupView", new {item.MemberId})'">
+
+                                                <i class="bi bi-person-fill-check removeicon"></i>
+
+                                            </div>
+                                            <div class="GroupAdmintooltiptext">Admin</div>
+                                        </div>
+                                    }
+
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*</div>*@
+    </main>
+    @section scripts {
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+
+                let activeNavLinks = document.querySelectorAll('.nav-link.active');
+
+                activeNavLinks.forEach(function (link) {
+                    link.classList.remove('active');
+                });
+                let dashboardElement = document.querySelector('.navAllGroups-l');
+
+                if (dashboardElement) {
+                    dashboardElement.classList.add('active');
+                }
+            });
+        </script>
+
+    }
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let leaveconfDiv = document.querySelector("#LeaveMsgBox");
+            let cancelBtn = document.querySelector("#CancelLeaveBtn");
+            let leaveBtn = document.querySelector("#GroupInfoEditBtn");
+            leaveBtn.addEventListener("click", function () {
+                leaveconfDiv.classList.toggle("validConfBox");
+            });
+            cancelBtn.addEventListener("click", function () {
+                leaveconfDiv.classList.toggle("validConfBox");
+            })
+
+
+            let leaveconfDiv1= document.querySelector("#DeleteMsgBox");
+            let cancelBtn1 = document.querySelector("#CancelDeleteBtn");
+            let leaveBtn1 = document.querySelector("#GroupInfoDeleteBtn");
+            leaveBtn1.addEventListener("click", function () {
+                leaveconfDiv1.classList.toggle("validConfBox1");
+            });
+            cancelBtn1.addEventListener("click", function () {
+                leaveconfDiv1.classList.toggle("validConfBox1");
+            })
+
+
+
+        });
+
+    </script>
+
+</body>

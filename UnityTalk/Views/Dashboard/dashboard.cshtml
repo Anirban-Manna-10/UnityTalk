@@ -1,0 +1,226 @@
+﻿@model UnityTalk.viewModel.dashboardViewModel
+
+@{
+    ViewBag.Title = "Dashboard";
+
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--............... CSS ................-->
+    <link rel="stylesheet" href="~/Content/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="~/Content/css/dashboard.css">
+
+
+
+</head>
+<body>
+    <!-- dashboard -->
+    <div class="userBanner">
+        <div class="Usergreeting">
+            <div class="greeting">Welcome back, <span>@Html.DisplayFor(model => Model.User.Name)</span></div>
+            <div class="greetingMsg">Your potential knows no bounds..</div>
+
+            <button class="cta viewProfileBtn" onclick="window.location.href='@Url.Action("viewProfile","Dashboard",new { UserId = @Model.User.Uid })'">
+                <span>View Profile</span>
+                <svg class="arrow" width="15px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </button>
+        </div>
+        <div class="bannerImg">
+            <img src="~/Content/assets/IndexImages/UserBanner.gif" alt="bannarImage-normal">
+        </div>
+    </div>
+
+
+
+    <ul class="box-info">
+        <div class="grpcard" onclick="window.location.href='@Url.Action("allGroup", "Group")'">
+            <i class='bx bxs-group'></i>
+            <span class="txt">
+                <h3>My Groups</h3>
+            </span>
+        </div>
+        <div class="grpcard" onclick="window.location.href='@Url.Action("viewEbook", "Ebook")'">
+            <i class='bx bx-book-open'></i>
+            <span class="txt">
+                <h3>Ebook</h3>
+            </span>
+        </div>
+        <div class="grpcard" onclick="window.location.href='@Url.Action("todo", "Todo")'">
+            <i class='bx bxs-book-content'></i>
+            <span class="txt">
+                <h3>To-Do List</h3>
+
+            </span>
+        </div>
+        <div class="grpcard"  onclick="window.location.href='@Url.Action("whiteBoard", "Dashboard")'">
+            <i class='bx bxs-chalkboard'></i>
+            <span class="txt">
+                <h3>White Board</h3>
+
+            </span>
+        </div>
+    </ul>
+
+    <!-- public class -->
+
+    <div class="featured">
+        <div class="class-book">
+            <div class="public-class">
+                <h3 class="heading head"><span class="public">Latest Classes</span></h3>
+                <div class="grpcard-content">
+                    <div class="card-slider swiper">
+                        <div class="wraper swiper-wrapper">
+                            @foreach (var grp in Model.Groups)
+                            {
+                                <div class=" Grupcard swiper-slide">
+                                    <div class="grpImg">
+                                        <img src="@Url.Content(grp.GroupImgTable.GrpImgPath)" class="grpImgCont" alt="group Image">
+                                    </div>
+
+                                    <div class="grpCont">
+                                        <div class="adminImg">
+                                            <img src="@Url.Content(grp.UserTable.UserImgPath)" class="adminImgCont" alt="Andmin Image">
+                                        </div>
+                                        <p class="grpName">@Html.DisplayFor(item => grp.GrpName)</p>
+                                        <p class="grpAdminName">@Html.DisplayFor(item => grp.UserTable.Name)</p>
+                                        <p class="grpDesp">@Html.DisplayFor(item => grp.GrpDescp) .</p>
+                                        <div class="join">
+                                            <button onclick="window.location.href = '@Url.Action("joinGrpBtn","Dashboard", new { grpId =  grp.GrpId })'" class="Grpjoinbutton">Join</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            }
+                            <div class="Grupcard swiper-slide">
+                                <div class="seeImg Public" style="background-image: url(public-class.jpeg); height:100%; width:100%;">
+                                    <div class="seemore">
+                                        <button class="learn-more" onclick="window.location.href ='@Url.Action("publicGroups", "Group")'">
+                                            <span class="circle" aria-hidden="true">
+                                                <span class="icon arrow"></span>
+                                            </span>
+                                            <span class="button-text">See More</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="swiper-button-next "></div>
+                        <div class="swiper-button-prev "></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!--ebook-->
+            <div class="featured-section">
+                <h3 class="heading"><span>Ebook Corner</span></h3>
+                <div class="ebook-container">
+                    <div class="ebook-swip swiper">
+                        <div class="swiper-wrapper">
+                            <!--<div class="wrap swiper-wrapper">-->
+                            @foreach (var book in Model.Ebooks)
+                            {
+                                <article class="ebookcard swiper-slide">
+                                    <img src="@Url.Content(book.EbookImgPath)" alt="" class="featured-img">
+                                    <div class="ebook-descp">
+                                        <h3 class="ebook-title">@Html.DisplayFor(model => book.EbookName)</h3>
+                                        <p class="ebook-author">@Html.DisplayFor(model => book.Author)</p>
+                                    </div>
+                                    <button onclick="window.location.href ='@Url.Action("ebookDetails", "Ebook", new {id = book.EbookId})'" class="ebook-btn">Get Now</button>
+                                    <!--  <a href="#">Buy Now</a> -->
+
+                                </article>
+                            }
+
+                                <article class="ebookcard swiper-slide">
+
+                                    <div class="seeImg" style="background-image: url(books.jpg); height:350px; width:100%;">
+                                        <div class="seemore">
+                                            <button class="learn-more" onclick="window.location.href='@Url.Action("viewEbook", "Ebook")'">
+                                                <span class="circle" aria-hidden="true">
+                                                    <span class="icon arrow"></span>
+                                                </span>
+                                                <span class="button-text">See More</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </article>
+
+
+
+                            </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="todo">
+            <div class="head">
+                <div class="txts" onclick="window.location.href='@Url.Action("todo", "Todo")'"><h3>Todos</h3></div>
+            </div>
+            <hr class="MemberdivLine">
+            <div class="task-box">
+                @foreach (var item in Model.ToDos)
+                {
+                    <div class="task">
+                        <p>@Html.DisplayFor(modelItem => item.Cont)</p>
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+
+    </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+
+                let activeNavLinks = document.querySelectorAll('.nav-link.active');
+
+                activeNavLinks.forEach(function (link) {
+                    link.classList.remove('active');
+                });
+                let dashboardElement = document.querySelector('.navDashboard-l');
+
+                if (dashboardElement) {
+                    dashboardElement.classList.add('active');
+                }
+            });
+        </script>
+
+
+    <script src="@ViewData["Properjs"]" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="~/Content/js/swiper-bundle.min.js"></script>
+
+    <script src="~/Content/js/todo.js"></script>
+    <script src="~/Content/js/swip.js"></script>
+    <script src="~/Content/js/public-class.js"></script>
+
+</body>
+</html>
+
+

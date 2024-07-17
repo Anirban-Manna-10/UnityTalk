@@ -1,0 +1,24 @@
+By combining a heuristic evaluation function with a modified version of the iterative deepening search method presented earlier, we obtain iterative deepening A ^ * or IDA*.
+
+IDA* performs a depth search at each iteration and eliminates or trims all branches whose estimated cost ( g ^ * +h^ * ) exceeds a given threshold T(i) where i = 0.1 * 0.2 is the iteration number. The initial threshold T(0) is the estimated cost of the initial state. After that, the threshold increases with each iteration. The value of T on iteration i + 1 is taken as the minimum of the costs which exceed T on iteration i.
+
+Like A ^ * it can be shown that IDA* always finds a cheapest path if h ^ * is admissible. Furthermore, IDA* expands the same number 
+
+of nodes as A* (asymptoti- cally).
+
+The IDA* algorithm has several advantages over other search algorithms, such as :
+
+It is guaranteed to find the shortest path to the goal if one exists.
+It avoids the exponential time complexity of traditional Depth First Search by using an “iterative deepening” approach, where the search depth is gradually increased.
+It uses a limited amount of memory as compared to the A* algorithm because it uses Depth First Search.
+It is an admissible heuristic, it never overestimates the cost of reaching the goal.
+However, the IDA* algorithm also has some disadvantages, such as:
+
+It can be slower than other algorithms, such as A*, for small search spaces.
+It can be more difficult to implement than other algorithms.
+
+1.  Artificial Intelligence, Ritch & Knight, TMH
+
+2. Artificial Intelligence A Modern Approach, Stuart Russel Peter Norvig, Pearson
+
+3. Introduction to Artificial Intelligence & Expert Systems, Patterson, PHI

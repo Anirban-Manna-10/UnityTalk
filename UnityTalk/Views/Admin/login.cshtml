@@ -1,0 +1,96 @@
+﻿@model UnityTalk.Models.AdminTable
+
+@{
+    ViewBag.Title = "login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700&family=Figtree:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/AdminLogin.css">
+</head>
+<body>
+    @using (Html.BeginForm("login", "Admin", FormMethod.Post, new { @class = "container" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="pic2"></div>
+        <img src="~/Content/assets/IndexImages/logo1.png" alt="">
+        <h1>Admin Login</h1>
+        <div class="inp">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { id = "username" } })
+            <label onclick="focusinp('usr')" for="Email">Email</label>
+        </div>
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        <div class="inp">
+            @Html.EditorFor(model => model.Pwd, new { htmlAttributes = new { id = "password", Type = "Password" } })
+            <label onclick="focusinp('pass')" for="Pwd">Password</label>
+        </div>
+        @Html.ValidationMessageFor(model => model.Pwd, "", new { @class = "text-danger" })
+        if (ViewBag.Notifi != null)
+        {
+            <p style="color:white">@ViewBag.Notifi</p>
+        }
+        <button type="submit">Login</button>
+        <div>
+            @Html.ActionLink("Back to List", "Index", "Home")
+        </div>
+    }
+    <div class="pic">
+    </div>
+    <script src="~/Content/js/adminLogin.js"></script>
+</body>
+</html>
+
+
+@*@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>AdminTable</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Pwd, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Pwd, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Pwd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Log in" class="btn btn-default" />
+            </div>
+        </div>
+        if (ViewBag.Notifi != null)
+        {
+            @ViewBag.Notifi
+        }
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Home")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

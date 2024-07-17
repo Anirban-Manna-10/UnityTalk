@@ -1,0 +1,310 @@
+﻿@model UnityTalk.viewModel.ChatViewModel
+
+@{
+    ViewBag.Title = "Group Chat";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/css/Chat.css" />
+</head>
+
+<main>
+    <div class="groupEntryCont" id=".groupEntryCont">
+
+        <div class="GroupNavbar">
+            <div class="GroupNavIcons">
+                <div class="GroupnavAll Groupnavopt" onclick="window.location.href ='@Url.Action("grupview", "GroupView", new {grpid = Model.Group.GrpId})'">
+                    <div class="GroupNavIconback">
+                        <img class="GroupNavIcon" src="~/Content/assets/IndexImages/SeakerIcon.png">
+                    </div>
+                    <p class="GroupIconText">All</p>
+                </div>
+
+                <div class=" GroupnavFile Groupnavopt" onclick="window.location.href ='@Url.Action("fileView", "File", new {grpid = Model.Group.GrpId})'">
+                    <div class="GroupNavIconback">
+                        <i class="fa-regular fa-file-lines GroupNavIcon"></i>
+
+                    </div>
+                    <p class="GroupIconText">Files</p>
+                </div>
+                <div class="GroupnavChat Groupnavopt GrpNavactive" onclick="window.location.href ='@Url.Action("Chat", "Chat", new {grpid = Model.Group.GrpId})'">
+                    <div class="GroupNavIconback">
+                        <i class="bi bi-chat-text-fill GroupNavIcon"></i>
+
+                    </div>
+                    <p class="GroupIconText">Chats</p>
+                </div>
+                <div class="GroupnavMeet Groupnavopt" onclick="window.location.href ='@Url.Action("meetingView", "Meeting", new {grpId = Model.Group.GrpId})'">
+                    <div class="GroupNavIconback">
+                        <i class="fa-solid fa-video GroupNavIcon"></i>
+                    </div>
+                    <p class="GroupIconText">Meetings</p>
+                </div>
+            </div>
+            <div class="GroupNameAllDeatails">
+
+                <div class="GroupNameInfo">
+                    <div class="groupbannertext">
+                        <h4>@Model.Group.GrpName</h4>
+                    </div>
+                    <div class="GroupInfodiv" onclick="window.location.href = '@Url.Action("grpInfo", "GroupView", new {grpId = Model.Group.GrpId})'">
+                        <i class="fa-solid fa-circle-info " style="color: #c0c2c5;"></i>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="groupBannerCont">
+            <div class="AnnounceDetailsCont" id="chatContainerScroll">
+
+                @if (Model.Messages == null || Model.Messages.Count == 0)
+                {
+                    <div class="notodoitem">
+                        <img src="~/Content/assets/IndexImages/Empty-chat.png" alt="No todo Here" />
+
+                        Empty Chat: Be the First to Say Hello!
+                    </div>
+                }
+                else
+                {
+                    foreach (var item in Model.Messages)
+                    {
+
+                        if (item.GroupMemberTable.UserTable.Uid != (int)Session["Id"])
+                        {
+                            <div class="AnnouncementSendDetailsLeft">
+                                <div class="GroupChatDivLeft">
+                                    <div class="TableContImgdiv">
+                                        <img src="@Url.Content(item.GroupMemberTable.UserTable.UserImgPath)" class="TableContImg">
+                                    </div>
+                                    <div class="AnnounceDetailsLeft">
+
+                                        <div class="AdminUsername">
+                                            @Html.DisplayFor(modelItem => item.GroupMemberTable.UserTable.Name)
+                                        </div>
+                                        <div class="AnnounceText">
+                                            <p>@Html.Raw(item.Cont?.Replace("\n", "<br>"))</p>
+                                        </div>
+
+                                        <div class="GroupChatDateDiv">
+                                            <div class="GroupChatDate">
+                                                <p> @Html.DisplayFor(modelItem => item.Date)</p>
+                                            </div>
+                                            <div class="GroupChatTime">
+                                                <p>@Html.DisplayFor(modelItem => item.FormattedTime)</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="GroupEmptyDivLeft"></div>
+                                <!-- RightBox End -->
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="AnnouncementSendDetailsRight">
+                                <div class="GroupEmptyDivRight"></div>
+
+                                <div class="GroupChatDivRight">
+
+                                    <div class="AnnounceDetailsRight">
+
+                                        <div class="AdminUsername">
+                                            @Html.DisplayFor(modelItem => item.GroupMemberTable.UserTable.Name)
+                                        </div>
+                                        <div class="AnnounceText">
+                                            <p>@Html.Raw(item.Cont?.Replace("\n", "<br>"))</p>
+                                        </div>
+                                        <div class="GroupChatDateDiv">
+                                            <div class="GroupChatDate">
+                                                <p> @Html.DisplayFor(modelItem => item.Date)</p>
+                                            </div>
+                                            <div class="GroupChatTime">
+                                                <p>@Html.DisplayFor(modelItem => item.FormattedTime)</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="TableContImgdiv">
+                                        <img src="@Url.Content(item.GroupMemberTable.UserTable.UserImgPath)" class="TableContImg">
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    }
+                }
+
+            </div>
+        </div>
+        <div class="GroupTextSendDetails">
+            <div class="GroupTextSend">
+                <textarea class="GroupTextSendInput" type="text" placeholder="Type Here" id="message"></textarea>
+            </div>
+            <div class="GroupSendIcon">
+                <div class="GroupAttachIcon" onclick="window.location.href ='@Url.Action("fileView", "File", new {grpid = Model.Group.GrpId})'">
+                    <i class="fa-solid fa-paperclip "></i>
+                </div>
+                <button class="GroupSendIconBtn" id="sendmessage">
+                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z" fill="currentColor"></path>
+                    </svg>
+                    <span class="GroupSendText">Send</span>
+                </button>
+                <button class="AnnouncementSendBtn" id="sendmessage1">
+                    <div class="AnnouncementSendIcon"><i class="fa-solid fa-paper-plane"></i></div>
+                </button>
+            </div>
+        </div>
+
+
+</main>
+
+
+
+
+@section scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            let activeNavLinks = document.querySelectorAll('.nav-link.active');
+
+            activeNavLinks.forEach(function (link) {
+                link.classList.remove('active');
+            });
+            let dashboardElement = document.querySelector('.navAllGroups-l');
+
+            if (dashboardElement) {
+                dashboardElement.classList.add('active');
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const chatContainer = document.getElementById("chatContainerScroll");
+
+            // Scroll to the bottom when the page loads
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        });
+    </script>
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+    $(function () {
+        // Reference the SignalR proxy for the chat hub.
+        var chat = $.connection.chatHub;
+
+        // Create a function that the hub can call back to display messages.
+        chat.client.addNewMessageToPage = function (Id, name, message, date, time, image) {
+            var chatWindow = $('#chatContainerScroll');
+            var formattedMessage = message.replace(/\n/g, '<br>');
+            var sessionId = '@Session["Id"]';
+
+            if (Id == sessionId) {
+                var announcementSendDetailsRight = $('<div>').addClass('AnnouncementSendDetailsRight');
+
+                var groupEmptyDivRight = $('<div>').addClass('GroupEmptyDivRight');
+                announcementSendDetailsRight.append(groupEmptyDivRight);
+
+                var groupChatDivRight = $('<div>').addClass('GroupChatDivRight');
+                var announceDetailsRight = $('<div>').addClass('AnnounceDetailsRight');
+
+                var adminUsername = $('<div>').addClass('AdminUsername').text(name); // Sender Name
+                announceDetailsRight.append(adminUsername);
+
+                var announceText = $('<div>').addClass('AnnounceText').html('<p>' + formattedMessage + '</p>'); // Content
+                announceDetailsRight.append(announceText);
+
+                var groupChatDateDiv = $('<div>').addClass('GroupChatDateDiv');
+                var groupChatDate = $('<div>').addClass('GroupChatDate').html('<p>' + date + '</p>');
+                groupChatDateDiv.append(groupChatDate);
+
+                var groupChatTime = $('<div>').addClass('GroupChatTime').html('<p>' + time + '</p>');
+                groupChatDateDiv.append(groupChatTime);
+
+                announceDetailsRight.append(groupChatDateDiv);
+                groupChatDivRight.append(announceDetailsRight);
+
+                var tableContImgdiv = $('<div>').addClass('TableContImgdiv');
+                var tableContImg = $('<img>').addClass('TableContImg').attr('src', image);
+                tableContImgdiv.append(tableContImg);
+
+                groupChatDivRight.append(tableContImgdiv);
+                announcementSendDetailsRight.append(groupChatDivRight);
+
+                chatWindow.append(announcementSendDetailsRight); // Appending to the chat window
+            } else {
+                var announcementSendDetailsLeft = $('<div>').addClass('AnnouncementSendDetailsLeft');
+
+                var groupChatDivLeft = $('<div>').addClass('GroupChatDivLeft');
+                announcementSendDetailsLeft.append(groupChatDivLeft);
+
+                var tableContImgdiv = $('<div>').addClass('TableContImgdiv');
+                var tableContImg = $('<img>').addClass('TableContImg').attr('src', image);
+                tableContImgdiv.append(tableContImg);
+
+                groupChatDivLeft.append(tableContImgdiv);
+
+                var announceDetailsLeft = $('<div>').addClass('AnnounceDetailsLeft');
+
+                var adminUsername = $('<div>').addClass('AdminUsername').text(name); // Username
+                announceDetailsLeft.append(adminUsername);
+
+                var announceText = $('<div>').addClass('AnnounceText').html('<p>' + formattedMessage + '</p>'); // Message
+                announceDetailsLeft.append(announceText);
+
+                var groupChatDateDiv = $('<div>').addClass('GroupChatDateDiv');
+                var groupChatDate = $('<div>').addClass('GroupChatDate').html('<p>' + date + '</p>');
+                groupChatDateDiv.append(groupChatDate);
+
+                var groupChatTime = $('<div>').addClass('GroupChatTime').html('<p>'+time+'</p>');
+                groupChatDateDiv.append(groupChatTime);
+
+                announceDetailsLeft.append(groupChatDateDiv);
+                groupChatDivLeft.append(announceDetailsLeft);
+
+                var groupEmptyDivLeft = $('<div>').addClass('GroupEmptyDivLeft');
+                announcementSendDetailsLeft.append(groupEmptyDivLeft);
+
+                chatWindow.append(announcementSendDetailsLeft);
+            }
+            chatWindow.scrollTop(chatWindow[0].scrollHeight);
+        };
+
+        // Start the SignalR connection
+        $.connection.hub.start().done(function () {
+            var groupId = "@Model.Group.GrpId";
+            var userId = "@Model.User.Uid";
+
+
+
+            // Join the group
+            chat.server.joinGroup(groupId);
+
+            // Send a message when the button is clicked
+            $('#sendmessage').click(function () {
+                var message = $('#message').val();
+
+                if (message) {
+                    chat.server.send(groupId, message, userId);
+                    $('#message').val('').focus(); // Clear the input and refocus
+                }
+            });
+            $('#sendmessage1').click(function () {
+                var message = $('#message').val();
+
+                if (message) {
+                    chat.server.send(groupId, message, userId);
+                    $('#message').val('').focus(); // Clear the input and refocus
+                }
+            });
+        });
+    });
+    </script>
+
+}
